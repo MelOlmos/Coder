@@ -3,8 +3,8 @@ const app = express();
 const { ProductManager } = require('./Productmanager.js');
 const { CartManager } = require('./CartManager.js');
 
-const productManager = new ProductManager('./Coder/src2/productos_test.json');
-const cartManager = new CartManager('./Coder/src2/carrito_test.json');
+const productManager = new ProductManager(__dirname + '/productos_test.json');
+const cartManager = new CartManager(__dirname + '/carrito_test.json');
 
 app.listen(8080, () => console.log("Soy el puerto 8080"));
 

@@ -92,13 +92,13 @@ module.exports = { ProductManager };
 
 
 /*HACIENDO LAS PRUEBAS DEL PROCESO DE TESTING*/
-const productManager = new ProductManager('productos_test.json');
+
 
 
 // console.log('Prueba del array vacío:', productManager.getProducts());
 
 // Agrego el producto
-productManager.addProduct({
+/* productManager.addProduct({
     title: 'producto 1',
     description: 'Este es un producto prueba',
     price: 200,
@@ -187,7 +187,7 @@ productManager.addProduct({
     code: 'abc10',
     stock: 25,
     category: 'Remeras'
-});
+}); */
 
 
 // console.log('Prueba llamando productos:', productManager.getProducts());
@@ -209,6 +209,6 @@ productManager.addProduct({
 
 
 // /* Eliminando*/
-productManager.deleteProduct(10);
+/* productManager.deleteProduct(10);
 console.log('Prueba de eliminación:', productManager.getProducts()); 
-
+ */
