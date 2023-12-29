@@ -1,25 +1,46 @@
 const express = require('express');
 const router = express.Router();
-const { ProductManager } = require('./Productmanager.js');
+const { ProductManager } = require('../src/Productmanager.js');
 
 const productManager = new ProductManager('productos_test.json');
 
+
 /*Acá obtengo productos*/
 router.get('/', async (req, res) => {
-    const products = await productManager.getProducts();
-    res.json({ products });
-});
+        const products = await productManager.getProducts();
+        let limit = req.query.limit;
+        if (!limit) {
+        res.json({ products })
+        } else {
+        let limitFilter= products.slice(0, limit);
+        res.json({ products:limitFilter })
+    }
+    });
 
 
 /*Acá obtengo por id*/
 router.get('/:pid', async (req, res) => {
-    const productId = req.params.pid;
-    const product = await productManager.getProductById(productId);
-    if (product) {
-        res.json({ product });
-    } else {
-        res.status(404).json({ error: 'Producto no encontrado' });
+    const products = await productManager.getProducts();
+    let id = req.params.pid;
+    if (!id) {
+    res.json({ products });
+    return;
     }
+    const parsedId = parseInt(id);
+
+    if (isNaN(parsedId)) {
+        res.status(400).json({ error: 'Formato de id inválido' });
+        return;
+    }
+
+    const idFilter = products.find(product => product.id === parsedId);
+
+    if (!idFilter) {
+        res.status(404).json({ error: 'Producto no encontrado' });
+        return;
+    }
+
+    res.json({ product: idFilter });
 });
 
 /* Agrego un nuevo producto */

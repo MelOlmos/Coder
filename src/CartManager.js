@@ -2,7 +2,7 @@ const fs = require('fs');
 
 class CartManager {
     constructor(filePath) {
-        this.path = filePath;
+        this.path = __dirname+'/'+filePath;
         this.carts = [];
         this.initialId = 0;
         this.loadCartsFromFile();
@@ -58,6 +58,5 @@ class CartManager {
     }
 }
 
-// const cartManager = new CartManager('carrito_test.json');
 
 module.exports = { CartManager };
