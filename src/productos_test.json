@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "title": "producto 11 editado",
+    "title": "producto 11",
     "description": "Este es un producto EDITADO",
-    "price": 200,
+    "price": 500,
     "thumbnail": "Sin imagen",
     "code": "abc100",
     "stock": 25,
@@ -11,14 +11,69 @@
     "status": true
   },
   {
-    "id":2,
-    "title":"producto 8",
-    "description":"Este es un producto prueba",
-    "price": 200,
-    "thumbnail":"Sin imagen",
-    "code": "abc8",
+    "id": 2,
+    "title": "producto 5",
+    "description": "Este es un producto prueba",
+    "price": 400,
+    "thumbnail": "Sin imagen",
+    "code": "abc5",
     "stock": 25,
     "category": "Pantalones",
     "status": true
-}
+  },
+  {
+    "id": 3,
+    "title": "producto 6",
+    "description": "Este es un producto prueba",
+    "price": 200,
+    "thumbnail": "Sin imagen",
+    "code": "abc6",
+    "stock": 25,
+    "category": "Remeras",
+    "status": true
+  },
+  {
+    "id": 4,
+    "title": "producto 7",
+    "description": "Este es un producto prueba",
+    "price": 250,
+    "thumbnail": "Sin imagen",
+    "code": "abc7",
+    "stock": 25,
+    "category": "Remeras",
+    "status": true
+  },
+  {
+    "id": 5,
+    "title": "producto 8",
+    "description": "Este es un producto prueba",
+    "price": 550,
+    "thumbnail": "Sin imagen",
+    "code": "abc8",
+    "stock": 10,
+    "category": "Vestidos",
+    "status": true
+  },
+  {
+    "id": 6,
+    "title": "producto 10",
+    "description": "Este es un producto prueba",
+    "price": 550,
+    "thumbnail": "Sin imagen",
+    "code": "abc10",
+    "stock": 60,
+    "category": "Pantalones",
+    "status": true
+  },
+  {
+    "id": 7,
+    "title": "producto POSTMAN",
+    "description": "Este es un producto prueba",
+    "price": 550,
+    "thumbnail": "Sin imagen",
+    "code": "abc111111111",
+    "stock": 60,
+    "category": "Pantalones",
+    "status": true
+  }
 ]

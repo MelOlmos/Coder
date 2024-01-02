@@ -1,7 +1,81 @@
-<h1>Real Time Products</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Time</title>
+</head>
+<body>
+    <h1>Real Time Products</h1>
 
-<ul>
-    {{#each products}}
-    <li>{{this.title}}</li>
-    {{/each}}
+    <ul id="productList">
+  {{#each products}}
+    <li>{{this.title}} | {{this.id}}</li>
+  {{/each}}
 </ul>
+
+{{!-- Formulario para agregar producto desde el front --}}
+
+<form id="productForm">
+        <label for="title">Título del Producto:</label>
+        <input type="text" id="productTitle" name="title" required>
+        <button type="button" onclick="addProduct()">Agregar producto</button>
+    </form>
+
+    
+<script src="/socket.io/socket.io.js">  </script>
+
+<script> 
+const io = require('../app.js'); 
+{{!-- Lo que hace el evento addProduct  --}}
+
+function addProduct() {
+            const titleInput = document.getElementById('productTitle');
+            const newProduct = titleInput.value.trim();
+
+            if (newProduct!== '') {
+                //Emitiendo newProduct
+                socket.emit('newproduct', { title: newProduct });
+
+                titleInput.value = '';
+            }
+  };
+
+
+//Escuchando updateList
+ io.on('UpdateList', newProduct => {
+    const productList = document.getElementById('productList');
+    const newProductItem = document.createElement('li');
+    newProductItem.textContent = newProduct;
+    productList.appendChild(newProductItem);
+
+ });
+
+
+</script>
+
+{{!-- Formulario para eliminar producto desde el front --}}
+
+<form id="deleteForm">
+        <label for="title">Id del Producto:</label>
+        <input type="text" id="productId" name="title" required>
+        <button type="button" onclick="deleteProduct()">Eliminar producto</button>
+    </form>
+
+<script>
+function deleteProduct() {
+            const idInput = document.getElementById('productId');
+            const productId = idInput.value.trim();
+
+            if (productId!== '') {
+                //Emitiendo deleteProduct
+                socket.emit('deleteProduct', { id: productId });
+
+                idInput.value = '';
+            }
+  }; 
+</script>
+</body>
+</html>
+
+<script src="/js/index.js"></script>
