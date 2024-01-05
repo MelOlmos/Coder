@@ -36,16 +36,17 @@ io.on('connection', socket=> {
     socket.on('newProduct', data => {
         let newProductId = productManager.addProduct(data);
         let newProduct = { ...data, id: newProductId };
-    
         productList.push(newProduct);
+        
         // Emitiendo updateList
-        io.emit('updateList', productList); 
+        io.emit('updateList', productManager.getProducts());
+        
     });
     // Escuchando deleteProducts
     socket.on('deleteProduct', productId => {
         let filteredList = productList.filter(product => product.id == productId);
-        // Emitiendo updateList
-        socketServer.emit('updateList', filteredList);
+        // Emitiendo updateFullList
+        io.emit('updateFullList', filteredList);
     });
 });
 

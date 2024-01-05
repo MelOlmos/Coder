@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Time</title>
     <script src="/socket.io/socket.io.js"></script>
-
 </head>
 <body>
     <h1>Real Time Products</h1>
 
     <ul id="productList">
   {{#each products}}
-    <li>{{this.title}} | {{this.id}}</li>
+    <li>{{this.title}} | ID {{this.id}}</li>
   {{/each}}
 </ul>
 
@@ -71,6 +70,7 @@ function addProduct() {
                 
             //Emitiendo newProduct
             socket.emit('newProduct', {
+              id: undefined,
               title: newProductTitle,
               description: newProductDescription,
               price: newProductPrice,
@@ -87,17 +87,25 @@ function addProduct() {
 
 
 //Escuchando updateList
-const productList = document.getElementById('productList');
+let productList = JSON.parse(localStorage.getItem('productList')) || [];
 
-socket.on('updateList', newProduct => {
-    const newProductItem = document.createElement('li');
-    newProductItem.textContent = `${newProduct.title} | ID ${newProduct.id}`;
-    productList.appendChild(newProductItem);
+socket.on('updateList', (newProductList) => {
+  productList = newProductList;
+  updateBrowserList(productList);
+  localStorage.setItem('productList', JSON.stringify(productList));
+});
 
- });
-
-
+function updateBrowserList(products) {
+  const productListElement = document.getElementById('productList');
+  productListElement.innerHTML = '';
+    products.forEach(product => {
+        const productItem = document.createElement('li');
+        productItem.textContent = `${product.title} | ID ${product.id}`;
+        productListElement.appendChild(productItem);
+    });
+}
 </script>
+
 
 
 {{!-- Formulario para eliminar producto desde el front --}}
@@ -125,7 +133,7 @@ function deleteProduct() {
   }; 
 </script>
 
-{{!-- <script src="/socket.io/socket.io.js"></script> --}}
+
 <script src="/js/index.js"></script>
 </body>
 </html>
