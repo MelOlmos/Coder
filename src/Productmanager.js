@@ -51,6 +51,7 @@ class ProductManager {
     }
 
     getProducts = () => {
+        this.loadProductsFromFile();
         return this.products;
     }
 

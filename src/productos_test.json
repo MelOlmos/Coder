@@ -64,5 +64,16 @@
     "stock": "243",
     "category": "categoria",
     "status": true
+  },
+  {
+    "id": 7,
+    "title": "probando",
+    "description": "descripcion",
+    "price": "789",
+    "thumbnail": "imagen",
+    "code": "78",
+    "stock": "243",
+    "category": "categoria",
+    "status": true
   }
 ]
