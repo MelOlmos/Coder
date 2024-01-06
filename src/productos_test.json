@@ -31,49 +31,5 @@
     "stock": 25,
     "category": "Remeras",
     "status": true
-  },
-  {
-    "id": 4,
-    "title": "producto 7",
-    "description": "Este es un producto prueba",
-    "price": 250,
-    "thumbnail": "Sin imagen",
-    "code": "abc7",
-    "stock": 25,
-    "category": "Remeras",
-    "status": true
-  },
-  {
-    "id": 5,
-    "title": "probando",
-    "description": "descripcion",
-    "price": "789",
-    "thumbnail": "imagen",
-    "code": "1",
-    "stock": "243",
-    "category": "categoria",
-    "status": true
-  },
-  {
-    "id": 6,
-    "title": "probando",
-    "description": "descripcion",
-    "price": "789",
-    "thumbnail": "imagen",
-    "code": "6",
-    "stock": "243",
-    "category": "categoria",
-    "status": true
-  },
-  {
-    "id": 7,
-    "title": "probando",
-    "description": "descripcion",
-    "price": "789",
-    "thumbnail": "imagen",
-    "code": "78",
-    "stock": "243",
-    "category": "categoria",
-    "status": true
   }
 ]

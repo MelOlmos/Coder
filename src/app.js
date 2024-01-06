@@ -44,9 +44,11 @@ io.on('connection', socket=> {
     });
     // Escuchando deleteProducts
     socket.on('deleteProduct', productId => {
-        let filteredList = productList.filter(product => product.id == productId);
-        // Emitiendo updateFullList
-        io.emit('updateFullList', filteredList);
+        const productList = productManager.getProducts();
+        const filteredList = productList.filter(product => product.id != productId.id);
+        productManager.deleteProduct(productId.id);
+        // Emitiendo updateList
+        io.emit('updateList', filteredList);
     });
 });
 

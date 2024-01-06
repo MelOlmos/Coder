@@ -21,7 +21,8 @@ class ProductManager {
         if (!title || !description || !price || !thumbnail || !code || !stock || !category) {
             console.log('No fue posible agregar producto. Todos las claves son obligatorias');
         } else if (this.isCodeUnique(code)) {
-            const id = this.products.length + 1;
+            const id = this.getNewId();
+            // const id = this.products.length + 1;
             const status = true;
             this.products.push({ id, title, description, price, thumbnail, code, stock, category, status });
             this.saveProductsToFile();
@@ -40,10 +41,11 @@ class ProductManager {
         }
     }
 
-    /* updateInitialId = () => {
+    getNewId= () => {
+        this.loadProductsFromFile();
         const maxId = Math.max(...this.products.map(product => product.id), 0);
-        this.initialId = maxId;
-    } */
+        return maxId+1;
+    }
 
     saveProductsToFile = () => {
         console.log('Guardando productos en el archivo...');
@@ -74,7 +76,8 @@ class ProductManager {
     }
 
     deleteProduct = (id) => {
-        this.products = this.products.filter(product => product.id !== id);
+        this.loadProductsFromFile();
+        this.products = this.products.filter(product => product.id != id);
         this.saveProductsToFile();
     }
 }
