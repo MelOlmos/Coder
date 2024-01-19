@@ -31,5 +31,16 @@
     "stock": 25,
     "category": "Remeras",
     "status": true
+  },
+  {
+    "id": 4,
+    "title": "Producto de ejemplo para MONGO",
+    "description": "Descripción del producto",
+    "price": 1000,
+    "thumbnail": "url_de_la_imagen",
+    "code": "ABC1234",
+    "stock": 50,
+    "category": "Test",
+    "status": true
   }
 ]

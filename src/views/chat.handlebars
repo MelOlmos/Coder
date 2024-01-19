@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <h1>Chat increíble :D</h1>
+    <div id="messageLogs">
+      {{!-- Esto para mostrar los mensajes --}}
+    </div>
+
+    <div>
+        <textarea id="chatBox"></textarea>
+    </div>
+    <script> 
+
+const socket = io();
+let user;
+let chatBox = document.getElementById('chatBox');
+
+Swal.fire({
+  title: "Indentifícate",
+  input: "text",
+  text: "Ingresa un nombre de usuario para utilizar el chat",
+  inputValidator: (value) => {
+    return !value && 'Necesitas escribir un usuario para continuar'
+  },
+  allowOutsideClick:false
+}).then (result => {
+    user = result.value
+});
+
+chatBox.addEventListener('keyup', e => {
+    if (e.key==="Enter" && !e.shiftKey) {
+        e.preventDefault();
+        if(chatBox.value.trim().length>0) {
+            socket.emit("message", {user:user,message:chatBox.value});
+            chatBox.value="";
+        }
+    }
+})
+
+//Escuchando messageLogs
+socket.on('messageLogs', data=> {
+    let log = document.getElementById('messageLogs');
+    let messages = "";
+    data.forEach(message=> {
+        messages = messages + `${message.user} dice: ${message.message}<br>`
+    })
+    log.innerHTML= messages;
+})
+</script> 
+
+<script src="/js/index.js"></script>
+</body>
+</html>
