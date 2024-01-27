@@ -11,6 +11,7 @@ const productManager = new ProductManager('productos_test.json');
 const { MessagesManagerDB } = require('../src/dao/messageManagerDB.js');
 const { messagesModel } = require('../src/dao/models/messages.model.js');
 const { productsModel } = require('../src/dao/models/products.model.js');
+const { CartManagerDB } = require('../src/dao/cartManagerDB.js');
 // const { ProductManagerDB } = require('../src/dao/productManagerDB.js');
 // const productManagerDB = new ProductManagerDB();
 
@@ -79,7 +80,7 @@ router.get('/products', async (req, res) => {
 router.get('/carts/:cartId', async (req, res) => {
     try {
       const cartId = req.params.cartId;
-      const cart = await cartManager.getCartById(cartId);
+      const cart = await CartManagerDB.getCartById(cartId);
   
       if (!cart) {
         res.status(404).json({ error: 'Carrito no encontrado' });

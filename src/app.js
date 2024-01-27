@@ -20,7 +20,7 @@ const messagesRouter = require('../Routes/messagesRoutesDB.js');
 const { ProductManagerDB } = require('./dao/productManagerDB.js');
 const productManagerDB = new ProductManagerDB();
 const { CartManagerDB } = require('./dao/cartManagerDB.js');
-const cartManagerDB = new ProductManagerDB();
+const cartManagerDB = new CartManagerDB();
 const { MessagesManagerDB } = require('./dao/messageManagerDB.js');
 const messageManager = new MessagesManagerDB();
 

@@ -47,7 +47,7 @@ class CartManager {
         fs.writeFileSync(this.path, JSON.stringify(this.carts, null, 2), 'utf-8');
     }
 
-    loadCartsFromFile() {
+    /* loadCartsFromFile() {
         try {
             const data = fs.readFileSync(this.path, 'utf-8');
             console.log(data);
@@ -55,7 +55,7 @@ class CartManager {
         } catch (error) {
             this.carts = [];
         }
-    }
+    } */
 }
 
 

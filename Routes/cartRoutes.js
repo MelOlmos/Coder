@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { CartManager } = require('../src/CartManager.js');
-
-const cartManager = new CartManager('carrito_test.json');
+/* 
+const cartManager = new CartManager('carrito_test.json'); */
 
 
 /* Acá genero nuevo carrito */

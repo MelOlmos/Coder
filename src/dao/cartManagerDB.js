@@ -1,11 +1,12 @@
 const { cartsModel } = require('./models/carts.model.js');
+const { productsModel } = require('./models/products.model.js')
 
 class CartManagerDB {
 
   async addProductToCart(cartId, { productId, quantity }) {
     try {
       // Obtengo carrito y producto por id
-      const cart = await cartsModel.findById(cartId);
+      const cart = await cartsModel.findById(cartId).populate('products.product');
       const product = await productsModel.findById(productId);
       // Verificando si el producto ya está en el carrito
       const existingProductIndex = cart.products.findIndex(
