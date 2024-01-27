@@ -1,0 +1,42 @@
+<div>
+  <h1>Products result</h1>
+  {{#each products}}
+    <div>
+      <p>
+        <strong>Title:</strong> {{this.title}}
+        <strong>Description:</strong> {{this.description}}
+        <strong>Category:</strong> {{this.category}}
+        <strong>Precio:</strong> {{this.price}}
+      </p>
+      <!-- Agregar botón "Agregar al Carrito" -->
+      <button onclick="addToCart('{{this._id}}')">Agregar al carrito</button>
+    </div>
+  {{/each}}
+
+<script>
+  // Esto hace la acción onclick
+  function addToCart(productId) {
+    fetch(`/api/carts/:cid/products/${productId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ quantity: 1 }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Producto agregado al carrito:', data);
+    })
+    .catch(error => console.error('Error al agregar al carrito:', error));
+  }
+</script>
+
+{{#if hasPrevPage}}
+    <a href="/products?page={{prevPage}}">Before</a>
+    {{/if}}
+    <label> {{page}} </label>
+    {{#if hasNextPage}}
+    <a href="/products?page={{nextPage}}">Next</a>
+    {{/if}}
+
+</div>

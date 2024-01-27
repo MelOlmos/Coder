@@ -1,6 +1,6 @@
 //acá va el modelo(schema) que queramos modelar de la db
 const mongoose = require("mongoose");
-
+const mongoosePaginate = require("mongoose-paginate-v2");
 const productsCollection = 'products';
 
 
@@ -16,6 +16,7 @@ const productsSchema = new mongoose.Schema ({
         
 })
 
+productsSchema.plugin(mongoosePaginate)
 const productsModel = mongoose.model(productsCollection, productsSchema);
 
 module.exports = {

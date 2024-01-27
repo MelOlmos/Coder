@@ -6,19 +6,16 @@ const { ProductManagerDB } = require('../src/dao/productManagerDB.js');
 const productManager = new ProductManagerDB();
 
 const io = require('../src/app.js'); 
+const { productsModel } = require('../src/dao/models/products.model.js');
 
 
 /*Acá obtengo productos*/
 router.get('/', async (req, res) => {
     try {
-        const products = await productManager.getAllProducts();
-        let limit = req.query.limit;
-        if (!limit) {
-        res.json({ products })
-        } else {
-        let limitFilter= products.slice(0, limit);
-        res.json({ products:limitFilter })
-    }
+        const products = await productsModel.paginate({}, {limit:1, page:1, lean: true})
+        res.send({ products });
+        /* console.log('Productos obtenidosSSSSSSSS:', products);
+        res.json({ products: Array.isArray(products) ? products : [products] }); */
 }   catch (error) {
     res.status(500).json({error: error.message});
 

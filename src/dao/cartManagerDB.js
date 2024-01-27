@@ -1,6 +1,32 @@
 const { cartsModel } = require('./models/carts.model.js');
 
 class CartManagerDB {
+
+  async addProductToCart(cartId, { productId, quantity }) {
+    try {
+      // Obtengo carrito y producto por id
+      const cart = await cartsModel.findById(cartId);
+      const product = await productsModel.findById(productId);
+      // Verificando si el producto ya está en el carrito
+      const existingProductIndex = cart.products.findIndex(
+        (cartProduct) => cartProduct.product && cartProduct.product.equals(productId)
+      );
+      if (existingProductIndex === -1) {
+        // Si el producto no está en el carrito, lo agrego
+        cart.products.push({ product: productId, quantity });
+      } else {
+        // Si el producto ya está en el carrito, aumento en 1
+        cart.products[existingProductIndex].quantity += 1;
+      }
+      // Guarda el carrito actualizado
+      const updatedCart = await cart.save();
+      return updatedCart;
+    } catch (error) {
+      console.error('Error al agregar producto al carrito:', error);
+      throw error;
+    }
+  }
+
   async getAllCarts() {
     try {
       const carts = await cartsModel.find();
@@ -13,13 +39,13 @@ class CartManagerDB {
 
   async getCartById(cartId) {
     try {
-      const cartById = await cartsModel.findById(cartId);
+      const cartById = await cartsModel.findById(cartId).populate('products.product');
       return cartById;
     } catch (error) {
       console.log(`Se produjo un error al obtener el carrito: ${error.message}`);
       throw error;
     }
-  }
+  };
 
   async addCart(newCart) {
     try {

@@ -88,10 +88,10 @@ io.on('connection', socket=> {
 
 
 /*RUTAS CON FS*/
-// Rutas para productos 
+/* // Rutas para productos 
 app.use('/api/products',productsRouter);
 // Rutas para carritos
-app.use('/api/carts',cartRouter);
+app.use('/api/carts',cartRouter); */
 
 // Rutas para vistas
 app.use('/', viewsRouter);
@@ -100,7 +100,7 @@ app.use('/', viewsRouter);
 // Rutas para productos
 app.use('/api/products-db', productsRouterDB);
 // Rutas para carritos
-app.use('/api/carts-db', cartRouterDB);
+app.use('/api/carts', cartRouterDB);
 // Rutas para mensajes
 app.use('/api/messages', messagesRouter);
 
