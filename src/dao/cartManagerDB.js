@@ -6,7 +6,7 @@ class CartManagerDB {
   async addProductToCart(cartId, { productId, quantity }) {
     try {
       // Obtengo carrito y producto por id
-      const cart = await cartsModel.findById(cartId).populate('products.product');
+      const cart = await cartsModel.findById(cartId).lean().populate('products.product');
       const product = await productsModel.findById(productId);
       // Verificando si el producto ya está en el carrito
       const existingProductIndex = cart.products.findIndex(
@@ -40,7 +40,7 @@ class CartManagerDB {
 
   async getCartById(cartId) {
     try {
-      const cartById = await cartsModel.findById(cartId).populate('products.product');
+      const cartById = await cartsModel.findById(cartId).populate('products.product').lean();
       return cartById;
     } catch (error) {
       console.log(`Se produjo un error al obtener el carrito: ${error.message}`);

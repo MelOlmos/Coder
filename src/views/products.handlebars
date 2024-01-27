@@ -1,17 +1,14 @@
 <div>
   <h1>Products result</h1>
-  {{#each products}}
-  {{log products}}
-    <div>
-      <p>
-        <strong>Title:</strong> {{this.title}}
-        <strong>Description:</strong> {{this.description}}
-        <strong>Category:</strong> {{this.category}}
-        <strong>Precio:</strong> {{this.price}}
-      </p>
-      <!-- Agregar botón "Agregar al Carrito" -->
-      <button onclick="addToCart('{{this._id}}')">Agregar al carrito</button>
-    </div>
+{{#each products}}
+    <ul>
+      <li><strong>Title:</strong> {{this.title}}</li>
+      <li><strong>Descripcion:</strong> {{this.description}}</li>
+      <li><strong>Category:</strong> {{this.category}}</li>
+      <li><strong>Price:</strong> {{this.price}}</li>
+    </ul>
+
+    <button onclick="addToCart('{{this._id}}')">Agregar al carrito</button>
   {{/each}}
 
 <script>
@@ -31,7 +28,7 @@
     .catch(error => console.error('Error al agregar al carrito:', error));
   }
 </script>
-
+<div>
 {{#if hasPrevPage}}
     <a href="/products?page={{prevPage}}">Before</a>
     {{/if}}
@@ -39,5 +36,5 @@
     {{#if hasNextPage}}
     <a href="/products?page={{nextPage}}">Next</a>
     {{/if}}
-
+</div>
 </div>

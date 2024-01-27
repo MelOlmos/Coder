@@ -1,15 +1,12 @@
 <div>
   <h1>Carrito solo</h1>
-  {{#each cart}}
-    {{#each this.products}}
-      {{log this}}
+  {{#each cart.products}}
       <ul>
-        <li> <strong>Title:</strong> {{this.title}}</li>
-        <li> <strong>Description:</strong> {{this.description}}</li>
-        <li> <strong>Category:</strong> {{this.category}}</li>
-        <li> <strong>Precio:</strong> {{this.price}}</li>
-        <li> <strong>Cantidad:</strong> {{this.quantity}}</li>        
+        <li> <strong>Title:</strong> {{product.title}}</li>
+        <li> <strong>Description:</strong> {{product.description}}</li>
+        <li> <strong>Category:</strong> {{product.category}}</li>
+        <li> <strong>Precio:</strong> {{product.price}}</li>
+        <li> <strong>Cantidad:</strong> {{product.quantity}}</li>        
       </ul>
-    {{/each}}
-  {{/each}}
+   {{/each}}
 </div>

@@ -12,6 +12,7 @@ const { MessagesManagerDB } = require('../src/dao/messageManagerDB.js');
 const { messagesModel } = require('../src/dao/models/messages.model.js');
 const { productsModel } = require('../src/dao/models/products.model.js');
 const { CartManagerDB } = require('../src/dao/cartManagerDB.js');
+const cartManagerDB = new CartManagerDB();
 // const { ProductManagerDB } = require('../src/dao/productManagerDB.js');
 // const productManagerDB = new ProductManagerDB();
 
@@ -42,10 +43,11 @@ router.get('/chat', (req, res) => {
 //Vista de productos 
 router.get('/products', async (req, res) => {
     try {
-    const {limit = 1, page = 1, sort, query} = req.query;
+    const {limit = 2, page = 1, sort, query} = req.query;
     const options = {
         limit: parseInt(limit),
         page: parseInt(page),
+        lean: true
     }
         if (sort) {
         options.sort = { price: sort === 'asc' ? 1 : -1 };
@@ -58,8 +60,6 @@ router.get('/products', async (req, res) => {
         console.log('No se obtuvieron productos de la base de datos');
         return res.status(404).json({ error: 'No se encontraron productos' });
     }
-    console.log('Productos obtenidos:', result.docs);
-    console.log('Tipo de datos de result.docs:', typeof result.docs);
 
     res.render('products', {
         products: result.docs,
@@ -80,7 +80,7 @@ router.get('/products', async (req, res) => {
 router.get('/carts/:cartId', async (req, res) => {
     try {
       const cartId = req.params.cartId;
-      const cart = await CartManagerDB.getCartById(cartId);
+      const cart = await cartManagerDB.getCartById(cartId);
   
       if (!cart) {
         res.status(404).json({ error: 'Carrito no encontrado' });

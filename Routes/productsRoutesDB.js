@@ -12,10 +12,8 @@ const { productsModel } = require('../src/dao/models/products.model.js');
 /*Acá obtengo productos*/
 router.get('/', async (req, res) => {
     try {
-        const products = await productsModel.paginate({}, {limit:1, page:1, lean: true})
+        const products = await productsModel.paginate({}, {limit:10, page:1, lean: true})
         res.send({ products });
-        /* console.log('Productos obtenidosSSSSSSSS:', products);
-        res.json({ products: Array.isArray(products) ? products : [products] }); */
 }   catch (error) {
     res.status(500).json({error: error.message});
 
