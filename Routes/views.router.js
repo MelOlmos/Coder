@@ -43,7 +43,7 @@ router.get('/chat', (req, res) => {
 //Vista de productos 
 router.get('/products', async (req, res) => {
     try {
-    const {limit = 2, page = 1, sort, query} = req.query;
+    const {limit = 5, page = 1, sort, query} = req.query;
     const options = {
         limit: parseInt(limit),
         page: parseInt(page),
@@ -52,7 +52,7 @@ router.get('/products', async (req, res) => {
         if (sort) {
         options.sort = { price: sort === 'asc' ? 1 : -1 };
     }
-    const filter = query ? { category: query } : {};
+    const filter = query ? { $text: { $search: query } } : {};
 
     const result = await productsModel.paginate(filter, options);
 

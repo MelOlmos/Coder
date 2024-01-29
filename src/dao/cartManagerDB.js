@@ -6,7 +6,7 @@ class CartManagerDB {
   async addProductToCart(cartId, { productId, quantity }) {
     try {
       // Obtengo carrito y producto por id
-      const cart = await cartsModel.findById(cartId).lean().populate('products.product');
+      const cart = await cartsModel.findById(cartId).populate('products.product');
       const product = await productsModel.findById(productId);
       // Verificando si el producto ya está en el carrito
       const existingProductIndex = cart.products.findIndex(
@@ -16,8 +16,8 @@ class CartManagerDB {
         // Si el producto no está en el carrito, lo agrego
         cart.products.push({ product: productId, quantity });
       } else {
-        // Si el producto ya está en el carrito, aumento en 1
-        cart.products[existingProductIndex].quantity += 1;
+        // Si el producto ya está en el carrito, aumento
+        cart.products[existingProductIndex].quantity = quantity;
       }
       // Guarda el carrito actualizado
       const updatedCart = await cart.save();
@@ -78,6 +78,23 @@ class CartManagerDB {
       return deletedCart;
     } catch (error) {
       console.log(`Error al eliminar el carrito: ${error.message}`);
+      throw error;
+    }
+  }
+
+  async deleteAllProductsFromCart(cartId) {
+    try {
+      const cart = await cartsModel.findById(cartId);
+      if (!cart) {
+        Error('Carrito no encontrado');
+      }
+      cart.products = [];
+      // Guarda el carrito actualizado
+      const updatedCart = await cart.save();
+      
+      return updatedCart;
+    } catch (error) {
+      console.error('Error al eliminar todos los productos del carrito:', error);
       throw error;
     }
   }

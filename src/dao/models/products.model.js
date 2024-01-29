@@ -17,6 +17,10 @@ const productsSchema = new mongoose.Schema ({
 })
 
 productsSchema.plugin(mongoosePaginate)
+
+//Esto para que la búsqueda por query tome nombre y categoría
+productsSchema.index({ name: "text", category: "text" });
+
 const productsModel = mongoose.model(productsCollection, productsSchema);
 
 module.exports = {
