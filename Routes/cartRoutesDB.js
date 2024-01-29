@@ -9,15 +9,13 @@ const cartManager = new CartManagerDB();
 router.post('/:cartId/products/', async (req, res) => {
   try {
     const cartId = req.params.cartId;
-    const { products } = req.body;
+    const { product, quantity } = req.body;
 
     // Obtengo el carrito actual
     let updatedCart = await cartManager.getCartById(cartId);
-    // Itero sobre los productos y los agrego al carrito
-    for (const product of products) {
-      await cartManager.addProductToCart(cartId, product);
-    }
-    // Obtengo el carrito actualizado después de agregar los productos
+    // Agrego el producto al carrito
+    await cartManager.addProductToCart(cartId, { productId: product, quantity });
+    // Obtengo el carrito actualizado después de agregar el producto
     updatedCart = await cartManager.getCartById(cartId);
 
     res.json(updatedCart);
@@ -111,7 +109,7 @@ router.delete('/:cartId/products/:productId', async (req, res) => {
 });
 
 /*Acualizar el carrito con un arrar de productos nuevos*/
-router.put('/:cartId', async (req, res) => {
+/*  
   try {
     const cartId = req.params.cartId;
     const updatedCartData = req.body;
@@ -121,9 +119,9 @@ router.put('/:cartId', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
+}); */
 
-/*Actualiza cantidad de un producto en el carro pasada por body*/
+/*Actualiza cantidad pasada por body de un producto en el carro*/
 router.put('/:cartId/products/:productId', async (req, res) => {
   try {
     const cartId = req.params.cartId;

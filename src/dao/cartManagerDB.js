@@ -86,7 +86,7 @@ class CartManagerDB {
     try {
       const cart = await cartsModel.findById(cartId);
       if (!cart) {
-        Error('Carrito no encontrado');
+        throw new Error('Carrito no encontrado');
       }
       cart.products = [];
       // Guarda el carrito actualizado
@@ -98,6 +98,36 @@ class CartManagerDB {
       throw error;
     }
   }
+
+  async updateProductQuantity(cartId, productId, quantity) {
+    try {
+      const idCart = await cartsModel.findById(cartId);
+    if (!idCart) {
+      throw new Error('El carrito no existe');
+    }
+    //pruebas de consola
+    console.log('Cart:', idCart);
+    console.log('Product ID:', productId);
+    //Acá busco el id dentro de productos
+    const productIndex = 
+    idCart.products.findIndex(product => product.product._id.toString() === productId);
+    console.log('Product Index:', productIndex);
+    
+    if (productIndex === -1) {
+      throw new Error('El producto no está en el carrito');
+    }
+    idCart.products[productIndex].quantity = quantity;
+    console.log('Updated Cart:', idCart);
+
+    await idCart.save();
+    return idCart;
+  }
+catch (error) {
+  console.error('Error al actualizar la cantidad:', error);
+  throw error;
+  }
+}
+
 };
 
 module.exports = { CartManagerDB }
