@@ -93,14 +93,21 @@ router.delete('/:cartId/products/:productId', async (req, res) => {
     const cartId = req.params.cartId;
     const productId = req.params.productId;
     // Obtengo el carrito actual
-    const cart = await cartManager.getCartById(cartId);
-    if (!cart) {
+    const newCart = await cartManager.getCartById(cartId);
+
+    //prueba en consola
+    console.log(newCart);
+    if (!newCart) {
       return res.status(404).json({ error: 'Carrito no encontrado' });
     }
     // Filtro los productos excluyendo el productId indicado
-    const updatedProducts = cart.products.filter(product => product._id.toString() !== productId);
+    const updatedProducts = 
+    newCart.products.filter(product => product.product._id.toString() !== productId);
+    //prueba en consola
+    console.log(updatedProducts)
     // Actualizo el carro con los productos filtrados
-    const updatedCart = await cartManager.updateCart(cartId, { products: updatedProducts });
+    const updatedCart 
+    = await cartManager.updateCart(cartId, { products: updatedProducts });
 
     res.json(updatedCart);
   } catch (error) {
