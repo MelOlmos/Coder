@@ -84,13 +84,13 @@ class CartManagerDB {
 
   async deleteAllProductsFromCart(cartId) {
     try {
-      const cart = await cartsModel.findById(cartId);
-      if (!cart) {
+      const deleteCart = await cartsModel.findById(cartId);
+      if (!deleteCart) {
         throw new Error('Carrito no encontrado');
       }
-      cart.products = [];
+      deleteCart.products = [];
       // Guarda el carrito actualizado
-      const updatedCart = await cart.save();
+      const updatedCart = await deleteCart.save();
       
       return updatedCart;
     } catch (error) {
