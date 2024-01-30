@@ -9,12 +9,12 @@ const cartManager = new CartManagerDB();
 router.post('/:cartId/products/', async (req, res) => {
   try {
     const cartId = req.params.cartId;
-    const { product, quantity } = req.body;
+    const { productId, quantity } = req.body;
 
     // Obtengo el carrito actual
     let updatedCart = await cartManager.getCartById(cartId);
     // Agrego el producto al carrito
-    await cartManager.addProductToCart(cartId, { productId: product, quantity });
+    await cartManager.addProductToCart(cartId, { productId: productId, quantity });
     // Obtengo el carrito actualizado después de agregar el producto
     updatedCart = await cartManager.getCartById(cartId);
 

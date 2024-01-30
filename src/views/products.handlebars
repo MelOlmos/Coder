@@ -9,12 +9,14 @@
     </ul>
 
     <button onclick="addToCart('{{this._id}}')">Agregar al carrito</button>
+    <div id='{{this._id}}'></div>
   {{/each}}
 
 <script>
+
   // Esto hace la acción onclick
   function addToCart(productId) {
-    fetch(`/api/carts/:cid/products/${productId}`, {
+    fetch(`/api/carts/65b3fd56c512050429ca55ec/products/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -23,6 +25,7 @@
     })
     .then(response => response.json())
     .then(data => {
+      document.getElementById(productId).innerHTML = "Producto agregado correctamente ✔";
       console.log('Producto agregado al carrito:', data);
     })
     .catch(error => console.error('Error al agregar al carrito:', error));
