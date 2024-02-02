@@ -1,5 +1,11 @@
 <div>
-  <h1>Products result</h1>
+  <h1>Hi, {{ first_name }} !</h1>
+  {{#if isAdmin}}
+        <p>OMG, You are an admin!</p>
+    {{else}}
+        <p>You are a user</p>
+    {{/if}}
+  <h2>Products result</h2>
 {{#each products}}
     <ul>
       <li><strong>Title:</strong> {{this.title}}</li>

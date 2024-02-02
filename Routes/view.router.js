@@ -61,6 +61,11 @@ router.get('/products', async (req, res) => {
         return res.status(404).json({ error: 'No se encontraron productos' });
     }
 
+    const username = req.session.username;
+    const isAdmin = req.session.admin;
+    const first_name = req.session.first_name;
+    const last_name = req.session.last_name
+
     res.render('products', {
         products: result.docs,
         hasPrevPage: result.hasPrevPage,
@@ -68,6 +73,11 @@ router.get('/products', async (req, res) => {
         prevPage: result.prevPage,
         nextPage: result.nextPage,
         page: result.page,
+        username,
+        isAdmin,
+        first_name,
+        last_name
+        
     });
 }   catch (error) {
         console.error('Error en la consulta de productos: ', error);
@@ -93,5 +103,14 @@ router.get('/carts/:cartId', async (req, res) => {
     }
   });
 
+// Vista de login
+router.get('/login', (req, res) => {
+    res.render('login')
+});
+
+//Vista del registro
+router.get('/register', (req, res) => {
+    res.render('register')
+})
 
 module.exports = router;
