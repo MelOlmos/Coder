@@ -12,7 +12,9 @@ const { MessagesManagerDB } = require('../src/dao/messageManagerDB.js');
 const { messagesModel } = require('../src/dao/models/messages.model.js');
 const { productsModel } = require('../src/dao/models/products.model.js');
 const { CartManagerDB } = require('../src/dao/cartManagerDB.js');
+const { usersModel } = require('../src/dao/models/users.model.js')
 const cartManagerDB = new CartManagerDB();
+
 // const { ProductManagerDB } = require('../src/dao/productManagerDB.js');
 // const productManagerDB = new ProductManagerDB();
 
@@ -43,6 +45,11 @@ router.get('/chat', (req, res) => {
 //Vista de productos 
 router.get('/products', async (req, res) => {
     try {
+        const username = req.session.username;
+        // Consulta la DB para obtener el nombre del usuario
+        const user = await usersModel.findOne({ email: username });
+        const firstName = user ? user.first_name : '';
+
     const {limit = 5, page = 1, sort, query} = req.query;
     const options = {
         limit: parseInt(limit),
@@ -61,10 +68,8 @@ router.get('/products', async (req, res) => {
         return res.status(404).json({ error: 'No se encontraron productos' });
     }
 
-    const username = req.session.username;
     const isAdmin = req.session.admin;
-    const first_name = req.session.first_name;
-    const last_name = req.session.last_name
+    const { first_name } = req.session.user;
 
     res.render('products', {
         products: result.docs,
@@ -75,8 +80,7 @@ router.get('/products', async (req, res) => {
         page: result.page,
         username,
         isAdmin,
-        first_name,
-        last_name
+        first_name
         
     });
 }   catch (error) {

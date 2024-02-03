@@ -3,11 +3,20 @@ const { auth } = require('../src/middleware/authentication.middleware');
 const UserManagerDB = require('../src/dao/userManagerDB');
 const router = Router();
 const sessionsService = new UserManagerDB();
+const { usersModel } = require('../src/dao/models/users.model.js');
+
 
 //Login post
 
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
     const { username, password } = req.body;
+    // Busco el usuario en la DB
+    const user = await usersModel.findOne({ email: username });
+    if (!user) {
+        return res.send('login failed');
+    }
+    // Guarda el usuario en la sesión
+    req.session.user = user;
     // si el user o pass difieren de los establecidos
     if (username !== 'adminCoder@coder.com' || password !== 'adminCod3r123') {
         // por defecto asigno rol user
