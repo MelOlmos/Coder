@@ -6,6 +6,10 @@
     "mongoose": "^8.0.4",
     "mongoose-paginate-v2": "^1.8.0",
     "socket.io": "^4.7.2",
-    "url": "^0.11.3"
+    "url": "^0.11.3",
+    "connect-mongo": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "express-session": "^1.18.0",
+    "session-file-store": "^1.5.0"
   }
 }
