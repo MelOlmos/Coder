@@ -5,6 +5,8 @@
     {{else}}
         <p>You are a user</p>
     {{/if}}
+    <form action="/api/session/logout" method="POST"> <button type="submit">LOGOUT</button>
+</form>
   <h2>Products result</h2>
 {{#each products}}
     <ul>

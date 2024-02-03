@@ -13,20 +13,11 @@ router.post('/login', async (req, res) => {
     // Busco el usuario en la DB
     const user = await usersModel.findOne({ email: username });
     if (!user) {
-        return res.send('login failed');
+        return res.send('login failed <a href="/register">REGISTER</a>');
     }
     // Guarda el usuario en la sesión
     req.session.user = user;
-    // si el user o pass difieren de los establecidos
-    if (username !== 'adminCoder@coder.com' || password !== 'adminCod3r123') {
-        // por defecto asigno rol user
-        req.session.username = username;
-        req.session.role = 'user';
-        // y redirijo a products
-        return res.redirect('/products');
-    }
-    // si el user es admin, asigna rol admin y redirije a products
-    req.session.username = 'admin'; req.session.role = 'admin';
+
     return res.redirect('/products');
 });
 
@@ -36,18 +27,31 @@ router.post('/register', (req, res) => {
     const { first_name, last_name, email, password } = req.body
     try {
         if (email === '' || password === '') return res.send('Faltan campos obligatorios')
-        
+        // Definir el rol del usuario
+        let role = 'user';
+        if (email === 'adminCoder@coder.com') {
+            role = 'admin';
+        }
+          
         const newUser = {
             first_name,
             last_name,
             email,
-            password
+            password,
+            role
         }
 
         const createdUser = sessionsService.createUser(newUser)
         if (createdUser) {
-        return res.send(`El correo electrónico ya está registrado. <a href="/login">IR AL LOGIN</a>`)
-        } return res.redirect('/products');
+            // Asignar el nombre de usuario y el rol a la sesión
+            req.session.username = email;
+            req.session.admin = role === 'admin'; 
+            console.log('Email:', email);
+console.log('Role:', role);
+            return res.send(`El correo electrónico ya está registrado. <a href="/login">IR AL LOGIN</a>`);
+        }
+        
+        return res.redirect('/products');
     } catch (error) {
         res.status(500).json({ error: error.message });        
     }
