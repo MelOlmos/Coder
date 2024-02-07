@@ -3,19 +3,19 @@ const router = express.Router();
 
 /* Líneas con FS */
 
-const { ProductManager } = require('../src/Productmanager.js');
+const { ProductManager } = require('../Productmanager.js');
 const productManager = new ProductManager('productos_test.json');
 
 /* Líneas con MongoDB */
 
-const { MessagesManagerDB } = require('../src/dao/messageManagerDB.js');
-const { messagesModel } = require('../src/dao/models/messages.model.js');
-const { productsModel } = require('../src/dao/models/products.model.js');
-const { CartManagerDB } = require('../src/dao/cartManagerDB.js');
-const { usersModel } = require('../src/dao/models/users.model.js')
+const { MessagesManagerDB } = require('../dao/messageManagerDB.js');
+const { messagesModel } = require('../dao/models/messages.model.js');
+const { productsModel } = require('../dao/models/products.model.js');
+const { CartManagerDB } = require('../dao/cartManagerDB.js');
+const { usersModel } = require('../dao/models/users.model.js')
 const cartManagerDB = new CartManagerDB();
 
-// const { ProductManagerDB } = require('../src/dao/productManagerDB.js');
+// const { ProductManagerDB } = require('../dao/productManagerDB.js');
 // const productManagerDB = new ProductManagerDB();
 
 
@@ -48,8 +48,7 @@ router.get('/products', async (req, res) => {
         const username = req.session.username;
         // Consulta la DB para obtener el nombre del usuario
         const user = await usersModel.findOne({ email: username });
-        const firstName = user ? user.first_name : '';
-
+        
     const {limit = 5, page = 1, sort, query} = req.query;
     const options = {
         limit: parseInt(limit),
@@ -64,12 +63,13 @@ router.get('/products', async (req, res) => {
     const result = await productsModel.paginate(filter, options);
 
     if (!result) {
-        console.log('No se obtuvieron productos de la base de datos');
         return res.status(404).json({ error: 'No se encontraron productos' });
     }
 
-    const isAdmin = req.session.admin;
-    const { first_name } = req.session.user;
+    const isAdmin = req.session.user && req.session.user.role;
+    console.log(isAdmin)
+    const first_name = req.session.user && req.session.user.first_name;
+
 
     res.render('products', {
         products: result.docs,

@@ -1,12 +1,12 @@
 //// Archivo de rutas para products con mongoDB
 const express = require('express');
 const router = express.Router();
-const { ProductManagerDB } = require('../src/dao/productManagerDB.js');
+const { ProductManagerDB } = require('../dao/productManagerDB.js');
 
 const productManager = new ProductManagerDB();
 
-const io = require('../src/app.js'); 
-const { productsModel } = require('../src/dao/models/products.model.js');
+const io = require('../app.js'); 
+const { productsModel } = require('../dao/models/products.model.js');
 
 
 /*Acá obtengo productos*/

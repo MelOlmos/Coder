@@ -4,19 +4,19 @@ const path = require('path');
 
 /*Líneas que usan FS -FileSystem*/
 
-const productsRouter = require("../Routes/productRoutes.js"); 
-const cartRouter = require("../Routes/cartRoutes.js");
+const productsRouter = require("./Routes/productRoutes.js"); 
+const cartRouter = require("./Routes/cartRoutes.js");
 const fs = require('fs');
-const viewsRouter = require('../Routes/view.router.js');
+const viewsRouter = require('./Routes/view.router.js');
 const filePath = path.join(__dirname, 'productos_test.json');
 const { ProductManager } = require('./Productmanager.js');
 const productManager = new ProductManager('productos_test.json');
 
 /*Reemplazando FS por MongoDB*/
 
-const productsRouterDB = require("../Routes/productRoutesDB.js"); 
-const cartRouterDB = require("../Routes/cartRoutesDB.js");
-const messagesRouter = require('../Routes/messageRoutesDB.js');
+const productsRouterDB = require("./Routes/productRoutesDB.js"); 
+const cartRouterDB = require("./Routes/cartRoutesDB.js");
+const messagesRouter = require('./Routes/messageRoutesDB.js');
 const { ProductManagerDB } = require('./dao/productManagerDB.js');
 const productManagerDB = new ProductManagerDB();
 const { CartManagerDB } = require('./dao/cartManagerDB.js');
@@ -27,10 +27,10 @@ const messageManager = new MessagesManagerDB();
 /*Cookie, session, store*/
 
 const session = require('express-session')
-const sessionRoutes = require('../Routes/sessionRoutes.js')
+const sessionRoutes = require('./Routes/sessionRoutes.js')
 const cookieParser = require('cookie-parser');
 app.use(cookieParser('clavedecookie'));
-const testRoutes = require('../Routes/testRoutes.js')
+const testRoutes = require('./Routes/testRoutes.js')
 const FileStore = require('session-file-store')
 const MongoStore = require('connect-mongo')
 

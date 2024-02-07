@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { ProductManager } = require('../src/Productmanager.js');
+const { ProductManager } = require('../Productmanager.js');
 
 const productManager = new ProductManager('productos_test.json');
 
-const io = require('../src/app.js'); 
+const io = require('../app.js'); 
 
 
 /*Acá obtengo productos*/

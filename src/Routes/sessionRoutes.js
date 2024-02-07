@@ -1,9 +1,10 @@
 const { Router } = require('express');
-const { auth } = require('../src/middleware/authentication.middleware');
-const UserManagerDB = require('../src/dao/userManagerDB');
+const { auth } = require('../middleware/authentication.middleware');
+const UserManagerDB = require('../dao/userManagerDB.js');
 const router = Router();
 const sessionsService = new UserManagerDB();
-const { usersModel } = require('../src/dao/models/users.model.js');
+const { usersModel } = require('../dao/models/users.model.js');
+const { createHash, isValidPassword } = require('../utils/hashBcrypt.js');
 
 
 //Login post
@@ -15,6 +16,9 @@ router.post('/login', async (req, res) => {
     if (!user) {
         return res.send('login failed <a href="/register">REGISTER</a>');
     }
+    // Valida password
+    if (isValidPassword(password, user.password)) 
+    return res.status(401).send('No coincide las credenciales')
     // Guarda el usuario en la sesión
     req.session.user = user;
 
@@ -32,23 +36,22 @@ router.post('/register', (req, res) => {
         if (email === 'adminCoder@coder.com') {
             role = 'admin';
         }
-          
+   
         const newUser = {
             first_name,
             last_name,
             email,
-            password,
+            password: createHash(password),
             role
         }
-
+        
         const createdUser = sessionsService.createUser(newUser)
-        if (createdUser) {
-            // Asignar el nombre de usuario y el rol a la sesión
-            req.session.username = email;
-            req.session.admin = role === 'admin'; 
-            console.log('Email:', email);
-console.log('Role:', role);
-            return res.send(`El correo electrónico ya está registrado. <a href="/login">IR AL LOGIN</a>`);
+        // Asignar el nombre de usuario y el rol a la sesión
+        req.session.username = email;
+        req.session.user = { first_name, role };
+
+        if (!createdUser) {
+                        return res.send(`El correo electrónico ya está registrado. <a href="/login">IR AL LOGIN</a>`);
         }
         
         return res.redirect('/products');

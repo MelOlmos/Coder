@@ -1,7 +1,7 @@
 // Archivo de rutas para carts con mongoDB
 const express = require('express');
 const router = express.Router();
-const { CartManagerDB } = require('../src/dao/cartManagerDB.js');
+const { CartManagerDB } = require('../dao/cartManagerDB.js');
 
 const cartManager = new CartManagerDB();
 
