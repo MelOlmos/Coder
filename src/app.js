@@ -33,6 +33,8 @@ app.use(cookieParser('clavedecookie'));
 const testRoutes = require('./Routes/testRoutes.js')
 const FileStore = require('session-file-store')
 const MongoStore = require('connect-mongo')
+const passport = require('passport')
+const {initializePassport} = require('./config/passport.config.js')
 
 //Configura session con mongo
 app.use(session({
@@ -42,9 +44,17 @@ app.use(session({
       useNewUrlParser: true,
       useUnifiedTopology: true
     },
-    ttl: 30000
-  })
-}));
+    ttl: 3000000
+  }),
+  secret: '123',
+  resave: false,
+  saveUninitialized:false
+}))
+//passport
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 //Configura el middleware de sesión
 /* const FileStore = FileStore(session)
