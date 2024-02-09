@@ -10,7 +10,7 @@ const passport = require('passport')
 
 //Login post
 
-router.post('/login', passport.authenticate('login', {failureRedirect:'/api/sessions/faillogin'}), async (req, res) => {
+router.post('/login', passport.authenticate('login', {failureRedirect:'/faillogin'}), async (req, res) => {
     if(!req.user) return res.status(400).send({status:"error", error:"Invalid credentials :("})
     req.session.user = {
         first_name:req.user.first_name,
@@ -39,46 +39,50 @@ router.post('/login', passport.authenticate('login', {failureRedirect:'/api/sess
 }); */
 
 //Register post
-
-router.post('/register', passport.authenticate('register',{failureRedirect:'/failregister'}), async (req, res) => {
-    const { first_name, last_name, email, password } = req.body
+router.post('/register', passport.authenticate('register', 
+{ failureRedirect: '/api/session/failregister' }), async (req, res) => {
+    res.redirect('/products')
+});
+    /* const { first_name, last_name, email, password } = req.body;
+    // Verifica si falta alguno de los datos obligatorios
+    if (!email || !password) {
+        // Muestra un mensaje de error en la página de registro
+        return res.status(400).send('Faltan datos obligatorios: email o clave');
+    }
+    // Define el rol del usuario
+    let role = 'user';
+    if (email === 'adminCoder@coder.com') {role = 'admin'};
     try {
-        if (email === '' || password === '') return res.send('Faltan campos obligatorios')
-        // Definir el rol del usuario
-        let role = 'user';
-        if (email === 'adminCoder@coder.com') {
-            role = 'admin';
-        }
-   
         const newUser = {
             first_name,
             last_name,
             email,
             password: createHash(password),
-            role
+            
         }
         
-        const createdUser = sessionsService.createUser(newUser)
-        // Asignar el nombre de usuario y el rol a la sesión
+        const  createdUser = sessionsService.createUser(newUser)
+        if (!createdUser) {
+            return res.send(`El correo electrónico ya está registrado. <a href="/login">IR AL LOGIN</a>`);
+        }
+        // Asigna el nombre de usuario y el rol a la sesión
         req.session.username = email;
         req.session.user = { first_name, role };
-
-        if (!createdUser) {
-                        return res.send(`El correo electrónico ya está registrado. <a href="/login">IR AL LOGIN</a>`);
-        }
-        
+ 
         return res.redirect('/products');
+
     } catch (error) {
         res.status(500).json({ error: error.message });        
-    }
-})
+    }}
+
+) */
 
 
 // Fail register
-router.get('/failregister', async (req, res) => {
-    console.log("Failed Strategy");
-    res.send({error: "Failed"})
-})
+router.get('/api/session/failregister', (req, res) => {
+    res.status(400).send('El correo electrónico ya está en uso. <a href="/login">IR AL LOGIN</a>');
+});
+
 
 
 //Logout post
