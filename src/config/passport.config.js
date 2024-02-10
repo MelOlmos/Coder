@@ -74,10 +74,20 @@ passport.use('login', new LocalStrategy(
     }
 ));
 
-passport.use('github'), new GitHubStrategy({
-    clientID:"Iv1.1c8a7a5641a9440",
+
+passport.serializeUser((user, done) => {
+    done(null, user._id);
+})
+passport.deserializeUser(async (id,done) => {
+    let user = await usersModel.findById(id);
+    done(null,user);
+})
+
+
+passport.use('github', new GitHubStrategy({
+    clientID:'Iv1.1c8a7a5641a94405',
     clientSecret:'5428d8aab70d7f30d95d1a60f5d4bac628c110d1',
-    callbackURL:''
+    callbackURL:'http://localhost:8080/api/session/githubcallback'
 }, async (accessToken, refreshToken, profile, done) =>{
     try {
         console.log(profile);
@@ -90,21 +100,13 @@ passport.use('github'), new GitHubStrategy({
                 password:''
             }
             let result = await usersModel.create(newUser);
-            done(null,result);
+            return done(null,result);
         }
-        else {done(null,user)}
+        return done(null,user)
     } catch (error) {
         return done(error)
     }
-});
-
-passport.serializeUser((user, done) => {
-    done(null, user._id);
-})
-passport.deserializeUser(async (id,done) => {
-    let user = await usersModel.findById(id);
-    done(null,user);
-})
+}));
 }
 
 
