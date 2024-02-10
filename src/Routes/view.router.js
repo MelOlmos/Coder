@@ -15,8 +15,7 @@ const { CartManagerDB } = require('../dao/cartManagerDB.js');
 const { usersModel } = require('../dao/models/users.model.js')
 const cartManagerDB = new CartManagerDB();
 
-// const { ProductManagerDB } = require('../dao/productManagerDB.js');
-// const productManagerDB = new ProductManagerDB();
+// const {first_name, role} = require('../config/passport.config.js')
 
 
 router.get('/',(req,res)=>{
@@ -45,10 +44,14 @@ router.get('/chat', (req, res) => {
 //Vista de productos 
 router.get('/products', async (req, res) => {
     try {
-        const username = req.session.username;
-        // Consulta la DB para obtener el nombre del usuario
-        const user = await usersModel.findOne({ email: username });
-        
+       //Esto para acceder al nombre y rol en la vista
+        req.session.user = {
+            first_name: req.user.first_name,
+            last_name: req.user.last_name,
+            email: req.user.email,
+            role: req.user.role
+        };
+    // Parámetros de filtros 
     const {limit = 5, page = 1, sort, query} = req.query;
     const options = {
         limit: parseInt(limit),
@@ -65,11 +68,7 @@ router.get('/products', async (req, res) => {
     if (!result) {
         return res.status(404).json({ error: 'No se encontraron productos' });
     }
-
-    const isAdmin = req.session.user && req.session.user.role;
-    console.log(isAdmin)
-    const first_name = req.session.user && req.session.user.first_name;
-
+    
 
     res.render('products', {
         products: result.docs,
@@ -78,11 +77,11 @@ router.get('/products', async (req, res) => {
         prevPage: result.prevPage,
         nextPage: result.nextPage,
         page: result.page,
-        username,
-        isAdmin,
-        first_name
+        role: req.session.user.role,
+        first_name: req.session.user.first_name
         
     });
+    
 }   catch (error) {
         console.error('Error en la consulta de productos: ', error);
         res.status(500).send('Error de servidor');

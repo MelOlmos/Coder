@@ -8,17 +8,26 @@ const { createHash, isValidPassword } = require('../utils/hashBcrypt.js');
 const passport = require('passport')
 
 
+
 //Login post
 
-router.post('/login', passport.authenticate('login', {failureRedirect:'/faillogin'}), async (req, res) => {
-    if(!req.user) return res.status(400).send({status:"error", error:"Invalid credentials :("})
+router.post('/login', passport.authenticate('login', {failureRedirect:'/api/session/faillogin', failureMessage: true}), async (req, res) => {
+    if(!req.user) return res.status(401).send({status:"error", error:"Invalid credentials :("})
     req.session.user = {
         first_name:req.user.first_name,
         last_name:req.user.last_name,
         email:req.user.email,
         id:req.user._id
     }
-    res.send({status: 'success', message:req.user})
+    return res.redirect('/products');
+})
+
+router.get('/faillogin', (req,res) => {
+    // Guarda el primer msj
+    let errorMessage = req.session.messages[0];
+    // Limpia los mensajes de error de la sesión
+    req.session.messages = [];
+    res.status(200).send(errorMessage);
 })
 
 /* const { username, password } = req.body;
@@ -38,11 +47,13 @@ router.post('/login', passport.authenticate('login', {failureRedirect:'/faillogi
     return res.redirect('/products');
 }); */
 
+
 //Register post
 router.post('/register', passport.authenticate('register', 
-{ failureRedirect: '/api/session/failregister' }), async (req, res) => {
+{ failureRedirect: '/api/session/failregister', failureMessage: true }), async (req, res) => {
     res.redirect('/products')
 });
+
     /* const { first_name, last_name, email, password } = req.body;
     // Verifica si falta alguno de los datos obligatorios
     if (!email || !password) {
@@ -78,15 +89,26 @@ router.post('/register', passport.authenticate('register',
 ) */
 
 
+
 // Fail register
-router.get('/api/session/failregister', (req, res) => {
-    res.status(400).send('El correo electrónico ya está en uso. <a href="/login">IR AL LOGIN</a>');
+router.get('/failregister', (req, res) => {
+    // Guarda el primer msj
+    let errorMessage = req.session.messages[0];
+    // Limpia los mensajes de error de la sesión
+    req.session.messages = [];
+    res.status(200).send(errorMessage);
 });
 
+router.get('/github', passport.authenticate('github', {scope:['user:email']},
+async(req,res) => {}));
 
+router.get('/githubcallback', passport.authenticate('github', {failureRedirect:'/login'}),
+async(req,res) => {
+    req.session.user = req.user;
+    res.redirect('/products')
+})
 
 //Logout post
-
 router.post('/logout', (req, res) => {
     req.session.destroy( error => {
         if (error) return res.send('Logout error')
