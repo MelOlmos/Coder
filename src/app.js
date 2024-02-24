@@ -53,7 +53,7 @@ app.use(session({
 //passport
 initializePassport();
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 
 
 

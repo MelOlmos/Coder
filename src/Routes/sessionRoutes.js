@@ -1,27 +1,38 @@
 const { Router } = require('express');
-const { auth } = require('../middleware/authentication.middleware');
+const { auth } = require('../middleware/authentication.js');
 const UserManagerDB = require('../dao/userManagerDB.js');
 const router = Router();
-const sessionsService = new UserManagerDB();
+const userService = new UserManagerDB();
 const { usersModel } = require('../dao/models/users.model.js');
 const { createHash, isValidPassword } = require('../utils/hashBcrypt.js');
-const passport = require('passport')
+const passport = require('passport');
+const { generateToken } = require('../utils/jsonwebtoken.js');
 
 
 
-//Login post
+// LOGIN
 
-router.post('/login', passport.authenticate('login', {failureRedirect:'/api/session/faillogin', failureMessage: true}), async (req, res) => {
-    if(!req.user) return res.status(401).send({status:"error", error:"Invalid credentials :("})
-    req.session.user = {
-        first_name:req.user.first_name,
-        last_name:req.user.last_name,
-        email:req.user.email,
-        id:req.user._id
+router.post('/login', async (req, res) => {
+    const {email, password} = req.body
+    //busco el usuario en la DB
+    const userFoundDB = userService.getUserBy({email})
+    if (!userFoundDB) {
+        return res.send('login failed <a href="/register">REGISTER</a>');
     }
-    return res.redirect('/products');
+    //esto valida la password
+    if (!isValidPassword(password, user.password)) 
+    return res.status(401).send('No coinciden las credenciales')
+
+    const token = generateToken({id:userFoundDB._id, role, email})
+    
+    //envía la cookie
+    res.cookie('cookieToken', token, {
+        maxAge: 60*60*1000*24,
+        httpOnly:true
+    }).send('login')
 })
 
+// FAIL LOGIN
 router.get('/faillogin', (req,res) => {
     // Guarda el primer msj
     let errorMessage = req.session.messages[0];
@@ -30,7 +41,8 @@ router.get('/faillogin', (req,res) => {
     res.status(200).send(errorMessage);
 })
 
-/* const { username, password } = req.body;
+/* login
+const { username, password } = req.body;
     // Busco el usuario en la DB
     const user = await usersModel.findOne({ email: username });
     if (!user) {
@@ -48,49 +60,35 @@ router.get('/faillogin', (req,res) => {
 }); */
 
 
-//Register post
-router.post('/register', passport.authenticate('register', 
-{ failureRedirect: '/api/session/failregister', failureMessage: true }), async (req, res) => {
-    res.redirect('/products')
-});
-
-    /* const { first_name, last_name, email, password } = req.body;
+// REGISTER 
+router.post('/register', async (req, res) => {
+     const { first_name, last_name, email, password, age } = req.body;
     // Verifica si falta alguno de los datos obligatorios
     if (!email || !password) {
         // Muestra un mensaje de error en la página de registro
         return res.status(400).send('Faltan datos obligatorios: email o clave');
     }
-    // Define el rol del usuario
+    //define el rol de usuario
     let role = 'user';
     if (email === 'adminCoder@coder.com') {role = 'admin'};
-    try {
-        const newUser = {
-            first_name,
-            last_name,
-            email,
-            password: createHash(password),
-            
-        }
+
+    const newUser = {
+        first_name,
+        last_name,
+        email,
+        password: createHash(password),
         
-        const  createdUser = sessionsService.createUser(newUser)
+    }
+    //valida si está en la Mongo DB antes de crear user
+    const  createdUser = userService.createUser(newUser)
         if (!createdUser) {
-            return res.send(`El correo electrónico ya está registrado. <a href="/login">IR AL LOGIN</a>`);
-        }
-        // Asigna el nombre de usuario y el rol a la sesión
-        req.session.username = email;
-        req.session.user = { first_name, role };
- 
+            return res.send(`Email already exists. <a href="/login">GO TO LOGIN</a>`);
+        } 
         return res.redirect('/products');
-
-    } catch (error) {
-        res.status(500).json({ error: error.message });        
-    }}
-
-) */
+})
 
 
-
-// Fail register
+// FAIL REGISTER
 router.get('/failregister', (req, res) => {
     // Guarda el primer msj
     let errorMessage = req.session.messages[0];
@@ -99,6 +97,8 @@ router.get('/failregister', (req, res) => {
     res.status(200).send(errorMessage);
 });
 
+
+//GITHUB
 router.get('/github', passport.authenticate('github', {scope:['user:email']},
 async(req,res) => {}));
 
@@ -116,8 +116,8 @@ router.post('/logout', (req, res) => {
     })
 })
 
-//Pruebas de auth con get
 
+//Pruebas de auth con get
 router.get('/current', auth, (req, res) => {
     res.send('datos sensibles')
 })

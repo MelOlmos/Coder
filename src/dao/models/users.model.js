@@ -21,9 +21,14 @@ const usersSchema = new mongoose.Schema ({
     },
     role: {
         type: String,
-        enum: ['user', 'admin'],
+        enum: ['user', 'premium_user', 'admin'],
         default: 'user'
-    }
+    },
+    age: Date,
+    cartID: {
+        type:  mongoose.Schema.ObjectId,
+        ref: 'carts'
+        }
     
 })
 

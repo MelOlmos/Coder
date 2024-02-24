@@ -2,10 +2,36 @@ const { isValidPassword } = require('../utils/hashBcrypt');
 const passport = require('passport');
 const local = require('passport-local');
 const GitHubStrategy = require('passport-github2')
-const {usersModel} = require('../dao/models/users.model.js') ;
+const {usersModel} = require('../dao/models/users.model.js');
 const {createHash} = require('../utils/hashBcrypt.js');
+const { Strategy, ExtractJwt } = require('passport-jwt');
+const { PRIVATE_KEY } = require('../utils/jsonwebtoken.js');
+const JWTStrategy = Strategy;
+const ExtractJWT = ExtractJwt;
 
 
+const initializePassport = () => {
+    const cookieExtractor = (req) => {
+        let token = null
+        if (req && req.cookies) {
+            token = req.cookies['cookieToken']
+        }
+        return token
+    }
+    passport.use('jwt', new JWTStrategy ({
+        jwtFromRequest: ExtractJWT.fromExtractors([cookieExtractor]),
+        secretOrKey: PRIVATE_KEY
+    }, async (jwt_payload, done) => {
+        try {
+            return done(null, jwt_payload)
+        } catch (error) {
+           return done(error) 
+        }
+    }))
+}
+
+
+/*
 const LocalStrategy = local.Strategy;
 const initializePassport = () => {
     passport.use('register', new LocalStrategy ( 
@@ -14,7 +40,7 @@ const initializePassport = () => {
             //mapeo que el user sea el email 
             usernameField:'email'},
             async (req,username,password,done) => {
-            const {first_name, last_name, email} = req.body;
+            const {first_name, last_name, email, age} = req.body;
 
         req.session.messages = [];
 
@@ -56,6 +82,10 @@ const initializePassport = () => {
         }
 }));
 
+}
+
+
+const LocalStrategy = local.Strategy;
 passport.use('login', new LocalStrategy(
     {passReqToCallback: true, usernameField: 'email'},
     async(req,username,password,done) => {
@@ -107,7 +137,7 @@ passport.use('github', new GitHubStrategy({
         return done(error)
     }
 }));
-}
 
 
-module.exports = {initializePassport};
+*/
+module.exports = {initializePassport}
