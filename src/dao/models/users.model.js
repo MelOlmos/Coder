@@ -24,7 +24,6 @@ const usersSchema = new mongoose.Schema ({
         enum: ['user', 'premium_user', 'admin'],
         default: 'user'
     },
-    age: Date,
     cartID: {
         type:  mongoose.Schema.ObjectId,
         ref: 'carts'

@@ -17,6 +17,7 @@ createUser = async (newUser) => {
    // Lo crea si no lo encuentra
     if (!existsUser) {
         const user = await this.userModel.create(newUser);
+        console.log(newUser)
         return true;
     } return false
 }   

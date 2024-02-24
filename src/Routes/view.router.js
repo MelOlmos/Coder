@@ -51,6 +51,7 @@ router.get('/products', async (req, res) => {
             email: req.user.email,
             role: req.user.role
         };
+        console.log(req.session.user);
     // Parámetros de filtros 
     const {limit = 5, page = 1, sort, query} = req.query;
     const options = {

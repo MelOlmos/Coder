@@ -11,7 +11,6 @@ const { generateToken } = require('../utils/jsonwebtoken.js');
 
 
 // LOGIN
-
 router.post('/login', async (req, res) => {
     const {email, password} = req.body
     //busco el usuario en la DB
@@ -20,10 +19,10 @@ router.post('/login', async (req, res) => {
         return res.send('login failed <a href="/register">REGISTER</a>');
     }
     //esto valida la password
-    if (!isValidPassword(password, user.password)) 
+    if (!isValidPassword(password, userFoundDB.password)) 
     return res.status(401).send('No coinciden las credenciales')
 
-    const token = generateToken({id:userFoundDB._id, role, email})
+    const token = generateToken({first_name: userFoundDB.first_name, id:userFoundDB._id, role:userFoundDB.role, email:userFoundDB.email})
     
     //envía la cookie
     res.cookie('cookieToken', token, {
@@ -31,6 +30,7 @@ router.post('/login', async (req, res) => {
         httpOnly:true
     }).send('login')
 })
+
 
 // FAIL LOGIN
 router.get('/faillogin', (req,res) => {
@@ -41,28 +41,10 @@ router.get('/faillogin', (req,res) => {
     res.status(200).send(errorMessage);
 })
 
-/* login
-const { username, password } = req.body;
-    // Busco el usuario en la DB
-    const user = await usersModel.findOne({ email: username });
-    if (!user) {
-        return res.send('login failed <a href="/register">REGISTER</a>');
-    }
-    // Valida password
-    if (!isValidPassword(password, user.password)) 
-    return res.status(401).send('No coinciden las credenciales')
-    // Borra el pass de la sesión
-    delete user.password;
-    // Guarda el usuario en la sesión
-    req.session.user = user;
-
-    return res.redirect('/products');
-}); */
-
 
 // REGISTER 
 router.post('/register', async (req, res) => {
-     const { first_name, last_name, email, password, age } = req.body;
+     const { first_name, last_name, email, password } = req.body;
     // Verifica si falta alguno de los datos obligatorios
     if (!email || !password) {
         // Muestra un mensaje de error en la página de registro
@@ -71,20 +53,26 @@ router.post('/register', async (req, res) => {
     //define el rol de usuario
     let role = 'user';
     if (email === 'adminCoder@coder.com') {role = 'admin'};
-
-    const newUser = {
-        first_name,
-        last_name,
-        email,
-        password: createHash(password),
-        
-    }
-    //valida si está en la Mongo DB antes de crear user
-    const  createdUser = userService.createUser(newUser)
+    try {
+        const newUser = {
+            first_name,
+            last_name,
+            email,
+            password: createHash(password),
+            
+        }
+        console.log(newUser)
+        //valida si está en la Mongo DB antes de crear user
+        const  createdUser = await userService.createUser(newUser)
         if (!createdUser) {
             return res.send(`Email already exists. <a href="/login">GO TO LOGIN</a>`);
         } 
         return res.redirect('/products');
+        
+    } catch (error) {
+        console.log(error)
+    }
+
 })
 
 
@@ -108,7 +96,8 @@ async(req,res) => {
     res.redirect('/products')
 })
 
-//Logout post
+
+//LOGOUT POST
 router.post('/logout', (req, res) => {
     req.session.destroy( error => {
         if (error) return res.send('Logout error')
@@ -118,8 +107,8 @@ router.post('/logout', (req, res) => {
 
 
 //Pruebas de auth con get
-router.get('/current', auth, (req, res) => {
-    res.send('datos sensibles')
+router.get('/current', passport.authenticate('jwt',{session:false}), (req, res) => {
+    res.send(req.user);
 })
 
 module.exports = router

@@ -1,6 +1,6 @@
-const { isValidPassword } = require('../utils/hashBcrypt');
 const passport = require('passport');
 const local = require('passport-local');
+const { isValidPassword } = require('../utils/hashBcrypt');
 const GitHubStrategy = require('passport-github2')
 const {usersModel} = require('../dao/models/users.model.js');
 const {createHash} = require('../utils/hashBcrypt.js');
@@ -31,58 +31,6 @@ const initializePassport = () => {
 }
 
 
-/*
-const LocalStrategy = local.Strategy;
-const initializePassport = () => {
-    passport.use('register', new LocalStrategy ( 
-        //accediendo al req
-        {passReqToCallback: true,
-            //mapeo que el user sea el email 
-            usernameField:'email'},
-            async (req,username,password,done) => {
-            const {first_name, last_name, email, age} = req.body;
-
-        req.session.messages = [];
-
-        // Verifica si falta alguno de los datos obligatorios
-        if (!email || !password) {
-        // Muestra un mensaje de error 
-        return done(null,false, {message: 'Faltan campos obligatorios, chaval'})
-        }
-        // Define el rol del usuario
-        const role = 'user';
-        console.log(role)
-        if (email === 'adminCoder@coder.com') {role = 'admin'};
-
-
-        try {
-            // Verifica si ya existe un usuario con el mismo correo electrónico
-            const existingUser = await usersModel.findOne({ email:username });
-
-            // Si ya existe, devuelve un mensaje de login
-            if (existingUser) {
-            return done(null,false, {message: 'El correo electrónico está en uso.<a href="/login">IR AL LOGIN</a>'});
-        }
-
-            // Si no existe, crea un nuevo usuario
-            const newUser = {
-                first_name,
-                last_name,
-                email,
-                password: createHash(password),
-                role
-            };
-            let result = await usersModel.create(newUser);
-                       
-            
-            return done(null, result)
-        }
-        catch (error) {
-            return done ('Error al obtener usuario: ' +error)
-        }
-}));
-
-}
 
 
 const LocalStrategy = local.Strategy;
@@ -139,5 +87,4 @@ passport.use('github', new GitHubStrategy({
 }));
 
 
-*/
 module.exports = {initializePassport}
