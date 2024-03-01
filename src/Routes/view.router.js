@@ -43,15 +43,7 @@ router.get('/chat', (req, res) => {
 
 //Vista de productos 
 router.get('/products', async (req, res) => {
-    try {
-       //Esto para acceder al nombre y rol en la vista
-        req.session.user = {
-            first_name: req.user.first_name,
-            last_name: req.user.last_name,
-            email: req.user.email,
-            role: req.user.role
-        };
-        console.log(req.session.user);
+    try {  
     // Parámetros de filtros 
     const {limit = 5, page = 1, sort, query} = req.query;
     const options = {

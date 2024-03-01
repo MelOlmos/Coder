@@ -14,21 +14,28 @@ const { generateToken } = require('../utils/jsonwebtoken.js');
 router.post('/login', async (req, res) => {
     const {email, password} = req.body
     //busco el usuario en la DB
-    const userFoundDB = userService.getUserBy({email})
+    const userFoundDB = await userService.getUserBy({email})
     if (!userFoundDB) {
         return res.send('login failed <a href="/register">REGISTER</a>');
     }
     //esto valida la password
     if (!isValidPassword(password, userFoundDB.password)) 
-    return res.status(401).send('No coinciden las credenciales')
-
+    return res.status(401).send('No coinciden las credenciales');
+    
     const token = generateToken({first_name: userFoundDB.first_name, id:userFoundDB._id, role:userFoundDB.role, email:userFoundDB.email})
     
     //envía la cookie
     res.cookie('cookieToken', token, {
         maxAge: 60*60*1000*24,
         httpOnly:true
-    }).send('login')
+    }); 
+    req.session.user = {
+        first_name: userFoundDB.first_name,
+        last_name: userFoundDB.last_name,
+        email: userFoundDB.email,
+        role: userFoundDB.role
+    };
+    return res.redirect('/products');
 })
 
 
@@ -67,6 +74,12 @@ router.post('/register', async (req, res) => {
         if (!createdUser) {
             return res.send(`Email already exists. <a href="/login">GO TO LOGIN</a>`);
         } 
+        req.session.user = {
+            first_name,
+            last_name,
+            email,
+            role
+        };
         return res.redirect('/products');
         
     } catch (error) {
