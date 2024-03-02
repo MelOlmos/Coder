@@ -43,10 +43,24 @@ register = async (req, res) => {
         return res.redirect('/products');
         
     } catch (error) {
-        console.log(error)
+        res.send(error)
     }
 
 }
+
+
+failregister = async (req, res) => {
+    try {
+        // Guarda el primer msj
+        let errorMessage = req.session.messages[0];
+        // Limpia los mensajes de error de la sesión
+        req.session.messages = [];
+        res.status(200).send(errorMessage);
+    } catch (error) {
+        res.send({errorMessage})
+    }
+}
+
 
 login = async (req, res) => {
     const {email, password} = req.body

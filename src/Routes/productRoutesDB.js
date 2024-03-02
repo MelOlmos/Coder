@@ -1,4 +1,26 @@
 //// Archivo de rutas para products con mongoDB
+const Router = require('express');
+const ProductController = require('../controllers/product.controller');
+
+const productController = new ProductController();
+
+const productRouter = Router();
+
+productRouter
+    .get('/', getAllProducts)
+    .get('/:pid', getProductById)
+    .post('/', addProduct)
+    .put('/:pid', updateProduct)
+    .delete('/:pid', deleteProduct);
+    
+
+module.exports = productRouter;
+
+
+
+
+
+/*
 const express = require('express');
 const router = express.Router();
 const { ProductManagerDB } = require('../dao/productManagerDB.js');
@@ -10,7 +32,7 @@ const { productsModel } = require('../dao/models/products.model.js');
 
 
 /*Acá obtengo productos*/
-router.get('/', async (req, res) => {
+/* router.get('/', async (req, res) => {
     try {
         const products = await productsModel.paginate({}, {limit:10, page:1, lean: true})
         res.send({ products });
@@ -18,11 +40,11 @@ router.get('/', async (req, res) => {
     res.status(500).json({error: error.message});
 
 }
-    });
+    }); */
 
 
 /*Acá obtengo por id*/
-router.get('/:pid', async (req, res) => {
+/* router.get('/:pid', async (req, res) => {
     try {
         let productId = req.params.pid;
         const product = await productManager.getProductById(productId);
@@ -34,11 +56,11 @@ router.get('/:pid', async (req, res) => {
 }   catch (error) {
         res.status(500).json({ error: error.message });
     }
-});
+}); */
 
 
 /* Agrego un nuevo producto */
-router.post('/', async (req, res) => {
+/* router.post('/', async (req, res) => {
     try {
         const newProductData = req.body;
         const createdProduct = await productManager.addProduct(newProductData);
@@ -49,11 +71,11 @@ router.post('/', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
-});
+}); */
 
 
 /* Actualizo por id */
-router.put('/:pid', async (req, res) => { 
+/* router.put('/:pid', async (req, res) => { 
     try {
         const productId = req.params.pid;
         const updatedProductData = req.body;
@@ -64,11 +86,11 @@ router.put('/:pid', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
     
-});
+}); */
 
 
 /* Elimino producto por id */
-router.delete('/:pid', async (req, res) => {
+/* router.delete('/:pid', async (req, res) => {
     try {
         let productId = req.params.pid;
         await productManager.deleteProduct(productId);
@@ -82,4 +104,4 @@ router.delete('/:pid', async (req, res) => {
 });
 
 
-module.exports = router;
+module.exports = router; */
