@@ -3,15 +3,20 @@ const { auth } = require('../middleware/authentication.js');
 const UserManagerDB = require('../dao/userManagerDB.js');
 const router = Router();
 const userService = new UserManagerDB();
-const { usersModel } = require('../dao/models/users.model.js');
-const { createHash, isValidPassword } = require('../utils/hashBcrypt.js');
-const passport = require('passport');
-const { generateToken } = require('../utils/jsonwebtoken.js');
+
+const SessionController = require('../controllers/sessions.controller.js');
+const {
+    register,
+    login,
+    faillogin,
+    logout,
+    githubcallback,
+} = new SessionController()
 
 
 
 // LOGIN
-router.post('/login', async (req, res) => {
+router.post('/login', login /* async (req, res) => {
     const {email, password} = req.body
     //busco el usuario en la DB
     const userFoundDB = await userService.getUserBy({email})
@@ -36,21 +41,21 @@ router.post('/login', async (req, res) => {
         role: userFoundDB.role
     };
     return res.redirect('/products');
-})
+} */)
 
 
 // FAIL LOGIN
-router.get('/faillogin', (req,res) => {
+router.get('/faillogin', faillogin /* (req,res) => {
     // Guarda el primer msj
     let errorMessage = req.session.messages[0];
     // Limpia los mensajes de error de la sesión
     req.session.messages = [];
     res.status(200).send(errorMessage);
-})
+} */)
 
 
 // REGISTER 
-router.post('/register', async (req, res) => {
+router.post('/register', register /* async (req, res) => {
      const { first_name, last_name, email, password } = req.body;
     // Verifica si falta alguno de los datos obligatorios
     if (!email || !password) {
@@ -86,17 +91,17 @@ router.post('/register', async (req, res) => {
         console.log(error)
     }
 
-})
+} */)
 
 
 // FAIL REGISTER
-router.get('/failregister', (req, res) => {
+router.get('/failregister', /* (req, res) => {
     // Guarda el primer msj
     let errorMessage = req.session.messages[0];
     // Limpia los mensajes de error de la sesión
     req.session.messages = [];
     res.status(200).send(errorMessage);
-});
+} */);
 
 
 //GITHUB
@@ -104,24 +109,24 @@ router.get('/github', passport.authenticate('github', {scope:['user:email']},
 async(req,res) => {}));
 
 router.get('/githubcallback', passport.authenticate('github', {failureRedirect:'/login'}),
-async(req,res) => {
+githubcallback /* async(req,res) => {
     req.session.user = req.user;
     res.redirect('/products')
-})
+} */)
 
 
 //LOGOUT POST
-router.post('/logout', (req, res) => {
+router.post('/logout', logout /* (req, res) => {
     req.session.destroy( error => {
         if (error) return res.send('Logout error')
         res.redirect('/login')
     })
-})
+} */)
 
 
 //Pruebas de auth con get
-router.get('/current', passport.authenticate('jwt',{session:false}), (req, res) => {
+router.get('/current', passport.authenticate('jwt',{session:false}), current /* (req, res) => {
     res.send(req.user);
-})
+} */)
 
 module.exports = router

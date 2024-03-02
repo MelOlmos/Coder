@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const appRouter = require('./Routes/index.js')
 
 /*Líneas que usan FS -FileSystem*/
 
@@ -65,6 +66,9 @@ app.use(session({
     saveUninitialized: true
   })); */
 
+
+/* RUTAS */
+app.use(appRouter)  
 
 /*Express y Socket*/
 
@@ -133,30 +137,6 @@ io.on('connection', socket=> {
 });
 
 /*Fin de interacciones socket*/
-
-
-/*RUTAS CON FS
-// Rutas para productos 
-app.use('/api/products',productsRouter);
-// Rutas para carritos
-app.use('/api/carts',cartRouter); */
-
-
-/*OTRAS RUTAS*/
-// Rutas para vistas
-app.use('/', viewsRouter);
-//Ruta para sessions
-app.use('/api/session', sessionRoutes);
-// Rutas para test de cookies y sesiones
-app.use('/test', testRoutes)
-
-/*RUTAS CON MONGODB*/
-// Rutas para productos
-app.use('/api/products-db', productsRouterDB);
-// Rutas para carritos
-app.use('/api/carts', cartRouterDB);
-// Rutas para mensajes
-app.use('/api/messages', messagesRouter);
 
 
 module.exports = io;
