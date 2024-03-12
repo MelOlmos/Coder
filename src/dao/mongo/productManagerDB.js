@@ -52,4 +52,4 @@ class ProductManagerDB {
   }
 };
 
-module.exports = { ProductManagerDB }
+module.exports = ProductManagerDB

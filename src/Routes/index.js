@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const cartRouterDB = require('./cartRoutesDB.js')
-const { usersRouter } = require('./users.router.js')
+const usersRouter = require('./userRoutes.js')
 const viewsRouter = require('./view.router.js')
 const sessionsRoutes = require('./sessionRoutes.js')
 const testRoutes = require('./testRoutes.js')
@@ -36,4 +36,4 @@ router.use('/api/products',productsRouter);
 // Rutas para carritos
 router.use('/api/carts',cartRouter); */
 
-module.exports router
+module.exports= router

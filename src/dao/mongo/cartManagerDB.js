@@ -130,4 +130,4 @@ catch (error) {
 
 };
 
-module.exports = { CartManagerDB }
+module.exports = CartManagerDB

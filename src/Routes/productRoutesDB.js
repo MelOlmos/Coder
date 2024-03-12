@@ -1,8 +1,15 @@
 //// Archivo de rutas para products con mongoDB
 const Router = require('express');
-const ProductController = require('../controllers/product.controller');
+const ProductController = require('../controllers/products.controller');
 
-const productController = new ProductController();
+const {
+    getAllProducts,
+    getProductById,
+    addProduct,
+    updateProduct,
+    deleteProduct
+} = new ProductController()
+
 
 const productRouter = Router();
 

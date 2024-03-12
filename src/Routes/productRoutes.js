@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { ProductManager } = require('../Productmanager.js');
+const { ProductManager } = require('../dao/file/Productmanager.js');
 
 const productManager = new ProductManager('productos_test.json');
 

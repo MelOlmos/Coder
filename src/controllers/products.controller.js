@@ -1,4 +1,4 @@
-const ProductManagerDB = require('../dao/productManagerDB.js');
+const ProductManagerDB = require('../dao/mongo/productManagerDB');
 
 class ProductController {
     constructor(){

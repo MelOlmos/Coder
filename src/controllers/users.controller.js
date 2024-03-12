@@ -1,4 +1,4 @@
-const UserManagerDB = require('../dao/userManagerDB')
+const UserManagerDB = require('../dao/mongo/userManagerDB')
 
 class UserController {
     constructor(){

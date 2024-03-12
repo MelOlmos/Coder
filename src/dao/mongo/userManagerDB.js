@@ -1,4 +1,4 @@
-const { usersModel } = require('../dao/models/users.model')
+const { usersModel } = require('./models/users.model')
 
 class UserManagerDB {
     constructor () {

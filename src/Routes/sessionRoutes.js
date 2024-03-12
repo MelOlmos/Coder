@@ -1,8 +1,11 @@
 const { Router } = require('express');
 const { auth } = require('../middleware/authentication.js');
 const router = Router();
-
 const SessionController = require('../controllers/sessions.controller.js');
+const passportCall = require('../middleware/passportCall.js')
+const passport = require('passport');
+
+
 const {
     register,
     failregister,
@@ -10,6 +13,7 @@ const {
     faillogin,
     logout,
     githubcallback,
+    current
 } = new SessionController()
 
 

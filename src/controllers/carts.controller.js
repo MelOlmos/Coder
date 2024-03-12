@@ -1,4 +1,4 @@
-const CartManagerDB = require('../dao/cartManagerDB.js');
+const CartManagerDB = require('../dao/mongo/cartManagerDB');
 
 class CartController {
     constructor(){

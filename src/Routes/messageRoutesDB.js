@@ -1,7 +1,7 @@
 // Archivo de rutas para messages con mongoDB
 const express = require('express');
 const router = express.Router();
-const { MessagesManagerDB } = require('../dao/messageManagerDB.js');
+const { MessagesManagerDB } = require('../dao/mongo/messageManagerDB');
 
 const messagesManager = new MessagesManagerDB();
 

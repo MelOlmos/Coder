@@ -1,4 +1,4 @@
-const passport = requires('passport')
+const passport = require('passport')
 
 const passportCall = strategy => {
     return async (req, res, next) => {
@@ -13,4 +13,4 @@ const passportCall = strategy => {
     }
 }
 
-module.exports = {passportCall};
+module.exports = passportCall

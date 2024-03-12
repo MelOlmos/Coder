@@ -10,7 +10,7 @@ const cartRouter = require("./Routes/cartRoutes.js");
 const fs = require('fs');
 const viewsRouter = require('./Routes/view.router.js');
 const filePath = path.join(__dirname, 'productos_test.json');
-const { ProductManager } = require('./Productmanager.js');
+const { ProductManager } = require('./dao/file/Productmanager.js');
 const productManager = new ProductManager('productos_test.json');
 
 /*Reemplazando FS por MongoDB*/
@@ -18,11 +18,11 @@ const productManager = new ProductManager('productos_test.json');
 const productsRouterDB = require("./Routes/productRoutesDB.js"); 
 const cartRouterDB = require("./Routes/cartRoutesDB.js");
 const messagesRouter = require('./Routes/messageRoutesDB.js');
-const { ProductManagerDB } = require('./dao/productManagerDB.js');
+const  ProductManagerDB  = require('./dao/mongo/productManagerDB.js');
 const productManagerDB = new ProductManagerDB();
-const { CartManagerDB } = require('./dao/cartManagerDB.js');
+const  CartManagerDB  = require('./dao/mongo/cartManagerDB.js');
 const cartManagerDB = new CartManagerDB();
-const { MessagesManagerDB } = require('./dao/messageManagerDB.js');
+const { MessagesManagerDB } = require('./dao/mongo/messageManagerDB.js');
 const messageManager = new MessagesManagerDB();
 
 /*Cookie, session, store*/

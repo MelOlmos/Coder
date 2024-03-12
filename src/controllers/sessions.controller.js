@@ -1,7 +1,7 @@
 const { createHash, isValidPassword } = require('../utils/hashBcrypt.js');
 const passport = require('passport');
 const { generateToken } = require('../utils/jsonwebtoken.js');
-const UserManagerDB = require('../dao/userManagerDB')
+const UserManagerDB = require('../dao/mongo/userManagerDB.js')
 
 
 class SessionController {

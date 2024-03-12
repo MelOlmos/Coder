@@ -1,6 +1,20 @@
 const mongoose = require("mongoose");
-const { cartsModel } = require("../dao/models/carts.model");
-const { productsModel } = require('../dao/models/products.model');
+const { program } = require("../utils/commander")
+const MongoSingleton = require("../utils/mongoSingleton")
+const dotenv = require('dotenv')
+
+const { mode } = program.opts()
+console.log(mode)
+dotenv.config({
+    path: mode === 'development' ? './.env.development' : './.env.production'
+})
+
+exports.configObject = {
+    port:           process.env.PORT || 8080,
+    mongo_url:      process.env.MONGO_URL,
+    jwt_secret_Key: process.env.JWT_SECRET_KEY,
+    persistence:    process.env.PERSISTENCE
+}
 
 exports.connectDB = async () => {
     try {
@@ -9,16 +23,4 @@ exports.connectDB = async () => {
     } catch (error) {
         console.log(error)
     }
-
-/* await cartsModel.create({products:[]})
-const cart = await cartsModel.findOne({_id: '65aad4be1c85e480cce4db83'})
-cart.products.push({product: '65aae232c6234bf161a30bb5'})
-
-    try {
-        await cart.save();
-        console.log('Cambios en el carrito guardados correctamente.');
-        console.log(cart.products)
-    } catch (error) {
-            console.log(error)
-        } */
-    }
+}
