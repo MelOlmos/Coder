@@ -7,7 +7,7 @@ class UserController {
 
     getUsers = async (req,res) => {
         try {
-            const users = await this.service.getUsers
+            const users = await userService.getUsers()
             res.send(users)
         } catch (error) {
             console.log(error)
@@ -17,7 +17,7 @@ class UserController {
     getUser = async (request, responses)=>{
         try {
             const { uid } = request.params
-            const user = await this.service.getUser({_id: uid})
+            const user = await userService.getUser({_id: uid})
             responses.send(user)
         } catch (error) {
             console.log(error)
@@ -27,7 +27,7 @@ class UserController {
     createUser = async (request, responses)=>{
         try {
             const { body } = request
-            const result = await this.service.createUser(body)
+            const result = await userService.createUser(body)
     
             responses.send({
                 status: 'success',
@@ -42,7 +42,7 @@ class UserController {
     updateUser = async (request, responses)=>{
         try {
             const { uid } = request.params
-            const userToUpdate = await this.service.updateUser(uid, userToUpdate)
+            const userToUpdate = await userService.updateUser(uid, userToUpdate)
             responses.status(200).send({
                 status: 'success',
                 result: userToUpdate
@@ -56,7 +56,7 @@ class UserController {
     deleteUser = async (request, responses)=>{
         try {
             const {uid} = request.params
-            const result = await this.service.deleteUser({_id:uid}, {isActive: false})
+            const result = await userService.deleteUser({_id:uid}, {isActive: false})
             responses.send('deleted user')
         } catch (error) {
             console.log(error)

@@ -31,7 +31,7 @@ register = async (req, res) => {
         }
         console.log(newUser)
         //valida si está en la Mongo DB antes de crear user
-        const  createdUser = await this.userService.createUser(newUser)
+        const  createdUser = await this.userService.create(newUser)
         if (!createdUser) {
             return res.send(`Email already exists. <a href="/login">GO TO LOGIN</a>`);
         } 
@@ -66,7 +66,7 @@ failregister = async (req, res) => {
 login = async (req, res) => {
     const {email, password} = req.body
     //busco el usuario en la DB
-    const userFoundDB = await this.userService.getUser({email})
+    const userFoundDB = await this.userService.getBy({email})
     if (!userFoundDB) {
         return res.send('login failed <a href="/register">REGISTER</a>');
     }

@@ -33,7 +33,6 @@ class ProductController {
     createProduct  = async (req, res) => {
         try {
             const newProductData = req.body;
-            console.log(req.body)
             const createdProduct = await productService.createProduct(newProductData);
             io.emit('newProduct', { product: createdProduct });
             res.json(createdProduct.toObject());
