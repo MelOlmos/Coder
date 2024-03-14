@@ -2,8 +2,10 @@ const { Router } = require('express');
 const { auth } = require('../middleware/authentication.js');
 const router = Router();
 const SessionController = require('../controllers/sessions.controller.js');
+const ProductController = require('../controllers/products.controller.js');
 const passportCall = require('../middleware/passportCall.js')
 const passport = require('passport');
+const {authorization} = require('../middleware/authentication.js')
 
 
 const {
@@ -16,7 +18,7 @@ const {
     current
 } = new SessionController()
 
-
+const productController = new ProductController();
 
 // LOGIN
 router.post('/login', login)
@@ -49,4 +51,6 @@ router.post('/logout', logout)
 //Pruebas de auth con get
 router.get('/current', passport.authenticate('jwt',{session:false}), current)
 
+
+  
 module.exports = router

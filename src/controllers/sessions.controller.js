@@ -21,13 +21,14 @@ register = async (req, res) => {
     //define el rol de usuario
     let role = 'user';
     if (email === 'adminCoder@coder.com') {role = 'admin'};
+
     try {
         const newUser = {
             first_name,
             last_name,
             email,
             password: createHash(password),
-            
+            role
         }
         console.log(newUser)
         //valida si está en la Mongo DB antes de crear user
@@ -75,7 +76,7 @@ login = async (req, res) => {
     return res.status(401).send('No coinciden las credenciales');
     
     const token = generateToken({first_name: userFoundDB.first_name, id:userFoundDB._id, role:userFoundDB.role, email:userFoundDB.email})
-    
+    console.log(token);
     //envía la cookie
     res.cookie('cookieToken', token, {
         maxAge: 60*60*1000*24,
@@ -119,13 +120,18 @@ logout = async (req, res) => {
 
 current = async (req, res) => {
     try {
-        // Obtengo la info del usuario de la sesión
+        // Verifica si el usuario está definido en la sesión
+        if (!req.session.user) {
+            return res.status(404).json({ status: 'error', message: 'Usuario no encontrado en la sesión' });
+        }
+        // Obtengo la información del usuario de la sesión
         const { first_name, last_name, email, password } = req.session.user;
-        // instancio un nuevo userdto
+        // Instancio un nuevo userdto
         const userDto = new UserDto({ first_name, last_name, email, password });
+
         res.json(userDto);
     } catch (error) {
-        res.status(500).json({ status: 'error', error });
+        res.status(500).json({ status: 'error', error: error.message });
     }
 }
 

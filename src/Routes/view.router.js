@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport')
+const {authorization} = require('../middleware/authentication.js')
 
 /* Líneas con FS */
 
@@ -35,7 +37,8 @@ router.get('/realtimeproducts', (req, res) => {
 }); 
 
 //Vista del chat
-router.get('/chat', (req, res) => {
+router.get('/chat', passport.authenticate('jwt', { session: false }), authorization(['user']), 
+(req, res) => {
     const messages = messagesModel.find();
     res.render('chat', { messages });
 }); 

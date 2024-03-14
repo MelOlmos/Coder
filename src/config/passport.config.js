@@ -45,6 +45,13 @@ passport.use('login', new LocalStrategy(
                 return done(null,false);
             }
             if(!isValidPassword(password, user.password)) {return done(null,false)};
+            //
+            
+            if (user.role === 'admin') {
+                const token = generateToken({ id: user._id, role: user.role });
+                return done(null, user, { token });
+            }
+            
             return done(null,user)
         } catch (error) {
             return done(error);
