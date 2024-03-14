@@ -14,7 +14,6 @@ const {
 
 usersRouter
     .get('/', passportCall('jwt'), authorization (['premium_user', 'admin']), getUsers)
-
     .post('/', createUser)
     .get('/:uid', getUser)
     .put('/:uid', updateUser)

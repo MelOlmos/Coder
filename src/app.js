@@ -10,7 +10,7 @@ const cartRouter = require("./Routes/cartRoutes.js");
 const fs = require('fs');
 const viewsRouter = require('./Routes/view.router.js');
 const filePath = path.join(__dirname, 'productos_test.json');
-const { ProductManager } = require('./dao/file/Productmanager.js');
+const { ProductManager } = require('./dao/file/productDaoFile.js');
 const productManager = new ProductManager('productos_test.json');
 
 /*Reemplazando FS por MongoDB*/
@@ -18,11 +18,11 @@ const productManager = new ProductManager('productos_test.json');
 const productsRouterDB = require("./Routes/productRoutesDB.js"); 
 const cartRouterDB = require("./Routes/cartRoutesDB.js");
 const messagesRouter = require('./Routes/messageRoutesDB.js');
-const  ProductManagerDB  = require('./dao/mongo/productManagerDB.js');
+const  ProductManagerDB  = require('./dao/mongo/productDaoDB.js');
 const productManagerDB = new ProductManagerDB();
-const  CartManagerDB  = require('./dao/mongo/cartManagerDB.js');
+const  CartManagerDB  = require('./dao/mongo/cartDaoDB.js');
 const cartManagerDB = new CartManagerDB();
-const { MessagesManagerDB } = require('./dao/mongo/messageManagerDB.js');
+const { MessagesManagerDB } = require('./dao/mongo/messageDaoDB.js');
 const messageManager = new MessagesManagerDB();
 
 /*Cookie, session, store*/
@@ -67,16 +67,19 @@ app.use(session({
   })); */
 
 
-/* RUTAS */
-app.use(appRouter)  
-
-/*Express y Socket*/
+  
+  /*Express y Socket*/
 
 const { Server } = require('socket.io');
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 const cors = require('cors');
 app.use(cors());
+
+
+/* RUTAS */
+app.use(appRouter)  
+
 
 /*Puerto y DB*/
 
@@ -138,5 +141,4 @@ io.on('connection', socket=> {
 
 /*Fin de interacciones socket*/
 
-
-module.exports = io;
+module.exports = httpServer;

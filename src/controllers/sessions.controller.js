@@ -1,7 +1,8 @@
 const { createHash, isValidPassword } = require('../utils/hashBcrypt.js');
 const passport = require('passport');
 const { generateToken } = require('../utils/jsonwebtoken.js');
-const UserManagerDB = require('../dao/mongo/userManagerDB.js')
+const UserManagerDB = require('../dao/mongo/userDaoDB.js')
+const { UserDto } = require('../dto/userDto.js');
 
 
 class SessionController {
@@ -115,11 +116,16 @@ logout = async (req, res) => {
 }
 
 
+
 current = async (req, res) => {
     try {
-        res.send({message: 'datos sensibles'})
+        // Obtengo la info del usuario de la sesión
+        const { first_name, last_name, email, password } = req.session.user;
+        // instancio un nuevo userdto
+        const userDto = new UserDto({ first_name, last_name, email, password });
+        res.json(userDto);
     } catch (error) {
-       res.send({status: 'error', error}) 
+        res.status(500).json({ status: 'error', error });
     }
 }
 

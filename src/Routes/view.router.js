@@ -3,16 +3,15 @@ const router = express.Router();
 
 /* Líneas con FS */
 
-const { ProductManager } = require('../dao/file/Productmanager.js');
+const { ProductManager } = require('../dao/file/productDaoFile.js');
 const productManager = new ProductManager('productos_test.json');
 
 /* Líneas con MongoDB */
 
-const { MessagesManagerDB } = require('../dao/mongo/messageManagerDB.js');
+const { MessagesManagerDB } = require('../dao/mongo/messageDaoDB.js');
 const { messagesModel } = require('../dao/mongo/models/messages.model.js');
 const { productsModel } = require('../dao/mongo/models/products.model.js');
-const CartManagerDB = require('../dao/mongo/cartManagerDB.js');
-const { usersModel } = require('../dao/mongo/models/users.model.js')
+const CartManagerDB = require('../dao/mongo/cartDaoDB.js');
 const cartManagerDB = new CartManagerDB();
 
 // const {first_name, role} = require('../config/passport.config.js')

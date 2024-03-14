@@ -1,13 +1,13 @@
-const UserManagerDB = require('../dao/mongo/userManagerDB')
+const { userService } = require('../repositories/index')
 
 class UserController {
     constructor(){
-        this.service = new UserManagerDB()
+        this.service = userService
     }
 
     getUsers = async (req,res) => {
         try {
-            const users = await this.service.find()
+            const users = await this.service.getUsers
             res.send(users)
         } catch (error) {
             console.log(error)

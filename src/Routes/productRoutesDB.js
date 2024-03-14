@@ -3,9 +3,9 @@ const Router = require('express');
 const ProductController = require('../controllers/products.controller');
 
 const {
-    getAllProducts,
+    getProducts,
     getProductById,
-    addProduct,
+    createProduct,
     updateProduct,
     deleteProduct
 } = new ProductController()
@@ -14,9 +14,9 @@ const {
 const productRouter = Router();
 
 productRouter
-    .get('/', getAllProducts)
+    .get('/', getProducts)
     .get('/:pid', getProductById)
-    .post('/', addProduct)
+    .post('/', createProduct)
     .put('/:pid', updateProduct)
     .delete('/:pid', deleteProduct);
     
@@ -30,7 +30,7 @@ module.exports = productRouter;
 /*
 const express = require('express');
 const router = express.Router();
-const { ProductManagerDB } = require('../dao/productManagerDB.js');
+const { ProductManagerDB } = require('../dao/productDaoDB.js');
 
 const productManager = new ProductManagerDB();
 

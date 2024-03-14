@@ -28,7 +28,7 @@ class CartManagerDB {
     }
   }
 
-  async getAllCarts() {
+  async get() {
     try {
       const carts = await cartsModel.find();
       return carts;
@@ -38,7 +38,7 @@ class CartManagerDB {
     }
   };
 
-  async getCartById(cartId) {
+  async getBy(cartId) {
     try {
       const cartById = await cartsModel.findById(cartId).populate('products.product').lean();
       return cartById;
@@ -58,7 +58,7 @@ class CartManagerDB {
     }
   }
 
-  async updateCart(cartId, updatedCartData) {
+  async update(cartId, updatedCartData) {
     try {
         const updatedCart = await cartsModel.findByIdAndUpdate(
         cartId,
@@ -72,7 +72,7 @@ class CartManagerDB {
     }
   }
 
-  async deleteCart(cartId) {
+  async delete(cartId) {
     try {
       const deletedCart= await cartsModel.findByIdAndDelete(cartId);
       return deletedCart;

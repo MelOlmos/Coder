@@ -30,10 +30,10 @@ router.get('*', (req,res)=> {
     res.send('not found')
 })
 
-/*RUTAS CON FS
-// Rutas para productos 
+/*RUTAS CON FS*/
+/* // Rutas para productos 
 router.use('/api/products',productsRouter);
 // Rutas para carritos
-router.use('/api/carts',cartRouter); */
-
+router.use('/api/carts',cartRouter); 
+ */
 module.exports= router

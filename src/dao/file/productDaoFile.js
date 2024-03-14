@@ -17,7 +17,7 @@ class ProductManager {
         return !this.products.some(product => product.code === code);
     }
 
-    addProduct = ({ title, description, price, thumbnail, code, stock, category }) => {
+    add = ({ title, description, price, thumbnail, code, stock, category }) => {
         if (!title || !description || !price || !thumbnail || !code || !stock || !category) {
             console.log('No fue posible agregar producto. Todos las claves son obligatorias');
         } else if (this.isCodeUnique(code)) {
@@ -52,12 +52,12 @@ class ProductManager {
         fs.writeFileSync(this.path, JSON.stringify(this.products, null, 2), 'utf-8');
     }
 
-    getProducts = () => {
+    get = () => {
         this.loadProductsFromFile();
         return this.products;
     }
 
-    getProductById = (id) => {
+    getBy = (id) => {
         let foundProduct = this.products.find(product => product.id === id);
         if (foundProduct) {
             console.log(`el id ingresado coincide con este producto (${foundProduct.title}) `);
@@ -67,7 +67,7 @@ class ProductManager {
         return foundProduct;
     }
 
-    updateProduct = (id, updatedProduct) => {
+    update = (id, updatedProduct) => {
         const index = this.products.findIndex(product => product.id === id);
         if (index !== -1) {
             this.products[index] = { id, ...updatedProduct };
@@ -75,7 +75,7 @@ class ProductManager {
         }
     }
 
-    deleteProduct = (id) => {
+    delete = (id) => {
         this.loadProductsFromFile();
         this.products = this.products.filter(product => product.id != id);
         this.saveProductsToFile();

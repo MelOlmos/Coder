@@ -1,23 +1,25 @@
-const ProductManagerDB = require('../dao/mongo/productManagerDB');
+const { productService } = require('../repositories')
+const httpServer = require('../app.js');
+const io = require('socket.io')(httpServer);
 
 class ProductController {
     constructor(){
-        this.userService = new ProductManagerDB();
+        this.service = productService
     }
 
-    async getAllProducts(req, res) {
+    getProducts = async (req, res) => {
         try {
-            const products = await this.userService.getAllProducts();
+            const products = await productService.getProducts();
             res.json({ products });
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
     }
 
-    async getProductById(req, res) {
+    getProductById  = async (req, res) => {
         try {
             const productId = req.params.pid;
-            const product = await this.userService.getProductById(productId);
+            const product = await productService.getProductById(productId);
             if (!product) {
                 res.status(404).json({ error: 'Producto no encontrado' });
                 return;
@@ -28,31 +30,33 @@ class ProductController {
         }
     }
 
-    async addProduct(req, res) {
+    createProduct  = async (req, res) => {
         try {
             const newProductData = req.body;
-            const createdProduct = await this.userService.addProduct(newProductData);
-            res.json(createdProduct);
+            console.log(req.body)
+            const createdProduct = await productService.createProduct(newProductData);
+            io.emit('newProduct', { product: createdProduct });
+            res.json(createdProduct.toObject());
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
     }
 
-    async updateProduct(req, res) {
+    updateProduct = async (req, res) => {
         try {
             const productId = req.params.pid;
             const updatedProductData = req.body;
-            const updatedProduct = await this.userService.updateProduct(productId, updatedProductData);
+            const updatedProduct = await productService.updateProduct(productId, updatedProductData);
             res.json(updatedProduct);
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
     }
 
-    async deleteProduct(req, res) {
+    deleteProduct  = async (req, res) => {
         try {
             const productId = req.params.pid;
-            await this.userService.deleteProduct(productId);
+            await productService.deleteProduct(productId);
             res.json({ Resultado: 'Producto eliminado correctamente' });
         } catch (error) {
             res.status(500).json({ error: error.message });

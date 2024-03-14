@@ -8,7 +8,7 @@ class CartManager {
         this.loadCartsFromFile();
     }
 
-    createCart = () => {
+    addCart = () => {
         const newCart = {
             id: this.generateUniqueId(),
             products: []
@@ -38,7 +38,11 @@ class CartManager {
         }
     }
 
-    getCartById = (id) => {
+    get(){}
+    update(){}
+    delete(){}
+
+    getBy = (id) => {
         const cart = this.carts.find(cart => cart.id == id);
         return cart;
     }
