@@ -32,6 +32,21 @@ Swal.fire({
   allowOutsideClick:false
 }).then (result => {
     user = result.value
+// compruebo si es admin
+if (user === 'adminCoder@coder.com') {
+        Swal.fire({
+            icon: 'error',
+            title: 'No autorizado',
+            text: 'No tienes permiso para utilizar el chat como administrador.',
+            allowOutsideClick: false,
+            onClose: () => {
+                window.location.reload();
+            }
+             });
+              chatBox.disabled = true; // esto deshabilita la ventana de chat para admin
+    }
+
+
 });
 
 chatBox.addEventListener('keyup', e => {
