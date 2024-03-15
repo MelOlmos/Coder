@@ -4,6 +4,7 @@ const {connectDB}  = require('../config/connectDB');
 let UserDao
 let ProductDao
 let CartDao
+let TicketDao
 
 
 // persistence MONGO by default
@@ -27,11 +28,15 @@ switch (configObject.persistence) {
 
         const CartDaoMongo = require('./mongo/cartDaoDB')
         CartDao = CartDaoMongo
+
+        const TicketDaoMongo = require('./mongo/ticketDaoDB')
+        TicketDao = TicketDaoMongo
         break;
 }
 
 module.exports = {
     UserDao,
     ProductDao,
-    CartDao
+    CartDao,
+    TicketDao
 }

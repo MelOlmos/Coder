@@ -7,7 +7,8 @@ const {
   getAllCarts,
   getCartById,
   addCart,
-  updateCart
+  updateCart,
+  purchaseCart
   } = new CartController()
 
 
@@ -25,6 +26,9 @@ router.post('/', addCart);
 
 /* Actualizar carrito por ID */
 router.put('/:cartId', updateCart);
+
+/* Ruta para finalizar la compra de un carrito */
+router.post('/:cartId/purchase', purchaseCart);
 
 
 module.exports = router;

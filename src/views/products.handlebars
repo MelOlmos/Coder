@@ -4,6 +4,10 @@
 
   <form action="/api/session/logout" method="POST"> <button type="submit">LOGOUT</button>
 </form>
+
+<button onclick="redirectToPurchase()">Finalizar compra</button>
+
+
   <h2>Products result</h2>
 {{#each products}}
     <ul>
@@ -11,9 +15,11 @@
       <li><strong>Descripcion:</strong> {{this.description}}</li>
       <li><strong>Category:</strong> {{this.category}}</li>
       <li><strong>Price:</strong> {{this.price}}</li>
+      <li><strong>Stock:</strong> {{this.stock}}</li>
     </ul>
 
     <button onclick="addToCart('{{this._id}}')">Agregar al carrito</button>
+    
     <div id='{{this._id}}'></div>
   {{/each}}
 
@@ -21,6 +27,8 @@
 
   // Esto hace la acción onclick
   function addToCart(productId) {
+     
+    //
     fetch(`/api/carts/65b3fd56c512050429ca55ec/products/`, {
       method: 'POST',
       headers: {
@@ -31,11 +39,16 @@
     .then(response => response.json())
     .then(data => {
       document.getElementById(productId).innerHTML = "Producto agregado correctamente ✔";
-      console.log('Producto agregado al carrito:', data);
+      console.log(data);
     })
     .catch(error => console.error('Error al agregar al carrito:', error));
+    //
+    function redirectToPurchase() {
+      window.location.href = "/api/carts/65b3fd56c512050429ca55ec/purchase";
+    }
   }
 </script>
+
 <div>
 {{#if hasPrevPage}}
     <a href="/products?page={{prevPage}}">Before</a>

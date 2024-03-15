@@ -1,5 +1,7 @@
 const { authorization } = require('../middleware/authentication.js');
 const { cartService } = require('../repositories/index.js');
+const { productService } = require('../repositories/index.js')
+const { ticketService } = require('../repositories/index.js')
 
 
 // Middleware de autorización para el rol user
@@ -104,7 +106,73 @@ class CartController {
             res.status(500).json({ error: error.message });
         }
     }
+
+    /*Para el ticket de compra*/
+    async purchaseCart(req, res) {
+        try {
+            const cartId = req.params.cartId;
+            const cart = await cartService.getCartById(cartId); //busco por id de carrito
+
+            if (!cart) {
+                return res.status(404).json({ error: 'Carrito no encontrado :C' });
+            }
+
+            const products = cart.products;
+            const productsNotPurchased = [];
+
+            //verifica si hay stock en los productos del cart
+            for (const product of products) {
+                const { productId, quantity } = product;
+                const productDetails = await productService.getProductById(productId);
+
+                if (!productDetails || productDetails.stock < quantity) {
+                    productsNotPurchased.push(productId);
+                    continue;
+                }
+
+                // Resta la cantidad comprada del stock del product
+                const newStock = productDetails.stock - quantity;
+                await productService.updateProduct(productId, { stock: newStock });
+            }
+            if (productsNotPurchased.length > 0) {
+                return res.status(400).json({ error: 'Algunos productos no tienen stock', productsNotPurchased });
+            }
+
+            // Crea el ticket
+            const ticketData = {
+                code: ticketCode(),
+                purchase_datetime: new Date(),
+                amount: cart.amount,
+                purchaser: req.session.user.email, 
+                products: cart.products
+            };
+
+            const createdTicket = await ticketService.createTicket(ticketData);
+
+            // Actualiza el carrito 
+            await cartService.updateCart(cartId, { products: productsNotPurchased });
+
+            // Devuelve el ticket
+            res.json(createdTicket);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 }
 
+function ticketCode() {
+    // Genero un código aleatorio con números y letras
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const codeLength = 6;
+    let code = '';
+
+    for (let i = 0; i < codeLength; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        //obtiene el caracter en la posición randomIndex y lo suma al final
+        code += characters.charAt(randomIndex);
+    }
+
+    return code;
+}
 
 module.exports = CartController

@@ -1,10 +1,12 @@
 const UserRepository = require('./userRepository')
 const ProductRepository = require('./productRepository')
 const CartRepository = require('./cartRepository')
+const TicketRepository = require('./ticketRepository')
 const { 
     UserDao, 
     ProductDao,
-    CartDao 
+    CartDao,
+    TicketDao
 } = require('../dao/factory')
 
 
@@ -12,9 +14,11 @@ const {
 const userService    = new UserRepository(new UserDao())
 const productService = new ProductRepository(new ProductDao())
 const cartService    = new CartRepository(new CartDao())
+const ticketService = new TicketRepository(new TicketDao())
 
 module.exports = {
     userService,
     productService,
-    cartService
+    cartService,
+    ticketService
 }

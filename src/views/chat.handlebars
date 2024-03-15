@@ -25,9 +25,9 @@ let chatBox = document.getElementById('chatBox');
 Swal.fire({
   title: "Indentifícate",
   input: "text",
-  text: "Ingresa un nombre de usuario para utilizar el chat",
+  text: "Ingresa un CORREO ELECTRÓNICO para utilizar el chat",
   inputValidator: (value) => {
-    return !value && 'Necesitas escribir un usuario para continuar'
+    return !value && 'Necesitas escribir un correo para continuar'
   },
   allowOutsideClick:false
 }).then (result => {
