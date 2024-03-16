@@ -1,18 +1,5 @@
 const authorization = (roleArray) => {
     return async (req, res, next) => {
-        if (roleArray.includes('user') && !req.user) {
-            return next()
-        }
-
-        if (!roleArray.includes(req.user.role)) {
-            return res.status(403).json({ status: 'error', error: 'Not permissions' });
-        }
-
-        next();
-    };
-};
-/* const authorization = (roleArray) => {
-    return async (req, res, next) => {
         if (roleArray[0] === 'user') return next()
         if (!req.user) return res.status(401).json({status: 'error', error: 'Unauthorized'})
         if (!roleArray.includes(req.user.role)) return res.status(403).json({status:'error', error: 'Not permissions'})
@@ -20,7 +7,7 @@ const authorization = (roleArray) => {
         next()
     }
 }
- */
+
 
 function auth (req, res, next) {
     if (req.session?.username == 'adminCoder@coder.com' && req.session?.admin) {

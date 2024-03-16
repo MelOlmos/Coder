@@ -36,7 +36,7 @@
   function addToCart(productId) {
      console.log('Product ID:', productId);
     //
-    fetch(`/api/carts/65b3fd56c512050429ca55ec/products/`, {
+    fetch(`/api/carts/65b3fd56c512050429ca55ec/products`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -50,9 +50,9 @@
     })
     .catch(error => console.error('Error al agregar al carrito:', error));
     //
-    function redirectToPurchase() {
+    {{!-- function redirectToPurchase() {
       window.location.href = "/api/carts/65b3fd56c512050429ca55ec/purchase";
-    }
+    } --}}
   }
 </script>
 
