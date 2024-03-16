@@ -157,7 +157,8 @@ class CartController {
             }    
             //amount
             const totalAmount = await cartService.calculateCartAmount(cartId);
-
+            // productos del carrito
+            /* const productsInCart = this.getProductsInCart() */
 
             // Crea el ticket
             const ticketData = {
@@ -165,7 +166,7 @@ class CartController {
                 purchase_datetime: new Date(),
                 amount: totalAmount,
                 purchaser: req.session.user.email, 
-                products: cart.products
+                /* products: productsInCart */
             };    
 
             const createdTicket = await ticketService.createTicket(ticketData);

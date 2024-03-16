@@ -22,9 +22,9 @@ class ProductManager {
             console.log('No fue posible agregar producto. Todos las claves son obligatorias');
         } else if (this.isCodeUnique(code)) {
             const id = this.getNewId();
-            // const id = this.products.length + 1;
-            const status = true;
-            this.products.push({ id, title, description, price, thumbnail, code, stock, category, status });
+            
+            const isActive = true;
+            this.products.push({ id, title, description, price, thumbnail, code, stock, category, isActive });
             this.saveProductsToFile();
         } else {
             console.log('No está permitido repetir CODE al agregar productos');
