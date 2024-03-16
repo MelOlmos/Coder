@@ -7,6 +7,13 @@
 
 <button onclick="redirectToPurchase()">Finalizar compra</button>
 
+<script>
+//lo que hace redirectToPurchase
+  function redirectToPurchase() {
+    window.location.href = '/api/carts/65b3fd56c512050429ca55ec/purchase';
+  }
+</script>
+
 
   <h2>Products result</h2>
 {{#each products}}
@@ -27,14 +34,14 @@
 
   // Esto hace la acción onclick
   function addToCart(productId) {
-     
+     console.log('Product ID:', productId);
     //
     fetch(`/api/carts/65b3fd56c512050429ca55ec/products/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ quantity: 1 }),
+      body: JSON.stringify({ productId: productId, quantity: 1 }),
     })
     .then(response => response.json())
     .then(data => {

@@ -10,7 +10,6 @@ const productManager = new ProductManager('productos_test.json');
 
 /* Líneas con MongoDB */
 
-const { MessagesManagerDB } = require('../dao/mongo/messageDaoDB.js');
 const { messagesModel } = require('../dao/mongo/models/messages.model.js');
 const { productsModel } = require('../dao/mongo/models/products.model.js');
 const CartManagerDB = require('../dao/mongo/cartDaoDB.js');

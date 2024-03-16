@@ -4,8 +4,6 @@ const ProductController = require('../controllers/products.controller');
 const passport = require('passport');
 const { authorization } = require('../middleware/authentication.js');
 
-// Middleware de autorización para el rol admin
-const isAdmin = authorization(['admin']);
 
 const {
     getProducts,
@@ -21,9 +19,9 @@ const productRouter = Router();
 productRouter
     .get('/', getProducts)
     .get('/:pid', getProductById)
-    .post('/', passport.authenticate('jwt', { session: false }), isAdmin, createProduct) // POST solo para admin
-    .put('/:pid', passport.authenticate('jwt', { session: false }), isAdmin, updateProduct) // PUT solo para admin
-    .delete('/:pid', passport.authenticate('jwt', { session: false }), isAdmin, deleteProduct); // DELETE solo para admin
+    .post('/', passport.authenticate('jwt', { session: false }),  authorization(['admin']), createProduct) // POST solo para admin
+    .put('/:pid', passport.authenticate('jwt', { session: false }),  authorization(['admin']), updateProduct) // PUT solo para admin
+    .delete('/:pid', passport.authenticate('jwt', { session: false }),  authorization(['admin']), deleteProduct); // DELETE solo para admin
 
     
 

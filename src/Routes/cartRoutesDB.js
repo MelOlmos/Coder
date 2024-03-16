@@ -2,18 +2,20 @@
 const express = require('express');
 const router = express.Router();
 const CartController = require('../controllers/carts.controller.js')
+const { authorization } = require('../middleware/authentication.js');
 const {
   addProductToCart,
   getAllCarts,
   getCartById,
   addCart,
   updateCart,
-  purchaseCart
+  purchaseCart,
+  getProductsInCart
   } = new CartController()
 
 
   /* Agregar producto al carrito por ID */
-router.post('/:cartId/products/', addProductToCart);
+router.post('/:cartId/products/', authorization(['user']), addProductToCart);
 
 /* Obtener todos los carritos */
 router.get('/', getAllCarts);
@@ -29,6 +31,9 @@ router.put('/:cartId', updateCart);
 
 /* Ruta para finalizar la compra de un carrito */
 router.post('/:cartId/purchase', purchaseCart);
+
+/* Mostrar todos los productos de un carrito por Id*/
+router.get('/:cartId/products/', getProductsInCart);
 
 
 module.exports = router;

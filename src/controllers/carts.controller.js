@@ -1,11 +1,8 @@
-const { authorization } = require('../middleware/authentication.js');
+const express = require('express');
 const { cartService } = require('../repositories/index.js');
 const { productService } = require('../repositories/index.js')
 const { ticketService } = require('../repositories/index.js')
 
-
-// Middleware de autorización para el rol user
-const isUser = authorization(['user']);
 
 class CartController {
     constructor(){
@@ -13,25 +10,28 @@ class CartController {
     }
 
 
-    async addProductToCart(req, res) {
+    addProductToCart = async (req, res) => {
         try {
-            // Verifica si el usuario tiene el rol adecuado
-        if (req.user.role !== 'user') {
-            return res.status(403).json({ error: 'No tenés permiso para agregar productos al carrito.' });
-        }
-
+            // Verificar si el usuario tiene el rol adecuado 
+            console.log(req.session.user.role)
+            if (req.session.user.role === 'admin') {
+                return res.status(403).json({ error: 'No tenés permiso para agregar productos al carrito.' });
+            }
+    
             const cartId = req.params.cartId;
             const { productId, quantity } = req.body;
-            isUser (req, res, async () => {
-                const updatedCart = await cartService.addProductToCart(cartId, { productId, quantity });
+    
+            // Llama al service para agregar el producto al carrito
+            const updatedCart = await cartService.addProductToCart(cartId, { productId, quantity });
+    
+            // carrito actualizado
             res.json(updatedCart);
-        });
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
-    }
+    };
 
-    async getAllCarts(req, res) {
+    getAllCarts = async (req, res) => {
         try {
             const carts = await cartService.getAllCarts();
             res.json({ carts });
@@ -40,7 +40,7 @@ class CartController {
         }
     }
 
-    async getCartById(req, res) {
+    getCartById = async (req, res) => {
         try {
             const cartId = req.params.cartId;
             const cart = await cartService.getCartById(cartId);
@@ -54,7 +54,7 @@ class CartController {
         }
     }
 
-    async addCart(req, res) {
+    addCart = async (req, res) => {
         try {
             const newCart = req.body;
             const createdCart = await cartService.addCart(newCart);
@@ -64,7 +64,7 @@ class CartController {
         }
     }
 
-    async updateCart(req, res) {
+    updateCart = async (req, res) =>  {
         try {
             const cartId = req.params.cartId;
             const updatedCartData = req.body;
@@ -75,7 +75,7 @@ class CartController {
         }
     }
 
-    async deleteCart(req, res) {
+    deleteCart = async (req, res) => {
         try {
             const cartId = req.params.cartId;
             await cartService.deleteCart(cartId);
@@ -85,7 +85,7 @@ class CartController {
         }
     }
 
-    async deleteAllProductsFromCart(req, res) {
+    deleteAllProductsFromCart = async (req, res) => {
         try {
             const cartId = req.params.cartId;
             const updatedCart = await cartService.deleteAllProductsFromCart(cartId);
@@ -95,7 +95,7 @@ class CartController {
         }
     }
 
-    async updateProductQuantity(req, res) {
+    updateProductQuantity = async (req, res) => {
         try {
             const cartId = req.params.cartId;
             const productId = req.params.productId;
@@ -108,7 +108,7 @@ class CartController {
     }
 
     /*Para el ticket de compra*/
-    async purchaseCart(req, res) {
+    purchaseCart = async (req, res) =>  {
         try {
             const cartId = req.params.cartId;
             const cart = await cartService.getCartById(cartId); //busco por id de carrito
@@ -158,6 +158,24 @@ class CartController {
             res.status(500).json({ error: error.message });
         }
     }
+
+    /*Para traer los productos de un solo carrito*/ 
+    getProductsInCart = async (req, res) => {
+        try {
+          const cartId = req.params.cartId;
+          const cart = await this.cartService.getCartById(cartId);
+    
+          if (!cart) {
+            return res.status(404).json({ error: 'Carrito no encontrado' });
+          }
+    
+          const products = cart.products;
+          res.json({ products });
+        } catch (error) {
+          res.status(500).json({ error: error.message });
+        }
+      }
+
 }
 
 function ticketCode() {
