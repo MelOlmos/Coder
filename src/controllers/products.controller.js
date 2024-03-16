@@ -19,7 +19,7 @@ class ProductController {
     getProductById  = async (req, res) => {
         try {
             const productId = req.params.pid;
-            const product = await productService.getProductById(productId);
+            const product = await productService.getProduct(productId);
             if (!product) {
                 res.status(404).json({ error: 'Producto no encontrado' });
                 return;

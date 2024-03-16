@@ -13,6 +13,10 @@ const productsSchema = new mongoose.Schema ({
         code: String,
         stock: Number,
         category: String,
+        isActive: {
+            type: Boolean,
+            default: true
+        }
         
 })
 
