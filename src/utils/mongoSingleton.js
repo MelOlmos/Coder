@@ -13,7 +13,6 @@ class MongoSingleton {
         }
     
         this.#instance = new MongoSingleton(url)
-        console.log('Base de datos conectada')
         return this.#instance
     }
 }

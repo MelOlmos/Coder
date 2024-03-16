@@ -1,5 +1,4 @@
 const UserController = require("../controllers/users.controller");
-
 const {getUser} = new UserController()
 
 class CartRepository {

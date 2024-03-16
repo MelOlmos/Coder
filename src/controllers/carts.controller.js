@@ -15,11 +15,12 @@ class CartController {
             // Verificar si el usuario tiene el rol adecuado 
             console.log(req.session.user.role)
             if (req.session.user.role === 'admin') {
-                return res.status(403).json({ error: 'No tenés permiso para agregar productos al carrito.' });
+                return res.status(403).json({ error: 'No tenés permiso para agregar productos al carrito.' })
             }
     
             const cartId = req.params.cartId;
             const { productId, quantity } = req.body;
+            console.log(req.body) 
     
             // Llama al service para agregar el producto al carrito
             const updatedCart = await cartService.addProductToCart(cartId, { productId, quantity });
@@ -29,7 +30,7 @@ class CartController {
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
-    };
+    }
 
     getAllCarts = async (req, res) => {
         try {
@@ -175,8 +176,9 @@ class CartController {
           res.status(500).json({ error: error.message });
         }
       }
+    }
 
-}
+
 
 function ticketCode() {
     // Genero un código aleatorio con números y letras
@@ -192,5 +194,6 @@ function ticketCode() {
 
     return code;
 }
+
 
 module.exports = CartController
