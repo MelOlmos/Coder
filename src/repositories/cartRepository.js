@@ -1,6 +1,3 @@
-const UserController = require("../controllers/users.controller");
-const {getUser} = new UserController()
-
 class CartRepository {
     constructor(cartDao){
         this.dao = cartDao;
@@ -19,6 +16,8 @@ class CartRepository {
         const updatedCart = await this.dao.addProductToCart(cartId, productId, quantity);
         return updatedCart
     }
+
+    calculateCartAmount = async (cartId) => await this.dao.calculateCartAmount(cartId)
 
 }
 

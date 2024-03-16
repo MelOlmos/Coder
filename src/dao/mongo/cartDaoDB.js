@@ -128,6 +128,25 @@ catch (error) {
   }
 }
 
+async calculateCartAmount(cartId) {
+  try {
+    const cart = await cartsModel.findById(cartId).populate('products.product').lean();
+    
+      if (!cart) {
+          throw new Error('Carrito no encontrado');
+      }
+
+      let totalAmount = 0;
+      for (const product of cart.products) {
+          totalAmount += product.product.price * product.quantity;
+      }
+
+      return totalAmount;
+  } catch (error) {
+      throw new Error(`Error al calcular el monto del carrito: ${error.message}`);
+  }
+}
+
 };
 
 module.exports = CartManagerDB

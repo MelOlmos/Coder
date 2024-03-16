@@ -93,8 +93,8 @@ class CartController {
             res.json(updatedCart);
         } catch (error) {
             res.status(500).json({ error: error.message });
-        }
-    }
+        }    
+    }    
 
     updateProductQuantity = async (req, res) => {
         try {
@@ -105,58 +105,9 @@ class CartController {
             res.json(updatedCart);
         } catch (error) {
             res.status(500).json({ error: error.message });
-        }
-    }
+        }    
+    }    
 
-    /*Para el ticket de compra*/
-    purchaseCart = async (req, res) =>  {
-        try {
-            const cartId = req.params.cartId;
-            const cart = await cartService.getCart(cartId); //busco por id de carrito
-
-            if (!cart) {
-                return res.status(404).json({ error: 'Carrito no encontrado :C' });
-            }
-
-            const products = cart[0].products;
-            console.log(cart)
-            const productsNotPurchased = [];
-
-            //verifica si hay stock en los productos del cart
-            for (const product of products) {
-                const { id, quantity } = product;
-                const productDetails = await productService.getProduct({_id:id});
-
-                if (!productDetails || productDetails.stock < quantity) {
-                    productsNotPurchased.push(id);
-                    continue;
-                }
-
-                // Resta la cantidad comprada del stock del product
-                const newStock = productDetails.stock - quantity;
-                await productService.updateProduct(id, { stock: newStock });
-            }
-            
-            // Crea el ticket
-            const ticketData = {
-                code: ticketCode(),
-                purchase_datetime: new Date(),
-                amount: cart[0].amount,
-                purchaser: req.session.user.email, 
-                products: cart.products
-            };
-
-            const createdTicket = await ticketService.createTicket(ticketData);
-
-            // Actualiza el carrito 
-            /* await cartService.updateCart(cartId, { products: productsNotPurchased }); */
-
-            // Devuelve el ticket
-            res.json(createdTicket);
-        } catch (error) {
-            res.status(500).json({ error: error.message });
-        }
-    }
 
     /*Para traer los productos de un solo carrito*/ 
     getProductsInCart = async (req, res) => {
@@ -168,12 +119,79 @@ class CartController {
             return res.status(404).json({ error: 'Carrito no encontrado' });
           }
     
-          const products = cart.products;
-          res.json({ products });
+          const productsInCart = cart.products;
+          res.json({ productsInCart });
         } catch (error) {
           res.status(500).json({ error: error.message });
         }
       }
+
+
+    /*Para el ticket de compra*/
+    purchaseCart = async (req, res) =>  {
+        try {
+            const cartId = req.params.cartId;
+            const cart = await cartService.getCart(cartId); //busco por id de carrito
+
+            if (!cart) {
+                return res.status(404).json({ error: 'Carrito no encontrado :C' });
+            }    
+
+            const products = cart[0].products;
+            console.log(cart)
+            const productsNotPurchased = [];
+
+            //verifica si hay stock en los productos del cart
+            for (const product of products) {
+                const { id, quantity } = product;
+                const productDetails = await productService.getProduct({_id:id});
+
+                if (!productDetails || productDetails.stock < quantity) {
+                    productsNotPurchased.push(product);
+                    continue;
+                }    
+
+                // Resta la cantidad comprada del stock del product
+                const newStock = productDetails.stock - quantity;
+                await productService.updateProduct(id, { stock: newStock });
+            }    
+            //amount
+            const totalAmount = await cartService.calculateCartAmount(cartId);
+
+
+            // Crea el ticket
+            const ticketData = {
+                code: ticketCode(),
+                purchase_datetime: new Date(),
+                amount: totalAmount,
+                purchaser: req.session.user.email, 
+                products: cart.products
+            };    
+
+            const createdTicket = await ticketService.createTicket(ticketData);
+
+            // Actualiza el carrito 
+            await cartService.updateCart(cartId, { products: productsNotPurchased });
+
+            // Devuelve el ticket
+            res.json([createdTicket, productsNotPurchased]);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }    
+    }    
+
+
+
+    /* Para calcular monto total del carrito*/
+    async calculateCartAmount(req, res) {
+        try {
+            const cartId = req.params.cartId;
+            const totalAmount = await this.cartService.calculateCartAmount(cartId);
+            res.json({ totalAmount });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
     }
 
 
