@@ -13,10 +13,10 @@ class CartController {
     addProductToCart = async (req, res) => {
         try {
             // Verificar si el usuario tiene el rol adecuado 
-            console.log(req.session.user.role)
+            /* console.log(req.session.user.role)
             if (req.session.user.role === 'admin') {
                 return res.status(403).json({ error: 'No tenés permiso para agregar productos al carrito.' })
-            }
+            } */
     
             const cartId = req.params.cartId;
             const { productId, quantity } = req.body;
@@ -44,7 +44,7 @@ class CartController {
     getCartById = async (req, res) => {
         try {
             const cartId = req.params.cartId;
-            const cart = await cartService.getCartById(cartId);
+            const cart = await cartService.getCart(cartId);
             if (!cart) {
                 res.status(404).json({ error: 'Carrito no encontrado' });
                 return;
@@ -94,7 +94,7 @@ class CartController {
         } catch (error) {
             res.status(500).json({ error: error.message });
         }    
-    }    
+    }  
 
     updateProductQuantity = async (req, res) => {
         try {
@@ -181,6 +181,21 @@ class CartController {
         }    
     }    
 
+
+
+    /*Para borrar un solo item del cart*/
+    deleteProductFromCart  = async (req, res) => {
+        try {
+            const { cid, pid } = req.params
+            const resp = await cartService.deleteProductFromCart(cid, pid)
+            res.status(200).json({
+                status: 'success',
+                message: 'Product deleted from cart'
+            })        
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 
     /* Para calcular monto total del carrito*/

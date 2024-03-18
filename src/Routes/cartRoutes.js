@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
 /* Obtengo carrito por id */
 router.get('/:cid', (req, res) => {
     let cartId = req.params.cid;
-    const cart = cartManager.getCartById(cartId);
+    const cart = cartManager.get(cartId);
     if (cart) {
         res.json(cart.products);
     } else {

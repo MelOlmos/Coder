@@ -10,18 +10,22 @@ const {
   addCart,
   updateCart,
   purchaseCart,
-  getProductsInCart
+  getProductsInCart,
+  deleteProductFromCart
   } = new CartController()
 
 
   /* Agregar producto al carrito por ID */
 router.post('/:cartId/products', authorization(['user']), addProductToCart);
 
+/* Eliminar un producto de carrito por ID*/ 
+router.delete('/:cid/product/:pid', deleteProductFromCart)
+
 /* Obtener todos los carritos */
 router.get('/', getAllCarts);
 
 /* Obtener carrito por ID */
-router.get('/:cartId', getCartById);
+router.get('/:cartId', getCartById);  //priorizar este endpoint
 
 /* Agregar un nuevo carrito */
 router.post('/', addCart);

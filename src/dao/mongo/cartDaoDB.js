@@ -60,11 +60,11 @@ class CartManagerDB {
 
   async update(cartId, updatedCartData) {
     try {
-        const updatedCart = await cartsModel.findByIdAndUpdate(
-        cartId,
-        updatedCartData,
-        { new: true }
-      );
+        const updatedCart = await cartsModel.findOneAndUpdate(
+          { _id: cartId }, // Filtrar por ID del carrito
+          { $set: { products: [...updatedCartData.products] } }, // Actualizar todo el array 'products'
+          { new: true } // Devolver el documento actualizado
+        );
       return updatedCart;
     } catch (error) {
       console.log(`Se produjo un error al actualizar el carrito: ${error.message}`);
@@ -126,7 +126,19 @@ catch (error) {
   console.error('Error al actualizar la cantidad:', error);
   throw error;
   }
-}
+};
+
+async deleteItem(cid, pid) {
+  try {
+      await cartsModel.findOneAndUpdate(
+          { _id: cid },
+          { $pull: { products: { product: { _id: pid } } } },
+          { new: true }
+      )
+  } catch (error) {
+      return new Error('Error deleting product from cart'+error)
+  }
+};
 
 async calculateCartAmount(cartId) {
   try {
@@ -145,8 +157,8 @@ async calculateCartAmount(cartId) {
   } catch (error) {
       throw new Error(`Error al calcular el monto del carrito: ${error.message}`);
   }
-}
-
 };
+
+}
 
 module.exports = CartManagerDB
