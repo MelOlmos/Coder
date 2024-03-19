@@ -3,7 +3,7 @@ const { productsModel } = require('./models/products.model.js')
 
 class CartManagerDB {
 
-  async addProductToCart(cartId, { productId, quantity }) {
+    async addProductToCart(cartId, { productId, quantity }) {
     try {
       // Obtengo carrito y producto por id
       const cart = await cartsModel.findById(cartId).populate('products.product');
@@ -26,7 +26,7 @@ class CartManagerDB {
       console.error('Error al agregar producto al carrito:', error);
       throw error;
     }
-  }
+  } 
 
   async get() {
     try {
@@ -58,19 +58,32 @@ class CartManagerDB {
     }
   }
 
-  async update(cartId, updatedCartData) {
+  async update(cartId, product){        
     try {
         const updatedCart = await cartsModel.findOneAndUpdate(
-          { _id: cartId }, // Filtrar por ID del carrito
-          { $set: { products: [...updatedCartData.products] } }, // Actualizar todo el array 'products'
-          { new: true } // Devolver el documento actualizado
-        );
-      return updatedCart;
+            { id: cartId, 'products.product': product.id },
+            { $inc: { 'products.$.quantity': product.quantity } },
+            { new: true }
+        )
+      
+        if (updatedCart) {
+            // El producto ya estaba en el carrito, se actualizó su cantidad
+            return updatedCart
+        }
+      
+        // El producto no estaba en el carrito, se agrega con quantity en 1
+        const newProductInCart = await cartsModel.findOneAndUpdate(
+            { id: cartId },
+            { $push: { products: { product: product.id, quantity: product.quantity } } },
+            { new: true, upsert: true }
+        )
+      
+        return newProductInCart
     } catch (error) {
-      console.log(`Se produjo un error al actualizar el carrito: ${error.message}`);
-      throw error;
+        return new Error('Error adding product to cart'+error)
     }
-  }
+
+}
 
   async delete(cartId) {
     try {
@@ -101,26 +114,26 @@ class CartManagerDB {
 
   async updateProductQuantity(cartId, productId, quantity) {
     try {
-      const idCart = await cartsModel.findById(cartId);
-    if (!idCart) {
+      const cart = await cartsModel.findById(cartId);
+    if (!cart) {
       throw new Error('El carrito no existe');
     }
     //pruebas de consola
-    console.log('Cart:', idCart);
+    console.log('Cart:', cart);
     console.log('Product ID:', productId);
     //Acá busco el id dentro de productos
     const productIndex = 
-    idCart.products.findIndex(product => product.product._id.toString() === productId);
+    cart.products.findIndex(product => product.product._id.toString() === productId);
     console.log('Product Index:', productIndex);
     
     if (productIndex === -1) {
       throw new Error('El producto no está en el carrito');
     }
-    idCart.products[productIndex].quantity = quantity;
-    console.log('Updated Cart:', idCart);
+    cart.products[productIndex].quantity += quantity;
+    console.log('Updated Cart:', cart);
 
-    await idCart.save();
-    return idCart;
+    await cart.save();
+    return cart;
   }
 catch (error) {
   console.error('Error al actualizar la cantidad:', error);

@@ -30,7 +30,7 @@ class CartController {
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
-    }
+    } 
 
     getAllCarts = async (req, res) => {
         try {
@@ -136,51 +136,63 @@ class CartController {
             if (!cart) {
                 return res.status(404).json({ error: 'Carrito no encontrado :C' });
             }    
-
-            const products = cart[0].products;
+                
+            const products = cart[0].products.map(product => product._doc)
             console.log(cart)
+            console.log(products)
             const productsNotPurchased = [];
-
-            //verifica si hay stock en los productos del cart
+            const productQuantities = {};
+            
             for (const product of products) {
-                const { id, quantity } = product;
-                const productDetails = await productService.getProduct({_id:id});
-
-                if (!productDetails || productDetails.stock < quantity) {
-                    productsNotPurchased.push(product);
-                    continue;
-                }    
-
-                // Resta la cantidad comprada del stock del product
-                const newStock = productDetails.stock - quantity;
-                await productService.updateProduct(id, { stock: newStock });
-            }    
+                const { product: id, quantity } = product;
+    
+                if (productQuantities[id]) {
+                    productQuantities[id] += quantity;
+                } else {
+                    productQuantities[id] = quantity;
+                }
+            }
+    
+            const productsToUpdate = [];
+            for (const productId in productQuantities) {
+                const productDetails = await productService.getProduct({ _id: productId });
+    
+                if (!productDetails || productDetails.stock < productQuantities[productId]) {
+                    productsNotPurchased.push({ ...product, quantity: productQuantities[productId] });
+                } else {
+                    const newStock = productDetails.stock - productQuantities[productId];
+                    productsToUpdate.push({ productId, newStock });
+                }
+            }
             //amount
             const totalAmount = await cartService.calculateCartAmount(cartId);
-            // productos del carrito
-            /* const productsInCart = this.getProductsInCart() */
-
-            // Crea el ticket
+    
             const ticketData = {
                 code: ticketCode(),
                 purchase_datetime: new Date(),
                 amount: totalAmount,
-                purchaser: req.session.user.email, 
-                /* products: productsInCart */
-            };    
-
+                purchaser: req.session.user.email,
+            };
+    
             const createdTicket = await ticketService.createTicket(ticketData);
-
-            // Actualiza el carrito 
-            await cartService.updateCart(cartId, { products: productsNotPurchased });
-
-            // Devuelve el ticket
-            res.json([createdTicket, productsNotPurchased]);
+    
+            await Promise.all([
+                cartService.updateCart(cartId, { products: productsNotPurchased }),
+                ...productsToUpdate.map(({ productId, newStock }) =>
+                    productService.updateProduct(productId, { stock: newStock })
+                ),
+            ]);
+    
+            res.send(`<h1>PRODUCTOS COMPRADOS:</h1>
+            ${products.map(product => `<li>${product.product}</li>`).join('')}
+            <h1>TICKET:</h1>
+            <p>${createdTicket}</p>
+            <h1>PRODUCTOS SIN STOCK:</h1>
+            ${productsNotPurchased.map(product => `${product.product}`).join('')}`)
         } catch (error) {
             res.status(500).json({ error: error.message });
-        }    
-    }    
-
+        }
+    }
 
 
     /*Para borrar un solo item del cart*/
@@ -209,7 +221,6 @@ class CartController {
         }
     }
     }
-
 
 
 function ticketCode() {
