@@ -13,7 +13,10 @@ const productManager = new ProductManager('productos_test.json');
 const { messagesModel } = require('../dao/mongo/models/messages.model.js');
 const { productsModel } = require('../dao/mongo/models/products.model.js');
 const CartManagerDB = require('../dao/mongo/cartDaoDB.js');
+const { productService } = require('../repositories/index.js');
+const ProductManagerDB = require('../dao/mongo/productDaoDB.js');
 const cartManagerDB = new CartManagerDB();
+const productManagerDB = new ProductManagerDB();
 
 // const {first_name, role} = require('../config/passport.config.js')
 
@@ -109,5 +112,21 @@ router.get('/login', (req, res) => {
 router.get('/register', (req, res) => {
     res.render('register')
 })
+
+//Vista de producto solo
+router.get('/products/:pid', async (req, res) => {
+    try {
+        const pid = req.params.pid;
+        const product = await productManagerDB.getBy(pid);
+
+        if (!product) {
+            return res.status(404).json({ error: 'Producto no encontrado' });
+        }
+
+        return res.render('product', { product });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+});
 
 module.exports = router;

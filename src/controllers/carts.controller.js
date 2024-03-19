@@ -137,32 +137,36 @@ class CartController {
                 return res.status(404).json({ error: 'Carrito no encontrado :C' });
             }    
                 
-            const products = cart[0].products.map(product => product._doc)
+            const products = cart.products.filter(product => product.product.stock > 0);
             console.log(cart)
             console.log(products)
-            const productsNotPurchased = [];
+            
+            const productsNotPurchased = cart.products.filter(product => product.product.stock === 0);
             const productQuantities = {};
             
             for (const product of products) {
-                const { product: id, quantity } = product;
+
+                const id = product.product._id.toString();
+                const quantity = product.quantity
     
                 if (productQuantities[id]) {
                     productQuantities[id] += quantity;
                 } else {
                     productQuantities[id] = quantity;
                 }
+
             }
     
             const productsToUpdate = [];
-            for (const productId in productQuantities) {
-                const productDetails = await productService.getProduct({ _id: productId });
-    
-                if (!productDetails || productDetails.stock < productQuantities[productId]) {
-                    productsNotPurchased.push({ ...product, quantity: productQuantities[productId] });
-                } else {
-                    const newStock = productDetails.stock - productQuantities[productId];
-                    productsToUpdate.push({ productId, newStock });
-                }
+            for (const product of products) {
+                
+                const productDetails = product.product;
+                
+                const productId = product.product._id.toString();
+
+                const newStock = productDetails.stock - productQuantities[productId];
+                productsToUpdate.push({ productId, newStock });
+
             }
             //amount
             const totalAmount = await cartService.calculateCartAmount(cartId);
@@ -172,6 +176,7 @@ class CartController {
                 purchase_datetime: new Date(),
                 amount: totalAmount,
                 purchaser: req.session.user.email,
+                products: products
             };
     
             const createdTicket = await ticketService.createTicket(ticketData);
@@ -182,18 +187,11 @@ class CartController {
                     productService.updateProduct(productId, { stock: newStock })
                 ),
             ]);
-    
-            res.send(`<h1>PRODUCTOS COMPRADOS:</h1>
-            ${products.map(product => `<li>${product.product}</li>`).join('')}
-            <h1>TICKET:</h1>
-            <p>${createdTicket}</p>
-            <h1>PRODUCTOS SIN STOCK:</h1>
-            ${productsNotPurchased.map(product => `${product.product}`).join('')}`)
+            res.json(`{purchase:{ comprados: ${JSON.stringify(products)} , ticket: { ${JSON.stringify(createdTicket)} }, no-comprados: ${JSON.stringify(productsNotPurchased)}  }}`);
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
     }
-
 
     /*Para borrar un solo item del cart*/
     deleteProductFromCart  = async (req, res) => {
