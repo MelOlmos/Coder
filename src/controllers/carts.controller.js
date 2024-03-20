@@ -2,6 +2,7 @@ const express = require('express');
 const { cartService } = require('../repositories/index.js');
 const { productService } = require('../repositories/index.js')
 const { ticketService } = require('../repositories/index.js')
+const session = require('express-session')
 
 
 class CartController {
@@ -11,13 +12,7 @@ class CartController {
 
 
     addProductToCart = async (req, res) => {
-        try {
-            // Verificar si el usuario tiene el rol adecuado 
-            /* console.log(req.session.user.role)
-            if (req.session.user.role === 'admin') {
-                return res.status(403).json({ error: 'No tenés permiso para agregar productos al carrito.' })
-            } */
-    
+        try {    
             const cartId = req.params.cartId;
             const { productId, quantity } = req.body;
             console.log(req.body) 
@@ -34,7 +29,7 @@ class CartController {
 
     getAllCarts = async (req, res) => {
         try {
-            const carts = await cartService.getAllCarts();
+            const carts = await cartService.getCarts();
             res.json({ carts });
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -57,13 +52,23 @@ class CartController {
 
     addCart = async (req, res) => {
         try {
-            const newCart = req.body;
+            // Verifica si el usuario está autenticado y la sesión 
+            if (!req.session || !req.session.user || !req.session.user._id) {
+              return res.status(401).json({ error: 'Usuario no autenticado' });
+            }
+        
+            // Obtiene el ID del usuario de la sesión
+            const userId = req.session.user._id;
+        
+            // Crea el objeto de nuevo carrito
+            const newCart = { user: userId, ...req.body };
             const createdCart = await cartService.addCart(newCart);
-            res.json(createdCart);
-        } catch (error) {
+        
+            res.status(201).json(createdCart);
+          } catch (error) {
             res.status(500).json({ error: error.message });
-        }
-    }
+          }
+        };
 
     updateCart = async (req, res) =>  {
         try {

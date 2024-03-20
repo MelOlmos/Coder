@@ -75,10 +75,11 @@ router.get('/products', async (req, res) => {
         nextPage: result.nextPage,
         page: result.page,
         role: req.session.user.role,
-        first_name: req.session.user.first_name
+        first_name: req.session.user.first_name,
+        cartId: req.session.user.cartID
         
     });
-    
+   console.log(`Id de cart y user: ${req.session.user.cartID}`)
 }   catch (error) {
         console.error('Error en la consulta de productos: ', error);
         res.status(500).send('Error de servidor');

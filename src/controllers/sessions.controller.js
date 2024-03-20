@@ -4,6 +4,11 @@ const { generateToken } = require('../utils/jsonwebtoken.js');
 const UserManagerDB = require('../dao/mongo/userDaoDB.js')
 const { UserDto } = require('../dto/userDto.js');
 
+const CartManagerDB = require('../dao/mongo/cartDaoDB.js');
+const cartManager = new CartManagerDB();
+
+
+
 
 class SessionController {
     constructor(){
@@ -22,26 +27,43 @@ register = async (req, res) => {
     let role = 'user';
     if (email === 'adminCoder@coder.com') {role = 'admin'};
 
+    const newCart = { products: [], quantity: 1 };
+    const createCart = await cartManager.addCart(newCart);
+    
+    // Verifica que se haya creado el carrito
+    if (!createCart) {
+       return res.status(500).send('Error al crear el carrito para el usuario');
+     }
+
+    const cartID = createCart._id;
+
     try {
         const newUser = {
             first_name,
             last_name,
             email,
             password: createHash(password),
-            role
+            role,
+            cartID
         }
-        console.log(newUser)
+        
         //valida si está en la Mongo DB antes de crear user
         const  createdUser = await this.userService.create(newUser)
+        console.log("created usuario" +createdUser)
         if (!createdUser) {
             return res.send(`Email already exists. <a href="/login">GO TO LOGIN</a>`);
         } 
+        
+        // Almacena la información del usuario en la sesión
         req.session.user = {
             first_name,
             last_name,
             email,
-            role
+            role,
+            cartID
         };
+
+            
         return res.redirect('/products');
         
     } catch (error) {
