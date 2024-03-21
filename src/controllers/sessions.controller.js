@@ -99,7 +99,7 @@ login = async (req, res) => {
     return res.status(401).send('No coinciden las credenciales');
     
     const token = generateToken({first_name: userFoundDB.first_name, id:userFoundDB._id, 
-        role:userFoundDB.role, email:userFoundDB.email, cartId:userFoundDB.cartID})
+        role:userFoundDB.role, email:userFoundDB.email, cartID:userFoundDB.cartID})
     //envía la cookie
     res.cookie('cookieToken', token, {
         maxAge: 60*60*1000*24,
@@ -110,9 +110,9 @@ login = async (req, res) => {
         last_name: userFoundDB.last_name,
         email: userFoundDB.email,
         role: userFoundDB.role,
-        cartId: userFoundDB.cartID
+        cartID: userFoundDB.cartID
     };
-    console.log(req.session.user.cartId)
+    console.log(req.session.user.cartID)
     return res.redirect('/products');
 }
 
