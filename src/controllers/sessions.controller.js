@@ -72,7 +72,6 @@ register = async (req, res) => {
 
 }
 
-
 failregister = async (req, res) => {
     try {
         // Guarda el primer msj
@@ -84,7 +83,6 @@ failregister = async (req, res) => {
         res.send({errorMessage})
     }
 }
-
 
 login = async (req, res) => {
     const {email, password} = req.body
@@ -140,8 +138,6 @@ logout = async (req, res) => {
         res.send({status: 'error', error})
     }
 }
-
-
 
 current = async (req, res) => {
     try {

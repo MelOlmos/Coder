@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const router = Router();
+const { faker } = require('@faker-js/faker');
 
 /*Test de cookies*/
 
@@ -39,5 +40,33 @@ router.get('/logout', (req, res) => {
     })
 })
 
+
+/*Mocking products */
+
+router.get('/mockingproducts', (req, res) => {
+    let mockingProducts = []
+    for (let i = 0; i < 100; i++) {
+        mockingProducts.push(createMockingProduct())        
+    }
+    res.send({
+        status: '',
+        payload: mockingProducts
+    })
+});
+
+createMockingProduct = () => {
+    return {
+        id: faker.database.mongodbObjectId(),
+        title: faker.commerce.productName(),
+        description: faker.commerce.productDescription(),
+        price: faker.commerce.price(),
+        thumbnail: faker.image.url(),
+        code: faker.string.alphanumeric({length:5}),
+        stock: faker.string.numeric(2),
+        category: faker.commerce.department(),
+        isActive: true
+    }
+    
+}
 
 module.exports = router

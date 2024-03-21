@@ -18,6 +18,8 @@ router.use('/api/session', sessionsRoutes);
 // Para current quedó 'api/session/current'
 // Rutas para users
 router.use('/api/users', usersRouter)
+// Rutas de pruebas
+router.use('/api/test', testRoutes)
 
 /*RUTAS CON MONGODB*/
 // Rutas para productos

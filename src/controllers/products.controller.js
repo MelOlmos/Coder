@@ -2,6 +2,7 @@ const { productService } = require('../repositories')
 const httpServer = require('../app.js');
 const io = require('socket.io')(httpServer);
 
+
 class ProductController {
     constructor(){
         this.service = productService
@@ -61,6 +62,7 @@ class ProductController {
             res.status(500).json({ error: error.message });
         }
     }
+
 }
 
 module.exports = ProductController;

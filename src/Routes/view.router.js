@@ -114,7 +114,7 @@ router.get('/register', (req, res) => {
     res.render('register')
 })
 
-//Vista de producto solo
+//Vista de producto solo en procesooo
 router.get('/products/:pid', async (req, res) => {
     try {
         const pid = req.params.pid;
@@ -129,5 +129,7 @@ router.get('/products/:pid', async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 });
+
+
 
 module.exports = router;
