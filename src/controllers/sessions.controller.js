@@ -90,6 +90,7 @@ login = async (req, res) => {
     const {email, password} = req.body
     //busco el usuario en la DB
     const userFoundDB = await this.userService.getBy({email})
+    console.log(userFoundDB)
     if (!userFoundDB) {
         return res.send('login failed <a href="/register">REGISTER</a>');
     }
@@ -97,8 +98,8 @@ login = async (req, res) => {
     if (!isValidPassword(password, userFoundDB.password)) 
     return res.status(401).send('No coinciden las credenciales');
     
-    const token = generateToken({first_name: userFoundDB.first_name, id:userFoundDB._id, role:userFoundDB.role, email:userFoundDB.email})
-    console.log(token);
+    const token = generateToken({first_name: userFoundDB.first_name, id:userFoundDB._id, 
+        role:userFoundDB.role, email:userFoundDB.email, cartId:userFoundDB.cartID})
     //envía la cookie
     res.cookie('cookieToken', token, {
         maxAge: 60*60*1000*24,
@@ -108,8 +109,10 @@ login = async (req, res) => {
         first_name: userFoundDB.first_name,
         last_name: userFoundDB.last_name,
         email: userFoundDB.email,
-        role: userFoundDB.role
+        role: userFoundDB.role,
+        cartId: userFoundDB.cartID
     };
+    console.log(req.session.user.cartId)
     return res.redirect('/products');
 }
 

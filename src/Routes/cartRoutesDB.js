@@ -10,7 +10,7 @@ const {
   addCart,
   updateCart,
   purchaseCart,
-  getProductsInCart,
+/*   getProductsInCart, */
   deleteProductFromCart
   } = new CartController()
 
@@ -37,7 +37,7 @@ router.put('/:cartId', updateCart);
 router.get('/:cartId/purchase', purchaseCart);
 
 /* Mostrar todos los productos de un carrito por Id*/
-router.get('/:cartId/products', getProductsInCart);
+/* router.get('/:cartId/products', getProductsInCart); */ 
 
 
 module.exports = router;

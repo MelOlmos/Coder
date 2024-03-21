@@ -2,7 +2,6 @@ const express = require('express');
 const { cartService } = require('../repositories/index.js');
 const { productService } = require('../repositories/index.js')
 const { ticketService } = require('../repositories/index.js')
-const session = require('express-session')
 
 
 class CartController {
@@ -81,6 +80,18 @@ class CartController {
         }
     }
 
+    updateAllProducts = async (req, res) =>  {
+        try {
+            const cartId = req.params.cartId;
+            const productsNotPurchased = req.body;
+            const updatedCart = await cartService.updateAllProducts(cartId, productsNotPurchased);
+            
+            res.json(updatedCart);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+
     deleteCart = async (req, res) => {
         try {
             const cartId = req.params.cartId;
@@ -114,24 +125,6 @@ class CartController {
     }    
 
 
-    /*Para traer los productos de un solo carrito*/ 
-    getProductsInCart = async (req, res) => {
-        try {
-          const cartId = req.params.cartId;
-          const cart = await this.cartService.getCart(cartId);
-    
-          if (!cart) {
-            return res.status(404).json({ error: 'Carrito no encontrado' });
-          }
-    
-          const productsInCart = cart.products;
-          res.json({ productsInCart });
-        } catch (error) {
-          res.status(500).json({ error: error.message });
-        }
-      }
-
-
     /*Para el ticket de compra*/
     purchaseCart = async (req, res) =>  {
         try {
@@ -142,16 +135,13 @@ class CartController {
                 return res.status(404).json({ error: 'Carrito no encontrado :C' });
             }    
                 
-            const products = cart.products.filter(product => product.product.stock > 0);
-            console.log(cart)
-            console.log(products)
-            
-            const productsNotPurchased = cart.products.filter(product => product.product.stock === 0);
+            const products = cart.products.filter(product => product.product && product.product.stock > 0);            
+            const productsNotPurchased = cart.products.filter(product => product.product && product.product.stock === 0).map(product => product.product._id.toString());
             const productQuantities = {};
-            
+            // registro las cantidades de cada producto
             for (const product of products) {
 
-                const id = product.product._id.toString();
+                const id = product.product._id;
                 const quantity = product.quantity
     
                 if (productQuantities[id]) {
@@ -161,21 +151,21 @@ class CartController {
                 }
 
             }
-    
+            // resto esas cantidades al stock de cada producto
             const productsToUpdate = [];
             for (const product of products) {
                 
                 const productDetails = product.product;
                 
-                const productId = product.product._id.toString();
+                const productId = product.product._id;
 
                 const newStock = productDetails.stock - productQuantities[productId];
                 productsToUpdate.push({ productId, newStock });
 
             }
-            //amount
+            //amount del carrito
             const totalAmount = await cartService.calculateCartAmount(cartId);
-    
+            // ticket
             const ticketData = {
                 code: ticketCode(),
                 purchase_datetime: new Date(),
@@ -185,14 +175,28 @@ class CartController {
             };
     
             const createdTicket = await ticketService.createTicket(ticketData);
+
+            // Antes de la llamada a updateCart
+            console.log('Cart ID:', cartId);
+            console.log('Products not purchased:', productsNotPurchased);
+
+            if (productsNotPurchased.length === 0) {
+                await cartService.deleteAllProductsFromCart(cartId);
+            } else {
+                await cartService.updateAllProducts(cartId, { products: productsNotPurchased });
+            }
     
-            await Promise.all([
-                cartService.updateCart(cartId, { products: productsNotPurchased }),
-                ...productsToUpdate.map(({ productId, newStock }) =>
-                    productService.updateProduct(productId, { stock: newStock })
-                ),
-            ]);
-            res.json(`{purchase:{ comprados: ${JSON.stringify(products)} , ticket: { ${JSON.stringify(createdTicket)} }, no-comprados: ${JSON.stringify(productsNotPurchased)}  }}`);
+            await Promise.all(productsToUpdate.map(({ productId, newStock }) =>
+                productService.updateProduct(productId, { stock: newStock })
+            ));
+
+            res.json({
+                purchase: {
+                    comprados: products,
+                    ticket: createdTicket,
+                    'no-comprados': productsNotPurchased
+                }
+            });
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
