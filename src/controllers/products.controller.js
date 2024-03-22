@@ -1,5 +1,8 @@
 const { productService } = require('../repositories')
 const httpServer = require('../app.js');
+const CustomError = require('../utils/errors/customError.js');
+const { generateProductErrorInfo } = require('../utils/errors/info.js');
+const { EErrors } = require('../utils/errors/enums.js');
 const io = require('socket.io')(httpServer);
 
 
@@ -31,14 +34,25 @@ class ProductController {
         }
     }
 
-    createProduct  = async (req, res) => {
+    createProduct  = async (req, res, next) => {
         try {
             const newProductData = req.body;
+            if(!title || !price) {
+                CustomError.createError({
+                    name: 'Product creation error',
+                    cause: generateProductErrorInfo({
+                        title,
+                        price
+                    }),
+                    message: 'Error trying to create product',
+                    code: EErrors.MISSING_PARAMETER_ERROR
+                })
+            }
             const createdProduct = await productService.createProduct(newProductData);
             io.emit('newProduct', { product: createdProduct });
             res.json(createdProduct.toObject());
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            next(error);
         }
     }
 

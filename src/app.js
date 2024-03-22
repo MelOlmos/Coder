@@ -80,6 +80,10 @@ app.use(cors());
 /* RUTAS */
 app.use(appRouter)  
 
+/*Middleware de errores*/
+const { handleErrors } = require('./middleware/errors/index.js')
+app.use(handleErrors)
+
 
 /*Puerto y DB*/
 
