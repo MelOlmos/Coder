@@ -8,7 +8,7 @@ exports.handleErrors = (error, req, res, next) => {
             break;
     
         default:
-            return res.send({status: 'error', error: 'Undefined'})
-            break;
+            return res.send({status: 'error', error: error})
+            break
     }
 }

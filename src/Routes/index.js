@@ -8,18 +8,20 @@ const productsRouterDB = require('./productRoutesDB.js')
 const messagesRouter = require('./messageRoutesDB.js')
 const passport = require('passport');
 const {authorization} = require('../middleware/authentication.js')
-
 const router = Router()
  
+
 // Rutas para vistas
 router.use('/', viewsRouter);
 // Rutas para sesiones
 router.use('/api/session', sessionsRoutes);
-// Para current quedó 'api/session/current'
+// Para current quedó '/api/session/current'
 // Rutas para users
 router.use('/api/users', usersRouter)
 // Rutas de pruebas
 router.use('/api/test', testRoutes)
+// Para logger quedó '/api/test/loggertest'
+
 
 /*RUTAS CON MONGODB*/
 // Rutas para productos
@@ -30,9 +32,6 @@ router.use('/api/carts', cartRouterDB);
 // Rutas para mensajes
 router.use('/api/messages', messagesRouter);
 
-/* router.get('*', (req,res)=> {
-    res.send('not found')
-}) */
 
 /*RUTAS CON FS*/
 /* // Rutas para productos 

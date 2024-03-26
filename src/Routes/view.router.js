@@ -114,22 +114,29 @@ router.get('/register', (req, res) => {
     res.render('register')
 })
 
-//Vista de producto solo en procesooo
-router.get('/products/:pid', async (req, res) => {
+//Vista de producto solo 
+router.get('/products/:productId', async (req, res) => {
     try {
-        const pid = req.params.pid;
-        const product = await productManagerDB.getBy(pid);
+        const productId = req.params.productId;
+        console.log(productId)
+        const product = await productManagerDB.getBy({_id: productId});
+        console.log(product)
 
         if (!product) {
             return res.status(404).json({ error: 'Producto no encontrado' });
         }
 
-        return res.render('product', { product });
+        res.render('oneProduct', {
+            product: product._doc,
+            role: req.session.user.role,
+            first_name: req.session.user.first_name,
+            cartId: req.session.user.cartID
+            
+        });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
 });
-
 
 
 module.exports = router;

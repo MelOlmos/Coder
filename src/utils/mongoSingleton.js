@@ -2,17 +2,17 @@ const  mongoose = require("mongoose")
 
 class MongoSingleton {
     static #instance
-    constructor(url){
-        mongoose.connect(url)
+    constructor(){
+        mongoose.connect('mongodb+srv://melolmos27:Bocajuniors12!@ecommerce.ss8x3tx.mongodb.net/')
     }
 
-    static getInstance(url){
+    static getInstance(){
         if(this.#instance){
-            console.log('base de datos previamente conectada')
+            console.log('Base de datos previamente conectada')
             return this.#instance
         }
     
-        this.#instance = new MongoSingleton(url)
+        this.#instance = new MongoSingleton('mongodb+srv://melolmos27:Bocajuniors12!@ecommerce.ss8x3tx.mongodb.net/')
         return this.#instance
     }
 }

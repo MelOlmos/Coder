@@ -17,6 +17,7 @@
       <li><strong>Stock:</strong> {{this.stock}}</li>
     </ul>
 
+    <button onclick="viewDetails('{{ this._id }}')">Ver más</button>
     <button onclick="addToCart('{{this._id}}')">Agregar al carrito</button>
     
     <div id='{{this._id}}'></div>
@@ -24,8 +25,13 @@
 
 <script>
 
+  // Esto hace el onclick viewDetails
+    function viewDetails(productId) {
+      console.log('view details console: '+productId);
+        window.location.href = `/products/${productId}`;
+    }
 
-  // Esto hace la acción onclick
+  // Esto hace la acción onclick addToCart
   function addToCart(productId) {
   console.log('Product ID:', productId);
   const cartId = '{{cartId}}'; 

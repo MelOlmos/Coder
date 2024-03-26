@@ -18,11 +18,7 @@ exports.configObject = {
 
 exports.connectDB = async () => {
     try {
-        await mongoose.connect('mongodb+srv://melolmos27:Bocajuniors12!@ecommerce.ss8x3tx.mongodb.net/',{
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        })
-        console.log('Base de datos conectada')        
+        await MongoSingleton.getInstance(process.env.MONGO_URL)         
     } catch (error) {
         console.log(error)
     }

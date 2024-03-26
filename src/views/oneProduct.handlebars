@@ -1,0 +1,49 @@
+<div>
+    
+    <h2>Product Details</h2>
+   <ul>
+        <li><strong>Title:</strong> {{ product.title }}</li>
+        <li><strong>Description:</strong> {{ product.description }}</li>
+        <li><strong>Category:</strong> {{ product.category }}</li>
+        <li><strong>Price:</strong> {{ product.price }}</li>
+        <li><strong>Stock:</strong> {{ product.stock }}</li>
+    </ul>
+
+    <form action="/api/cart/add" method="POST" onsubmit="addToCart(event, '{{ product._id }}')">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{ product.stock }}">
+        <button type="submit">Add to Cart</button>
+    </form>
+    
+<button onclick="redirectToPurchase('{{ cartId }}')">Finalizar compra</button> 
+</div>
+
+
+<script>
+    // Esto hace la acción onclick
+    function addToCart(event, productId) {
+        event.preventDefault();
+
+        const quantity = document.getElementById('quantity').value;
+        const cartId = '{{ cartId }}';
+
+        fetch(`/api/carts/${cartId}/products`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ productId, quantity }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            alert('Producto agregado al carrito correctamente.');
+        })
+        .catch(error => console.error('Error al agregar al carrito:', error));
+    }
+
+    //lo que hace redirectToPurchase
+    function redirectToPurchase(cartId) {
+        window.location.href = `/api/carts/${cartId}/purchase`;
+    }
+</script>

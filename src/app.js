@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const appRouter = require('./Routes/index.js')
+const {configObject} = require('./config/connectDB.js')
 
 /*Líneas que usan FS -FileSystem*/
 
@@ -88,8 +89,8 @@ app.use(handleErrors)
 /*Puerto y DB*/
 
 const { connectDB } = require('./config/connectDB.js')
-const PORT = 8080;
-const httpServer = app.listen(PORT,()=>console.log("Escuchando puerto 8080"));
+const PORT = configObject.port;
+const httpServer = app.listen(PORT,()=>console.log(`Escuchando puerto ${PORT}`));
 connectDB();
 
 /*Handlebars*/
