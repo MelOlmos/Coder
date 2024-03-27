@@ -14,7 +14,7 @@ class CartController {
         try {    
             const cartId = req.params.cartId;
             const { productId, quantity } = req.body;
-            console.log(req.body) 
+            req.logger.debug(req.body);
     
             // Llama al service para agregar el producto al carrito
             const updatedCart = await cartService.addProductToCart(cartId, { productId, quantity });
@@ -22,6 +22,7 @@ class CartController {
             // carrito actualizado
             res.json(updatedCart);
         } catch (error) {
+            req.logger.error(error.message)
             res.status(500).json({ error: error.message });
         }
     } 

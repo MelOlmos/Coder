@@ -71,6 +71,9 @@ createMockingProduct = () => {
 
 
 /*Logger test*/
-router.get('/loggertest', (req, res) => {})
+router.get('/loggertest', (req, res) => {
+    req.logger.info('Info ejecutándose')
+    res.send('Logger ejecutándose, ¡sííí!')
+})
 
 module.exports = router

@@ -1,6 +1,6 @@
 //// Archivo de rutas para products con mongoDB
 const Router = require('express');
-const ProductController = require('../controllers/products.controller');
+const ProductController = require('../controllers/products.controller.js');
 const passport = require('passport');
 const { authorization } = require('../middleware/authentication.js');
 

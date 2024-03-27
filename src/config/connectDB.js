@@ -4,7 +4,7 @@ const MongoSingleton = require("../utils/mongoSingleton")
 const dotenv = require('dotenv')
 
 const { mode } = program.opts()
-console.log(mode)
+/* addLogger(mode); */
 dotenv.config({
     path: mode === 'development' ? './.env.development' : './.env.production'
 })

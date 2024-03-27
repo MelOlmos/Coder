@@ -27,13 +27,11 @@
 
   // Esto hace el onclick viewDetails
     function viewDetails(productId) {
-      console.log('view details console: '+productId);
         window.location.href = `/products/${productId}`;
     }
 
   // Esto hace la acción onclick addToCart
   function addToCart(productId) {
-  console.log('Product ID:', productId);
   const cartId = '{{cartId}}'; 
   
   fetch(`/api/carts/${cartId}/products`, {  
@@ -46,7 +44,7 @@
     .then(response => response.json())
     .then(data => {
       document.getElementById(productId).innerHTML = "Producto agregado correctamente ✔";
-      console.log(data);
+      
     })
     .catch(error => console.error('Error al agregar al carrito:', error));
 }

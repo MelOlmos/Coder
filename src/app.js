@@ -1,24 +1,25 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const appRouter = require('./Routes/index.js')
+const appRouter = require('./routes/index.js')
 const {configObject} = require('./config/connectDB.js')
+const { addLogger } = require('./utils/logger.js')
 
 /*Líneas que usan FS -FileSystem*/
 
-const productsRouter = require("./Routes/productRoutes.js"); 
-const cartRouter = require("./Routes/cartRoutes.js");
+const productsRouter = require("./routes/productRoutes.js"); 
+const cartRouter = require("./routes/cartRoutes.js");
 const fs = require('fs');
-const viewsRouter = require('./Routes/view.router.js');
+const viewsRouter = require('./routes/view.router.js');
 const filePath = path.join(__dirname, 'productos_test.json');
 const { ProductManager } = require('./dao/file/productDaoFile.js');
 const productManager = new ProductManager('productos_test.json');
 
 /*Reemplazando FS por MongoDB*/
 
-const productsRouterDB = require("./Routes/productRoutesDB.js"); 
-const cartRouterDB = require("./Routes/cartRoutesDB.js");
-const messagesRouter = require('./Routes/messageRoutesDB.js');
+const productsRouterDB = require("./routes/productRoutesDB.js"); 
+const cartRouterDB = require("./routes/cartRoutesDB.js");
+const messagesRouter = require('./routes/messageRoutesDB.js');
 const  ProductManagerDB  = require('./dao/mongo/productDaoDB.js');
 const productManagerDB = new ProductManagerDB();
 const  CartManagerDB  = require('./dao/mongo/cartDaoDB.js');
@@ -29,10 +30,9 @@ const messageManager = new MessagesManagerDB();
 /*Cookie, session, store*/
 
 const session = require('express-session')
-const sessionRoutes = require('./Routes/sessionRoutes.js')
+const sessionRoutes = require('./routes/sessionRoutes.js')
 const cookieParser = require('cookie-parser');
 app.use(cookieParser('clavedecookie'));
-const testRoutes = require('./Routes/testRoutes.js')
 const FileStore = require('session-file-store')
 const MongoStore = require('connect-mongo')
 const passport = require('passport')
@@ -78,10 +78,18 @@ const cors = require('cors');
 app.use(cors());
 
 
-/* RUTAS */
+/*Middleware de logger*/
+
+app.use(addLogger)
+
+
+/* Rutas */
+
 app.use(appRouter)  
 
+
 /*Middleware de errores*/
+
 const { handleErrors } = require('./middleware/errors/index.js')
 app.use(handleErrors)
 
@@ -90,8 +98,9 @@ app.use(handleErrors)
 
 const { connectDB } = require('./config/connectDB.js')
 const PORT = configObject.port;
-const httpServer = app.listen(PORT,()=>console.log(`Escuchando puerto ${PORT}`));
+const httpServer = app.listen(PORT,()=>console.log(`Escuchando puerto: ${PORT}`));
 connectDB();
+
 
 /*Handlebars*/
 
