@@ -1,9 +1,8 @@
 const { program } = require("../utils/commander")
 const MongoSingleton = require("../utils/mongoSingleton")
 const dotenv = require('dotenv')
-
-
 const { mode } = program.opts()
+
 
 dotenv.config({
     path: mode === 'development' ? './.env.development' : './.env.production'

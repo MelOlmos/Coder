@@ -79,7 +79,7 @@ router.get('/products', async (req, res) => {
         cartId: req.session.user.cartID
         
     });
-   console.log(`Id de cart y user: ${req.session.user.cartID}`)
+   
 }   catch (error) {
         console.error('Error en la consulta de productos: ', error);
         res.status(500).send('Error de servidor');
@@ -118,9 +118,8 @@ router.get('/register', (req, res) => {
 router.get('/products/:productId', async (req, res) => {
     try {
         const productId = req.params.productId;
-        console.log(productId)
         const product = await productManagerDB.getBy({_id: productId});
-        console.log(product)
+        
 
         if (!product) {
             return res.status(404).json({ error: 'Producto no encontrado' });
