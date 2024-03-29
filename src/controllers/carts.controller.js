@@ -2,6 +2,7 @@ const express = require('express');
 const { cartService } = require('../repositories/index.js');
 const { productService } = require('../repositories/index.js')
 const { ticketService } = require('../repositories/index.js')
+const { logger } = require('../utils/logger.js');
 
 
 class CartController {
@@ -14,7 +15,7 @@ class CartController {
         try {    
             const cartId = req.params.cartId;
             const { productId, quantity } = req.body;
-            req.logger.debug(req.body);
+            
     
             // Llama al service para agregar el producto al carrito
             const updatedCart = await cartService.addProductToCart(cartId, { productId, quantity });
@@ -178,8 +179,6 @@ class CartController {
             const createdTicket = await ticketService.createTicket(ticketData);
 
             // Antes de la llamada a updateCart
-            console.log('Cart ID:', cartId);
-            console.log('Products not purchased:', productsNotPurchased);
 
             if (productsNotPurchased.length === 0) {
                 await cartService.deleteAllProductsFromCart(cartId);
@@ -213,7 +212,7 @@ class CartController {
                 message: 'Product deleted from cart'
             })        
         } catch (error) {
-            console.log(error)
+            logger.debug(error)
         }
     }
 

@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const { faker } = require('@faker-js/faker');
+const { addLogger } = require('../utils/logger');
 
 /*Test de cookies*/
 
@@ -71,7 +72,7 @@ createMockingProduct = () => {
 
 
 /*Logger test*/
-router.get('/loggertest', (req, res) => {
+router.get('/loggertest', addLogger, (req, res) => {
     req.logger.info('Info ejecutándose')
     res.send('Logger ejecutándose, ¡sííí!')
 })

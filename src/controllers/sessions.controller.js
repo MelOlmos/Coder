@@ -3,10 +3,8 @@ const passport = require('passport');
 const { generateToken } = require('../utils/jsonwebtoken.js');
 const UserManagerDB = require('../dao/mongo/userDaoDB.js')
 const { UserDto } = require('../dto/userDto.js');
-
 const CartManagerDB = require('../dao/mongo/cartDaoDB.js');
 const cartManager = new CartManagerDB();
-
 
 
 
@@ -88,7 +86,7 @@ login = async (req, res) => {
     const {email, password} = req.body
     //busco el usuario en la DB
     const userFoundDB = await this.userService.getBy({email})
-    console.log(userFoundDB)
+    
     if (!userFoundDB) {
         return res.send('login failed <a href="/register">REGISTER</a>');
     }
@@ -110,7 +108,7 @@ login = async (req, res) => {
         role: userFoundDB.role,
         cartID: userFoundDB.cartID
     };
-    console.log(req.session.user.cartID)
+    
     return res.redirect('/products');
 }
 

@@ -7,7 +7,7 @@ program
     .option('-d', 'Variable para debug', false)
     .option('-p, --port <port>', 'puerto en el que se inicia nuestro server', 8080)
     .option('--mode <port>', 'modo de uso de nuestro server', 'production')
-    .option('-u <user>', 'Usuario utilizando el server', 'No se a declarado un usuario')
+    .option('-u <user>', 'Usuario utilizando el server', 'No se ha declarado un usuario')
     .parse()
 
     const {

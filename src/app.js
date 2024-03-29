@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const appRouter = require('./routes/index.js')
 const {configObject} = require('./config/connectDB.js')
-const { addLogger } = require('./utils/logger.js')
+const { logger, addLogger } = require('./utils/logger.js')
 
 /*Líneas que usan FS -FileSystem*/
 
@@ -98,7 +98,7 @@ app.use(handleErrors)
 
 const { connectDB } = require('./config/connectDB.js')
 const PORT = configObject.port;
-const httpServer = app.listen(PORT,()=>console.log(`Escuchando puerto: ${PORT}`));
+const httpServer = app.listen(PORT,()=>logger.info(`Escuchando puerto: ${PORT}`));
 connectDB();
 
 
@@ -119,7 +119,7 @@ let productList = [];
 let messages = [];
 
 io.on('connection', socket=> {
-    console.log('Nuevo cliente conectado');
+  logger.info(`Nuevo cliente conectado | ${new Date().toLocaleTimeString()}`)
     // Escuchando newProduct
     socket.on('newProduct', data => {
         let newProductId = productManager.addProduct(data);
@@ -146,9 +146,9 @@ io.on('connection', socket=> {
     io.emit('messageLogs', messages);
     try {
         await messageManager.addMessage(data.user, data.message);
-        console.log('Mensaje agregado a MongoDB correctamente');
+        logger.info('Mensaje agregado a MongoDB correctamente');
       } catch (error) {
-        console.log(`Error al guardar mensaje en MongoDB: ${error.message}`);
+        logger.error(`Error al guardar mensaje en MongoDB: ${error.message}`);
       }
     })
 });

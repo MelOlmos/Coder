@@ -3,7 +3,7 @@ const {Command } = require('commander')
 const program = new Command()
 
 program
-    .option('--mode <mode>', 'especificación de entorno', 'production')
+    .option('--mode <mode>', 'especificación de entorno', 'development')
     .parse()
 
 

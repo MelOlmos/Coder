@@ -1,14 +1,17 @@
 const  mongoose = require("mongoose")
+const { logger } = require('./logger.js');
+
 
 class MongoSingleton {
     static #instance
     constructor(){
-        mongoose.connect('mongodb+srv://melolmos27:Bocajuniors12!@ecommerce.ss8x3tx.mongodb.net/')
+        mongoose.connect('mongodb+srv://melolmos27:Bocajuniors12!@ecommerce.ss8x3tx.mongodb.net/');
+        this.logger = logger
     }
 
     static getInstance(){
         if(this.#instance){
-            console.log('Base de datos previamente conectada')
+        logger.info(`Database previously connected :) | ${new Date().toLocaleTimeString()}`)   
             return this.#instance
         }
     
