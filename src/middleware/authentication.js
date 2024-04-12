@@ -1,4 +1,4 @@
-const authorization = (roleArray) => {
+ const authorization = (roleArray) => {
     return async (req, res, next) => {
         if (roleArray[0] === 'user')  return next(); 
         else if (roleArray[0] === 'admin') {return res.status(403).json({status:'error', error: 'Not permissions'})}
@@ -17,4 +17,4 @@ function auth (req, res, next) {
 module.exports = { 
     auth,
     authorization 
- }
+ } 

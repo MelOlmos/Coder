@@ -55,21 +55,10 @@ app.use(session({
 //passport
 initializePassport();
 app.use(passport.initialize());
-// app.use(passport.session());
 
 
 
-//Configura el middleware de sesión
-/* const FileStore = FileStore(session)
-app.use(session({
-    secret: 'palabrasecreta',
-    resave: true,
-    saveUninitialized: true
-  })); */
-
-
-  
-  /*Express y Socket*/
+/*Express y Socket*/
 
 const { Server } = require('socket.io');
 app.use(express.urlencoded({extended:true}));

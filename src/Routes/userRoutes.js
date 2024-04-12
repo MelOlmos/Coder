@@ -8,15 +8,17 @@ const {
     getUser,
     getUsers,
     createUser,
-    updateUser,
-    deleteUser
+    deleteUser,
+    changeUserRole,
+    updateUser
 } = new UserController ();
 
 usersRouter
-    .get('/', passportCall('jwt'), authorization (['premium_user', 'admin']), getUsers)
+    .get('/', passportCall('jwt'), authorization (['premium', 'admin']), getUsers)
     .post('/', createUser)
     .get('/:uid', getUser)
-    .put('/:uid', updateUser)
     .delete('/:uid', deleteUser)
+    .put('/premium/:uid', passportCall('jwt'), authorization(['admin']), changeUserRole)
+    .put('/:uid', updateUser)
 
 module.exports = usersRouter

@@ -19,7 +19,7 @@ const productRouter = Router();
 productRouter
     .get('/', getProducts)
     .get('/:pid', getProductById)
-    .post('/', createProduct) // elimino momentáneamente el middle para hacer pruebas postman
+    .post('/', passport.authenticate('jwt', { session: false }),  authorization(['premium', 'admin']), createProduct) //
     .put('/:pid', passport.authenticate('jwt', { session: false }),  authorization(['admin']), updateProduct) // PUT solo para admin
     .delete('/:pid', passport.authenticate('jwt', { session: false }),  authorization(['admin']), deleteProduct) // DELETE solo para admin
 

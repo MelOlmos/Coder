@@ -16,6 +16,11 @@ const productsSchema = new mongoose.Schema ({
         isActive: {
             type: Boolean,
             default: true
+        },
+        owner: {
+            type: String,
+            default: 'admin', 
+            required: true 
         }
         
 })

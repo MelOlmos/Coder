@@ -62,6 +62,27 @@ class UserController {
             console.log(error)
         }
     }
+
+    changeUserRole = async (req, res) => {
+        const { uid } = req.params;
+        const { role } = req.body;
+    
+        try {
+          // Verifica si el usuario existe
+          const user = await userService.getUser({_id: uid});
+          if (!user) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
+          }
+    
+          // Actualiza el rol del usuario
+          user.role = role;
+          await user.save();
+    
+          res.json({ message: 'Rol de usuario actualizado correctamente' });
+        } catch (error) {
+          res.status(500).json({ error: 'Error al cambiar el rol del usuario' });
+        }
+      }
 }
 
 module.exports = UserController
