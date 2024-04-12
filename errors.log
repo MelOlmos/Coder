@@ -1,0 +1,91 @@
+info: GET en /api/test/loggertest | 16:12:03
+info: GET en /loggertest | 16:12:03
+info: Info ejecutándose
+info: GET en /api/test/loggertest | 16:27:41
+info: GET en /loggertest | 16:27:41
+info: Info ejecutándose
+info: GET en /api/test/loggertest | 16:42:54
+info: GET en /loggertest | 16:42:54
+info: Info ejecutándose
+info: GET en /api/test/loggertest | 16:55:54
+info: GET en /loggertest | 16:55:55
+info: Info ejecutándose
+info: GET en /api/test/loggertest | 17:06:05
+info: GET en /api/test/loggertest | 17:12:54
+info: GET en /loggertest | 17:12:54
+info: Info ejecutándose
+info: GET en /api/test/loggertest | 17:24:15
+info: GET en /loggertest | 17:24:15
+info: Info ejecutándose
+info: GET en /api/test/loggertest | 17:30:59
+info: GET en /loggertest | 17:30:59
+info: Info ejecutándose
+info: GET en /api/test/loggertest | 17:33:25
+info: GET en /loggertest | 17:33:25
+info: Info ejecutándose
+info: GET en /api/test/loggertest | 17:39:40
+info: GET en /loggertest | 17:39:40
+info: Info ejecutándose
+info: GET en /api/test/loggertest | 17:59:04
+info: GET en /loggertest | 17:59:04
+info: Info ejecutándose
+info: Database previously connected :)
+info: Database previously connected :) | 18:03:33
+info: GET en / | 18:05:06
+info: GET en /js/index.js | 18:05:07
+info: Database previously connected :) | 18:06:38
+info: Database previously connected :) | 18:07:55
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 18:07:57
+info: GET en /chat | 18:09:31
+info: GET en /login | 18:10:18
+info: POST en /api/session/login | 18:10:22
+info: GET en /products | 18:10:24
+info: GET en /chat | 18:11:15
+info: GET en /js/index.js | 18:11:16
+info: Nuevo cliente conectado | 18:11:16
+info: Database previously connected :) | 18:19:15
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 18:19:16
+info: GET en /chat | 18:19:59
+info: GET en /js/index.js | 18:20:00
+info: Nuevo cliente conectado | 18:20:00
+info: Mensaje agregado a MongoDB correctamente
+info: Database previously connected :) | 18:21:09
+info: Database previously connected :) | 18:57:10
+info: Database previously connected :) | 19:03:34
+info: Database previously connected :) | 19:35:25
+info: Escuchando puerto: 8080
+info: Database previously connected :) | 19:47:40
+info: Escuchando puerto: 8080
+info: GET en /products/ | 19:48:09
+info: GET en /api/test/loggertest | 19:48:21
+info: GET en /loggertest | 19:48:21
+info: Info ejecutándose
+info: GET en /products | 19:51:47
+info: POST en /api/carts/65fb7a37134080efbeee5b76/products | 19:51:51
+info: POST en /api/carts/65fb7a37134080efbeee5b76/products | 19:51:53
+info: GET en /api/carts/65fb7a37134080efbeee5b76/purchase | 19:51:55
+info: Database previously connected :) | 19:58:44
+info: Escuchando puerto: 8080
+info: Database previously connected :) | 20:08:40
+info: Escuchando puerto: 8080
+info: GET en /products/65f61bd064b452e91a97e463 | 20:08:42
+info: GET en /api/carts/65fb7a37134080efbeee5b76/purchase | 20:08:58
+info: Database previously connected :) | 20:23:02
+info: Escuchando puerto: 8080
+info: GET en /api/test/loggertest | 20:25:23
+info: GET en /loggertest | 20:25:23
+info: Info ejecutándose
+error: Error ejecutándose
+fatal: Fatal ejecutándose
+info: GET en /api/test/loggertest | 20:25:26
+info: GET en /loggertest | 20:25:26
+info: Info ejecutándose
+error: Error ejecutándose
+fatal: Fatal ejecutándose
+info: GET en /login | 20:26:02
+info: POST en /api/session/login | 20:26:06
+info: GET en /products | 20:26:07
+info: GET en /products/65f6107064b452e91a97e452 | 20:26:09
+info: GET en /api/carts/65fb7a37134080efbeee5b76/purchase | 20:26:11
