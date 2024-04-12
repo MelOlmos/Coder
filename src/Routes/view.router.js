@@ -137,5 +137,19 @@ router.get('/products/:productId', async (req, res) => {
     }
 });
 
+//Vista de form olvidé mi contraseña
+router.get('/forgot-password', (req, res) => {
+    res.render('forgotPassword')
+})
+
+//Vista de form para cambiar la clave
+router.get('/new-password', (req, res) => {
+    res.render('newPassword')
+})
+
+//Vista de contraseña cambiada
+router.post('/password-changed', (req,res) => {
+    res.render('passwordChanged')
+})
 
 module.exports = router;

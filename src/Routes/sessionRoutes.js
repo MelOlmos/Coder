@@ -15,7 +15,10 @@ const {
     faillogin,
     logout,
     githubcallback,
-    current
+    current,
+    forgotPasswordForm,
+    postForgotPassword,
+    changePassword
 } = new SessionController()
 
 const productController = new ProductController();
@@ -52,5 +55,18 @@ router.post('/logout', logout)
 router.get('/current', passport.authenticate('jwt',{session:false}), current)
 
 
+//OLVIDÉ MI CONTRASEÑA
+router.get('/forgot-password', forgotPasswordForm);
+
+
+//POST DE FORMULARIO DE CONTRASEÑA OLVIDADA
+router.post('/forgot-password', postForgotPassword);
+
+
+//CAMBIAR LA CONTRASEÑA
+router.use('/new-password', changePassword);
+
+//CONTRASEÑA ACTUALIZADA
+router.post('/password-changed', changePassword)
   
 module.exports = router

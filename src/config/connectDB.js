@@ -12,7 +12,9 @@ configObject = {
     port:           process.env.PORT || 8080,
     mongo_url:      process.env.MONGO_URL,
     jwt_secret_Key: process.env.JWT_SECRET_KEY,
-    persistence:    process.env.PERSISTENCE
+    persistence:    process.env.PERSISTENCE,
+    gmail_pass:     process.env.GMAIL_PASS,
+    gmail_user:     process.env.GMAIL_USER
 }
 
 connectDB = async () => {

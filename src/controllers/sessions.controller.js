@@ -5,6 +5,8 @@ const UserManagerDB = require('../dao/mongo/userDaoDB.js')
 const { UserDto } = require('../dto/userDto.js');
 const CartManagerDB = require('../dao/mongo/cartDaoDB.js');
 const cartManager = new CartManagerDB();
+const { generateResetToken, verifyResetToken } = require('../utils/tokenUtils.js');
+const { sendEmail } = require('../utils/sendMail.js')
 
 
 
@@ -164,6 +166,72 @@ githubcallback = async(req,res) => {
     }
 }
 
+forgotPasswordForm = (req, res) => {
+    res.render('forgotPassword');
+};
+
+
+postForgotPassword = async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        // Busca el usuario por su correo electrónico
+        const user = await this.userService.getBy({ email });
+
+        if (!user) {
+            return res.status(404).send('Usuario no encontrado');
+        }
+
+        // Genera el token de restablecimiento
+        const token = generateResetToken(user._id);
+
+        // Crea el link de restablecimiento
+        const resetLink = `http://localhost:5000/new-password?token=${token}`;
+
+        // Envia el correo de restablecimiento
+        await sendEmail({
+            to: email,
+            subject: 'Restablecer contraseña',
+            html: `Haz clic <a href="${resetLink}">aquí</a> para restablecer tu contraseña.`,
+        });
+
+        res.render('resetEmailSent', { email }); 
+    } catch (error) {
+        res.status(500).send('Error al enviar el correo de restablecimiento.');
+    }
+};
+
+
+changePassword = async (req, res) => {
+    const { token, newPassword } = req.body;
+
+    try {
+        // Verifica si el token es válido
+        const decodedToken = verifyResetToken(token);
+        if (!decodedToken) {
+            return res.status(400).send('Token inválido o expirado');
+        }
+
+        // Busca el usuario por id en la db
+        const user = await this.userService.getById({ email: decodedToken.email });
+        if (!user) {
+            return res.status(404).send('Usuario no encontrado');
+        }
+        
+        //compara las contraseñas que no sean iguales
+        if (isValidPassword(newPassword, user.password)) {
+            return res.status(400).send('La nueva contraseña debe ser diferente a la contraseña actual');
+        }
+        // Actualiza la contraseña del usuario
+        user.password = createHash(newPassword);
+        await user.save();
+
+
+        res.send('Contraseña actualizada correctamente');
+    } catch (error) {
+        res.status(500).send('Error al cambiar la contraseña');
+    }
+};
 }
 
 module.exports = SessionController
