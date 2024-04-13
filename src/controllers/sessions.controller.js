@@ -170,6 +170,10 @@ forgotPasswordForm = (req, res) => {
     res.render('forgotPassword');
 };
 
+newPasswordForm = (req, res) => {
+    res.render('newPassword', { token });
+};
+
 
 postForgotPassword = async (req, res) => {
     const { email } = req.body;
@@ -203,35 +207,38 @@ postForgotPassword = async (req, res) => {
 
 
 changePassword = async (req, res) => {
-    const { token, newPassword } = req.body;
-
     try {
+        const { newPassword, token } = req.body;
+
         // Verifica si el token es válido
         const decodedToken = verifyResetToken(token);
         if (!decodedToken) {
             return res.status(400).send('Token inválido o expirado');
         }
 
-        // Busca el usuario por id en la db
-        const user = await this.userService.getById({ email: decodedToken.email });
+        // Busca el usuario por su correo electrónico en la db
+        const user = await this.userService.getBy({_id: decodedToken.userId});
+        
         if (!user) {
             return res.status(404).send('Usuario no encontrado');
         }
-        
-        //compara las contraseñas que no sean iguales
-        if (isValidPassword(newPassword, user.password)) {
+
+        // Verifica que las contraseñas sean distintas
+        const isSamePassword = await isValidPassword(newPassword, user.password);
+        if (isSamePassword) {
             return res.status(400).send('La nueva contraseña debe ser diferente a la contraseña actual');
         }
-        // Actualiza la contraseña del usuario
+
+        // Actualiza la contraseña 
         user.password = createHash(newPassword);
         await user.save();
 
-
-        res.send('Contraseña actualizada correctamente');
+        res.send('Contraseña actualizada correctamente <a href="/login">Go to Login</a>');
     } catch (error) {
-        res.status(500).send('Error al cambiar la contraseña');
+        res.status(500).send('Error al cambiar la contraseña'+error);
     }
 };
+
 }
 
 module.exports = SessionController

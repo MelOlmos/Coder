@@ -18,6 +18,7 @@ const {
     current,
     forgotPasswordForm,
     postForgotPassword,
+    newPasswordForm,
     changePassword
 } = new SessionController()
 
@@ -64,9 +65,10 @@ router.post('/forgot-password', postForgotPassword);
 
 
 //CAMBIAR LA CONTRASEÑA
-router.use('/new-password', changePassword);
+router.get('/new-password', newPasswordForm);
+
 
 //CONTRASEÑA ACTUALIZADA
-router.post('/password-changed', changePassword)
+router.post('/new-password', changePassword);
   
 module.exports = router

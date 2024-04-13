@@ -8,19 +8,19 @@ const generateResetToken = (userId) => {
         userId,
         type: 'resetPassword',
     };
- // Calcula la fecha de expiración en una hora
- const expirationTime = new Date().getTime() + 60 * 60 * 1000; // 1 hora en milisegundos
 
-    const token = jwt.sign(payload, SECRET_KEY, { expiresIn: Math.floor(expirationTime / 1000) });
+    const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '1h' });
     return token;
 };
 
 // Verificar y decodificar un token de reseteo de pass
 const verifyResetToken = (token) => {
+    
     try {
         const decoded = jwt.verify(token, SECRET_KEY);
         return decoded;
     } catch (error) {
+        console.log('Error al verificar el token:', error);
         return null;
     }
 };

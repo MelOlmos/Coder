@@ -11,7 +11,8 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "C:\\Users\\Mel\\Documents\\Mel\\Coder backend\\Backend node\\Coder\\src\\app.js"
+            "program": "C:\\Users\\Mel\\Documents\\Mel\\Coder backend\\Backend node\\Coder\\src\\app.js",
+            "console": "integratedTerminal"
         }
     ]
 }
