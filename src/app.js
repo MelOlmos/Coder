@@ -4,6 +4,8 @@ const path = require('path');
 const appRouter = require('./routes/index.js')
 const {configObject} = require('./config/connectDB.js')
 const { logger, addLogger } = require('./utils/logger.js')
+const swaggerJsDocs= require('swagger-jsdoc')
+const swaggerUiExpress = require ('swagger-ui-express')
 
 /*Líneas que usan FS -FileSystem*/
 
@@ -89,6 +91,22 @@ const { connectDB } = require('./config/connectDB.js')
 const PORT = configObject.port;
 const httpServer = app.listen(PORT,()=>logger.info(`Escuchando puerto: ${PORT}`));
 connectDB();
+
+/*Swagger*/
+
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.1',
+    info: {
+      title: 'Documentación app ecommerce',
+      description: 'Descripción de app ecommerce'
+    }
+
+  },
+  apis: [`${__dirname}/docs/**/*.yaml`]
+}
+const specifications = swaggerJsDocs(swaggerOptions)
+app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specifications))
 
 
 /*Handlebars*/

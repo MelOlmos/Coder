@@ -1,0 +1,156 @@
+paths: 
+  /api/products-db/:
+    get:
+      summary: Obtiene los productos de la DB de Mongo
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Trae correctamente los productos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/product'
+        "500":
+          description: Error de servidor al traer los productos
+        "401":
+          description: Unauthorized
+    post:
+      summary: Este endpoint crea un producto
+      tags:
+        - Product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/createProduct'
+      responses:
+        "201":
+          description: El producto se creó con éxito en la DB.
+        "500":
+          description: Error de servidor al traer los productos
+        "401":
+          description: Unauthorized
+  /api/products-db/{pid}:
+    get:
+      summary: Obtiene un producto por su id
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: El id del producto que solicita, llamado pid
+          schema: 
+            type: string
+      responses:
+        "200":
+          description: El producto se obtuvo correctamente
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/product'
+components:
+  schemas:
+    product:
+      type: object
+      properties:
+        _id:
+          type: ObjectId('jkndjfs5d68d86sds57sfdfs')
+          description: Id autogenerado por Mongo
+        title:
+          type: string
+          description: Título del producto
+        description:
+          type: string
+          description: Descripción del producto
+        price:
+          type: number
+          description: Precio del producto
+        thumbnail:
+          type: string
+          description: URL de la imagen del producto
+        code:
+          type: string
+          description: Código del producto, no puede ser igual a otro
+        stock:
+          type: number
+          description: Cantidad en stock del producto
+        category:
+          type: string
+          description: Categoría del producto
+        isActive:
+          type: boolean
+          description: Indica si el producto está activo o no
+          default: true
+        owner:
+          type: string
+          description: Email del propietario del producto, por defecto admin
+          default: admin
+      required:
+        - title
+        - description
+        - price
+        - thumbnail
+        - code
+        - stock
+        - category
+        - owner
+      example:
+        _id: ObjectId('jkndjfs5d68d86sds57sfdfs')
+        title: Camisa de algodón
+        description: Camisa de manga larga para hombre
+        price: 3500
+        thumbnail: https://localhost/imagen_camisa.jpg
+        code: CAM001
+        stock: 50
+        category: Ropa
+        isActive: true
+        owner: admin
+  
+  requestBodies:
+    createProduct:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Título del producto
+        description:
+          type: string
+          description: Descripción del producto
+        price:
+          type: number
+          description: Precio del producto
+        thumbnail:
+          type: string
+          description: URL de la imagen del producto
+        code:
+          type: string
+          description: Código del producto, no puede ser igual a otro
+        stock:
+          type: number
+          description: Cantidad en stock del producto
+        category:
+          type: string
+          description: Categoría del producto
+        isActive:
+          type: boolean
+          description: Indica si el producto está activo o no
+          default: true
+        owner:
+          type: string
+          description: Email del propietario del producto, por defecto admin
+          default: admin
+      example:
+        title: Nuevo nombre de producto
+        description: Esta es una  descripción
+        price: 2000
+        thumbnail: URL de la imagen
+        code: C004
+        stock: 100
+        category: Categoría del producto
+        isActive: true
+        owner: m@gmail.com
