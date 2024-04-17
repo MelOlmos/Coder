@@ -14,7 +14,7 @@ class CartRepository {
         const updatedCart = await this.dao.addProductToCart(cartId, productId, quantity);
         return updatedCart
     }
-    deleteProductFromCart = async (cid, pid)=> await this.dao.deleteItem(cid, pid)
+    deleteProductFromCart = async (cartId, pid)=> await this.dao.deleteItem(cartId, pid)
     calculateCartAmount = async (cartId) => await this.dao.calculateCartAmount(cartId);
     deleteAllProductsFromCart = async (cartId) => {
         const updatedCart = await this.dao.deleteAllProductsFromCart(cartId);

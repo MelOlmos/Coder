@@ -89,3 +89,14 @@ info: POST en /api/session/login | 20:26:06
 info: GET en /products | 20:26:07
 info: GET en /products/65f6107064b452e91a97e452 | 20:26:09
 info: GET en /api/carts/65fb7a37134080efbeee5b76/purchase | 20:26:11
+info: Database previously connected :) | 18:58:57
+info: Escuchando puerto: 8080
+info: Database previously connected :) | 18:06:52
+info: Escuchando puerto: 8080
+info: GET en /apidocs | 18:06:58
+info: GET en /apidocs/ | 18:06:58
+info: GET en /apidocs/swagger-ui.css | 18:06:58
+info: GET en /apidocs/swagger-ui-bundle.js | 18:06:58
+info: GET en /apidocs/swagger-ui-standalone-preset.js | 18:06:58
+info: GET en /apidocs/swagger-ui-init.js | 18:06:58
+info: GET en /apidocs/favicon-32x32.png | 18:07:00

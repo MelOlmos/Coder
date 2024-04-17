@@ -205,8 +205,8 @@ class CartController {
     /*Para borrar un solo item del cart*/
     deleteProductFromCart  = async (req, res) => {
         try {
-            const { cid, pid } = req.params
-            const resp = await cartService.deleteProductFromCart(cid, pid)
+            const { cartId, pid } = req.params
+            const resp = await cartService.deleteProductFromCart(cartId, pid)
             res.status(200).json({
                 status: 'success',
                 message: 'Product deleted from cart'
