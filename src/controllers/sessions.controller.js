@@ -1,5 +1,4 @@
 const { createHash, isValidPassword } = require('../utils/hashBcrypt.js');
-const passport = require('passport');
 const { generateToken } = require('../utils/jsonwebtoken.js');
 const UserManagerDB = require('../dao/mongo/userDaoDB.js')
 const { UserDto } = require('../dto/userDto.js');
@@ -49,7 +48,7 @@ register = async (req, res) => {
         
         //valida si está en la Mongo DB antes de crear user
         const  createdUser = await this.userService.create(newUser)
-        console.log("created usuario" +createdUser)
+        
         if (!createdUser) {
             return res.send(`Email already exists. <a href="/login">GO TO LOGIN</a>`);
         } 

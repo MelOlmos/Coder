@@ -15,7 +15,7 @@ const {
 
 
   /* Agregar producto al carrito por ID */ 
-router.post('/:cartId/products', authorization(['user']), addProductToCart);
+router.post('/:cartId/products', authorization(['user', 'admin']), addProductToCart);
 
 /* Eliminar un producto de carrito por ID*/ 
 router.delete('/:cartId/product/:pid', deleteProductFromCart)
@@ -34,9 +34,6 @@ router.put('/:cartId', updateCart);
 
 /* Ruta para finalizar la compra de un carrito */ 
 router.get('/:cartId/purchase', purchaseCart); 
-
-/* Mostrar todos los productos de un carrito por Id*/
-/* router.get('/:cartId/products', getProductsInCart); */ 
 
 
 module.exports = router;

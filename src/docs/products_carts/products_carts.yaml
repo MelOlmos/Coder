@@ -171,7 +171,7 @@ paths:
         - name: cartId
           in: path
           required: true
-          description: El id del carrito sobre el que se opera, llamado cartId. Ejemplo id 65fbb28efc1f0038c6279624
+          description: El id del carrito sobre el que se opera, llamado cartId. Ejemplo id 662145749e3a712e0ebbf9d3
           schema: 
             type: string
       responses:
@@ -193,7 +193,7 @@ paths:
         - name: cartId
           in: path
           required: true
-          description: El id del carrito sobre el que se opera, llamado cartId. Ejemplo id 65fbb28efc1f0038c6279624
+          description: El id del carrito sobre el que se opera, llamado cartId. Ejemplo id 662145749e3a712e0ebbf9d3
           schema:
             type: string
       requestBody:
@@ -218,7 +218,7 @@ paths:
         - name: cartId
           in: path
           required: true
-          description: El id del carrito sobre el que se opera, llamado cartId. Ejemplo id 65fbb28efc1f0038c6279624
+          description: El id del carrito sobre el que se opera, llamado cartId. Ejemplo id 662145749e3a712e0ebbf9d3
           schema:
             type: string
       requestBody:
@@ -243,7 +243,7 @@ paths:
         - name: cartId
           in: path
           required: true
-          description: El id del carrito sobre el que se opera, llamado cartId. Ejemplo id 65fbb28efc1f0038c6279624
+          description: El id del carrito sobre el que se opera, llamado cartId. Ejemplo id 662145749e3a712e0ebbf9d3
           schema:
             type: string
       requestBody:
@@ -268,7 +268,7 @@ paths:
         - name: cartId
           in: path
           required: true
-          description: El id del carrito sobre el que se opera, llamado cartId. Ejemplo id 65fbb28efc1f0038c6279624
+          description: El id del carrito sobre el que se opera, llamado cartId. Ejemplo id 662145749e3a712e0ebbf9d3
           schema:
             type: string
         - name: pid
@@ -293,7 +293,7 @@ paths:
         - name: cartId
           in: path
           required: true
-          description: El id del carrito sobre el que se opera, llamado cartId. Ejemplo id 65fbb28efc1f0038c6279624
+          description: El id del carrito sobre el que se opera, llamado cartId. Ejemplo id 662145749e3a712e0ebbf9d3
           schema:
             type: string            
       responses:

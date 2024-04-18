@@ -58,7 +58,7 @@ class CartManagerDB {
     }
   }
 
-  async update(cartId, { productId, quantity }) {
+  async update(cartId, { products }) {
     try {
       // Verificar si el carrito existe
       const cart = await cartsModel.findById(cartId).populate('products.product');
@@ -75,8 +75,8 @@ class CartManagerDB {
           // Si el producto ya está en el carrito, actualizar la cantidad
           cart.products[existingProductIndex].quantity += quantity;
       } else {
-          // Si el producto no está en el carrito, agregarlo con cantidad especificada
-          cart.products.push({ product: productId, quantity });
+          // Si el producto no está en el carrito, reemplaza todo por los nuevos productos
+          cart.products = products;
       }
 
 

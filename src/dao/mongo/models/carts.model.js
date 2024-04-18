@@ -8,6 +8,7 @@ const cartsCollection = 'carts';
 const cartsSchema = new schema ({
     products: {
         type: [{
+            _id: false,
             product: {
                 type: schema.Types.ObjectId,
                 ref: 'products'
