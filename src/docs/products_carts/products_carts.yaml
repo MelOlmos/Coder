@@ -22,7 +22,7 @@ paths:
           description: Unauthorized
   #regionpost
     post:
-      summary: Este endpoint crea un producto. Solo funciona con rol admin y es correcto.
+      summary: Este endpoint crea un producto. /VER QUE SOLO FUNCIONA COMO ADMIN
       tags:
         - Products
       requestBody:
