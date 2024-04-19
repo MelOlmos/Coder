@@ -4,7 +4,7 @@ paths:
   /api/products-db/:
   #regionget
     get:
-      summary: Obtiene los productos de la DB de Mongo
+      summary: Obtiene los productos de la DB de Mongo. /VER QUE FUNCIONA COMO ADMIN SOLO
       tags:
         - Products
       responses:
@@ -22,7 +22,7 @@ paths:
           description: Unauthorized
   #regionpost
     post:
-      summary: Este endpoint crea un producto
+      summary: Este endpoint crea un producto. Solo funciona con rol admin y es correcto.
       tags:
         - Products
       requestBody:
@@ -41,7 +41,7 @@ paths:
   /api/products-db/{pid}:
   #regionget
     get:
-      summary: Obtiene un producto por su id
+      summary: Obtiene un producto por su id. /VER QUE SOLO FUNCIONA COMO ADMIN
       tags:
         - Products
       parameters:
@@ -64,7 +64,7 @@ paths:
           description: Unauthorized
   #regionput
     put:
-      summary: Actualiza un producto accediendo por su id
+      summary: Actualiza un producto accediendo por su id. /VER QUE SOLO FUNCIONA COMO ADMIN
       tags:
         - Products
       parameters:
@@ -89,7 +89,7 @@ paths:
           description: Unauthorized
   #region patch
     patch:
-      summary: Actualiza parte del producto accediendo por su id. 
+      summary: Actualiza parte del producto accediendo por su id. /VER QUE SOLO FUNCIONA COMO ADMIN
       tags:
         - Products
       parameters:
@@ -105,9 +105,16 @@ paths:
           application/json:
             schema:
               $ref: '#/components/requestBodies/updateProduct'
+      responses:
+        "200":
+          description: El producto se actualizó correctamente
+        "500":
+          description: Error de servidor al actualizar el producto
+        "401":
+          description: Unauthorized
   #regiondelete
     delete:
-      summary: Elimina un producto accediendo por su id (borrado lógico).
+      summary: Elimina un producto accediendo por su id (borrado lógico)./VER QUE SOLO FUNCIONA COMO ADMIN
       tags:
         - Products
       parameters:
@@ -128,7 +135,7 @@ paths:
   /api/carts/:
   #region get
     get:
-      summary: Obtiene todos los carritos de la DB //Este endpoint funciona y no da unauthorized :)))))))
+      summary: Obtiene todos los carritos de la DB. Funciona con o sin login.
       tags:
         - Carts
       responses:
@@ -146,7 +153,7 @@ paths:
           description: Unauthorized
   #region post
     post:
-      summary: Este endpoint crea un carrito
+      summary: Este endpoint crea un carrito / VER QUE DA ERROR DE AUTENTICACIÓN PROBANDO COMO ADMIN
       tags:
         - Carts
       requestBody:
@@ -164,7 +171,7 @@ paths:
           description: Unauthorized
   /api/carts/{cartId}:
     get:
-      summary: Obtiene un carrito llamando por su id. //Este endpoint funciona y no da unauthorized :)))))))
+      summary: Obtiene un carrito llamando por su id. Funciona con o sin login.
       tags:
         - Carts
       parameters:
@@ -186,7 +193,7 @@ paths:
         "401":
           description: Unauthorized
     put:
-      summary: Actualiza un carrito accediendo por su id //Este endpoint funciona y no da unauthorized :)))))))
+      summary: Actualiza un carrito accediendo por su id. Funciona con o sin login.
       tags:
         - Carts
       parameters:
@@ -236,7 +243,7 @@ paths:
           description: Unauthorized
   /api/carts/{cartId}/products/:
     post:
-      summary: Este endpoint agrega un producto al carrito
+      summary: Este endpoint agrega un producto al carrito. Funciona logueado con cualquier rol.
       tags:
         - Carts
       parameters:
@@ -261,7 +268,7 @@ paths:
           description: Unauthorized
   /api/carts/{cartId}/product/{pid}:
     delete:
-      summary: Elimina un producto del carrito accediendo por id de carrito y id de producto // REVISAR QUE DA 200 PERO NO ELIMINA
+      summary: Elimina un producto del carrito accediendo por id de carrito y id de producto. Funciona con o sin login.
       tags:
         - Carts
       parameters:
@@ -386,9 +393,9 @@ components:
         - quantity
       example:
         products:
-          - product: 65f61b5a64b452e91a97e45a
+          - productId: 65f61b5a64b452e91a97e45a
             quantity: 3
-          - product: 65f6107064b452e91a97e452
+          - productId: 65f6107064b452e91a97e452
             quantity: 1
   #ticket components
     ticket:
@@ -511,9 +518,9 @@ components:
                 type: number
       example:
         products:
-          - product: 65f61b5a64b452e91a97e45a
+          - productId: 65f61b5a64b452e91a97e45a
             quantity: 3
-          - product: 65f6107064b452e91a97e452
+          - productId: 65f6107064b452e91a97e452
             quantity: 1
   # UPDATE CART
     updateCart:
@@ -528,6 +535,6 @@ components:
               type: number
       example:
         products:
-          - product: 65f61b9964b452e91a97e45e
+          - productId: 65f61b9964b452e91a97e45e
             quantity: 2
       

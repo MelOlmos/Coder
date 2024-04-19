@@ -65,24 +65,19 @@ class CartManagerDB {
       if (!cart) {
           throw new Error('Carrito no encontrado');
       }
+      // Crear un nuevo array de productos para el carrito actualizado
+      const newProducts = products.map(product => ({
+        product: product.productId, quantity: product.quantity
+    }));
 
-      // Buscar el producto en el carrito
-      const existingProductIndex = cart.products.findIndex(
-          (cartProduct) => cartProduct.product && cartProduct.product._id.equals(productId)
-      );
-
-      if (existingProductIndex !== -1) {
-          // Si el producto ya está en el carrito, actualizar la cantidad
-          cart.products[existingProductIndex].quantity += quantity;
-      } else {
-          // Si el producto no está en el carrito, reemplaza todo por los nuevos productos
-          cart.products = products;
-      }
-
+    // Asignar el nuevo array de productos al carrito
+    cart.products = newProducts;
+    console.log(newProducts)
 
       // Guardar el carrito actualizado
       const updatedCart = await cart.save();
       return updatedCart;
+
   } catch (error) {
       throw new Error('Error actualizando el carrito: ' + error);
   }

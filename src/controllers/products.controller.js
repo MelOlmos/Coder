@@ -37,6 +37,7 @@ class ProductController {
     createProduct  = async (req, res, next) => {
         try {
             const newProductData = req.body;
+            const { title, price } = newProductData;
             if(!title || !price) {
                 CustomError.createError({
                     name: 'Product creation error',

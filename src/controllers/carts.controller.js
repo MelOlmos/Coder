@@ -14,19 +14,28 @@ class CartController {
     addProductToCart = async (req, res) => {
         try {    
             const cartId = req.params.cartId;
-            const { productId, quantity } = req.body;
-            
+            const { products } = req.body;
     
-            // Llama al service para agregar el producto al carrito
-            const updatedCart = await cartService.addProductToCart(cartId, { productId, quantity });
+            if (products && Array.isArray(products) && products.length > 0) {
+                for (const product of products) {
+                    const { productId, quantity } = product;
     
-            // carrito actualizado
+                // Llama al service para agregar cada producto al carrito
+                await cartService.addProductToCart(cartId, { productId, quantity });
+            }
+
+            // Obtener el carrito actualizado después de agregar todos los productos
+            const updatedCart = await cartService.getCart(cartId);
             res.json(updatedCart);
+            } else {
+                res.status(400).json({ error: 'Incorrect request format' });
+            }
         } catch (error) {
             req.logger.error(error.message)
             res.status(500).json({ error: error.message });
         }
-    } 
+    }
+     
 
     getAllCarts = async (req, res) => {
         try {
@@ -74,7 +83,7 @@ class CartController {
     updateCart = async (req, res) =>  {
         try {
             const cartId = req.params.cartId;
-            const updatedCartData = req.body;
+            const updatedCartData = req.body; 
             const updatedCart = await cartService.updateCart(cartId, updatedCartData);
             res.json(updatedCart);
         } catch (error) {
