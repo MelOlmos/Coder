@@ -4,7 +4,7 @@ paths:
   /api/products-db/:
   #regionget
     get:
-      summary: Obtiene los productos de la DB de Mongo. /VER QUE FUNCIONA COMO ADMIN SOLO
+      summary: Obtiene los productos de la DB de Mongo. Funciona logueado con cualquier rol.
       tags:
         - Products
       responses:
@@ -22,7 +22,7 @@ paths:
           description: Unauthorized
   #regionpost
     post:
-      summary: Este endpoint crea un producto. /VER QUE SOLO FUNCIONA COMO ADMIN
+      summary: Este endpoint crea un producto. Necesario ser admin o premium y es correcto.
       tags:
         - Products
       requestBody:
@@ -35,13 +35,13 @@ paths:
         "201":
           description: El producto se creó con éxito en la DB.
         "500":
-          description: Error de servidor al traer los productos
+          description: Error de servidor al crear el producto
         "401":
           description: Unauthorized
   /api/products-db/{pid}:
   #regionget
     get:
-      summary: Obtiene un producto por su id. /VER QUE SOLO FUNCIONA COMO ADMIN
+      summary: Obtiene un producto por su id. Funciona logueado con cualquier rol.
       tags:
         - Products
       parameters:
@@ -59,12 +59,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/product'
         "500":
-          description: Error de servidor al traer los productos
+          description: Error de servidor al traer el producto
         "401":
           description: Unauthorized
   #regionput
     put:
-      summary: Actualiza un producto accediendo por su id. /VER QUE SOLO FUNCIONA COMO ADMIN
+      summary: Actualiza un producto accediendo por su id. Necesario ser admin y es correcto.
       tags:
         - Products
       parameters:
@@ -89,7 +89,7 @@ paths:
           description: Unauthorized
   #region patch
     patch:
-      summary: Actualiza parte del producto accediendo por su id. /VER QUE SOLO FUNCIONA COMO ADMIN
+      summary: Actualiza parte del producto accediendo por su id. Necesario ser admin y es correcto.
       tags:
         - Products
       parameters:
@@ -114,7 +114,7 @@ paths:
           description: Unauthorized
   #regiondelete
     delete:
-      summary: Elimina un producto accediendo por su id (borrado lógico)./VER QUE SOLO FUNCIONA COMO ADMIN
+      summary: Elimina un producto accediendo por su id (borrado lógico). Necesario ser admin.
       tags:
         - Products
       parameters:
@@ -462,7 +462,6 @@ components:
         code: C004
         stock: 100
         category: Categoría del producto
-        isActive: true
         owner: m@gmail.com
   # UPDATE PRODUCT
     updateProduct:

@@ -3,9 +3,8 @@ const { auth } = require('../middleware/authentication.js');
 const router = Router();
 const SessionController = require('../controllers/sessions.controller.js');
 const ProductController = require('../controllers/products.controller.js');
-const passportCall = require('../middleware/passportCall.js')
 const passport = require('passport');
-const {authorization} = require('../middleware/authentication.js')
+
 
 
 const {

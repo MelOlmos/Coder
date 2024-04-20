@@ -3,6 +3,8 @@ const Router = require('express');
 const ProductController = require('../controllers/products.controller.js');
 const passport = require('passport');
 const { authorization } = require('../middleware/authentication.js');
+const { premiumDeleteAuthorization } = require('../middleware/authentication.js');
+
 
 
 const {
@@ -19,10 +21,10 @@ const productRouter = Router();
 productRouter
     .get('/', getProducts)
     .get('/:pid', getProductById)
-    .post('/', passport.authenticate('jwt', { session: false }),  authorization(['premium', 'admin']), createProduct) //
-    .put('/:pid', passport.authenticate('jwt', { session: false }),  authorization(['admin']), updateProduct) // PUT solo para admin
+    .post('/', passport.authenticate('jwt', { session: false }), authorization(['premium', 'admin']), createProduct) //
+    .put('/:pid', passport.authenticate('jwt', { session: false }), authorization(['admin']), updateProduct) // PUT solo para admin
     .patch('/:pid', updateProduct)
-    .delete('/:pid', passport.authenticate('jwt', { session: false }),  authorization(['admin']), deleteProduct) // DELETE solo para admin
+    .delete('/:pid', passport.authenticate('jwt', { session: false }), authorization(['admin', 'premium']), premiumDeleteAuthorization, deleteProduct) // DELETE solo para admin
 
 
 module.exports = productRouter;

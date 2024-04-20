@@ -25,7 +25,7 @@ router.use('/api/test', testRoutes)
 
 /*RUTAS CON MONGODB*/
 // Rutas para productos
-router.use('/api/products-db', passport.authenticate('jwt', { session: false }), authorization(['admin']),
+router.use('/api/products-db', passport.authenticate('jwt', { session: false }),
 productsRouterDB);
 // Rutas para carritos
 router.use('/api/carts', cartRouterDB);
