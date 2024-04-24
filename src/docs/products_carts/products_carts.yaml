@@ -32,7 +32,7 @@ paths:
             schema:
               $ref: '#/components/requestBodies/createProduct'
       responses:
-        "201":
+        "200":
           description: El producto se creó con éxito en la DB.
         "500":
           description: Error de servidor al crear el producto

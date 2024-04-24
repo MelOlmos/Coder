@@ -1,8 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const { CartManager } = require('../dao/file/cartDaofile');
-/* 
-const cartManager = new CartManager('carrito_test.json'); */
 
 
 /* Acá genero nuevo carrito */

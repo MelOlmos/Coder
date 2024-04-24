@@ -26,10 +26,14 @@
     "winston": "^3.13.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.17"
+    "@types/node": "^20.11.17",
+    "chai": "^5.1.0",
+    "mocha": "^10.4.0",
+    "supertest": "^6.3.4"
   },
   "scripts": {
     "start": "node src/app.js --mode production",
-    "dev": "node src/app.js --mode development"
+    "dev": "node src/app.js --mode development",
+    "t": "mocha src/test/chai.test.js"
   }
 }
