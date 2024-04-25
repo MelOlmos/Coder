@@ -34,6 +34,6 @@
   "scripts": {
     "start": "node src/app.js --mode production",
     "dev": "node src/app.js --mode development",
-    "t": "mocha src/test/chai.test.js"
+    "test": "mocha src/test/test.test.js"
   }
 }

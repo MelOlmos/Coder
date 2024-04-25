@@ -41,7 +41,7 @@ paths:
   /api/products-db/{pid}:
   #regionget
     get:
-      summary: Obtiene un producto por su id. Funciona logueado con cualquier rol.
+      summary: Obtiene un producto por su id. Funciona con o sin login.
       tags:
         - Products
       parameters:
@@ -64,7 +64,7 @@ paths:
           description: Unauthorized
   #regionput
     put:
-      summary: Actualiza un producto accediendo por su id. Necesario ser admin y es correcto.
+      summary: Actualiza un producto accediendo por su id. Necesario ser admin y es correcto. Sin login, redirecciona.
       tags:
         - Products
       parameters:
@@ -87,6 +87,8 @@ paths:
           description: Error de servidor al actualizar el producto
         "401":
           description: Unauthorized
+        "404":
+          description: Si es usuario no se logueó, redirecciona a la ruta /login y por eso no encuentra la ruta correcta
   #region patch
     patch:
       summary: Actualiza parte del producto accediendo por su id. Necesario ser admin y es correcto.
@@ -112,6 +114,8 @@ paths:
           description: Error de servidor al actualizar el producto
         "401":
           description: Unauthorized
+        "404":
+          description: Si es usuario no se logueó, redirecciona a la ruta /login y por eso no encuentra la ruta correcta
   #regiondelete
     delete:
       summary: Elimina un producto accediendo por su id (borrado lógico). Necesario ser admin.
@@ -131,6 +135,8 @@ paths:
           description: Error de servidor al actualizar el producto
         "401":
           description: Unauthorized
+         "404":
+          description: Si es usuario no se logueó, redirecciona a la ruta /login y por eso no encuentra la ruta correcta
 # RUTAS DE CARTS
   /api/carts/:
   #region get
@@ -293,7 +299,7 @@ paths:
           description: Unauthorized
   /api/carts/{cartId}/purchase:
     get:
-      summary: Trae el ticket de compra con los productos del carrito más el total a pagar. Necesario estar logueado.
+      summary: Muestra el ticket de compra con los productos del carrito más el total a pagar. Necesario estar logueado. Tener en cuenta que el carrito se vacía luego de finalizar compra, por ende, al buscarlo por endpoint, siempre traerá un monto 0.
       tags:
         - Tickets
       parameters:

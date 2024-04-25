@@ -21,10 +21,10 @@ const productRouter = Router();
 productRouter
     .get('/', getProducts)
     .get('/:pid', getProductById)
-    .post('/', passport.authenticate('jwt', { session: false }), authorization(['premium', 'admin']), createProduct) //
-    .put('/:pid', passport.authenticate('jwt', { session: false }), authorization(['admin']), updateProduct) // PUT solo para admin
-    .patch('/:pid', updateProduct)
-    .delete('/:pid', passport.authenticate('jwt', { session: false }), authorization(['admin', 'premium']), premiumDeleteAuthorization, deleteProduct) // DELETE solo para admin
+    .post('/', passport.authenticate('jwt', { session: false }), authorization(['premium', 'admin']), createProduct)
+    .put('/:pid', passport.authenticate('jwt', { session: false }), authorization(['admin']), updateProduct)
+    .patch('/:pid', passport.authenticate('jwt', { session: false }), authorization(['admin']), updateProduct)
+    .delete('/:pid', passport.authenticate('jwt', { session: false }), authorization(['admin', 'premium']), premiumDeleteAuthorization, deleteProduct)
 
 
 module.exports = productRouter;
