@@ -135,7 +135,7 @@ paths:
           description: Error de servidor al actualizar el producto
         "401":
           description: Unauthorized
-         "404":
+        "404":
           description: Si es usuario no se logueó, redirecciona a la ruta /login y por eso no encuentra la ruta correcta
 # RUTAS DE CARTS
   /api/carts/:
