@@ -100,3 +100,5 @@ info: GET en /apidocs/swagger-ui-bundle.js | 18:06:58
 info: GET en /apidocs/swagger-ui-standalone-preset.js | 18:06:58
 info: GET en /apidocs/swagger-ui-init.js | 18:06:58
 info: GET en /apidocs/favicon-32x32.png | 18:07:00
+info: Database previously connected :) | 19:05:37
+info: Escuchando puerto: 8080
