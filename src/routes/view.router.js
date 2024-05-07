@@ -152,4 +152,10 @@ router.post('/password-changed', (req,res) => {
     res.render('passwordChanged')
 })
 
+//Vista para cambiar role premium
+router.get('/api/users/premium/:uid', (req,res) => {
+    const { uid } = req.params;
+    res.render('changeRole', { uid });
+})
+
 module.exports = router;

@@ -18,7 +18,7 @@ usersRouter
     .post('/', createUser)
     .get('/:uid', getUser)
     .delete('/:uid', deleteUser)
-    .put('/premium/:uid', passportCall('jwt'), authorization(['admin']), changeUserRole)
+    .post('/premium/:uid', changeUserRole)
     .put('/:uid', updateUser)
 
 module.exports = usersRouter

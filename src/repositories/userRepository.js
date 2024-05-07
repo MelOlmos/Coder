@@ -7,7 +7,7 @@ class UserRepository {
     }
 
     getUsers =   async () => await this.dao.get({ isActive: true })
-    getUser =    async (filter) => {filter.isActive = true; await this.dao.getBy(filter)}
+    getUser =    async (filter) => await this.dao.getBy(filter)
     createUser = async (newUser) => {
         const newUserDto = new UserDto(newUser)
         newUserDto.isActive = true;

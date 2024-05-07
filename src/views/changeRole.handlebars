@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change user role</title>
+</head>
+<body>
+    <h1>Change user role</h1>
+    <form action="/api/users/premium/{{uid}}" method="POST">
+        <label for="role">Choose the new role:</label>
+        <select name="role" id="role">
+            <option value="user">user</option>
+            <option value="premium">premium</option>
+        </select>
+        <button type="submit">Change role</button>
+    </form>
+</body>
+</html>

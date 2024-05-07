@@ -14,13 +14,13 @@ class UserController {
         }
     }
     
-    getUser = async (request, responses)=>{
+    getUser = async (req, res)=>{
         try {
-            const { uid } = request.params
+            const { uid } = req.params
             const user = await userService.getUser({_id: uid})
-            responses.send(user)
+            res.json({user})
         } catch (error) {
-            console.log(error)
+            res.status(500).json({error});
         }
     }
     

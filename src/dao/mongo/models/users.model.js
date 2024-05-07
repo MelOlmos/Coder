@@ -27,7 +27,11 @@ const usersSchema = new mongoose.Schema ({
     cartID: {
         type: mongoose.Schema.ObjectId,
         ref: 'carts'
-        }
+    },
+    isActive: {
+        type: Boolean,
+        default: true
+    }
     
 })
 

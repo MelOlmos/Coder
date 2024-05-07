@@ -44,10 +44,6 @@ const {initializePassport} = require('./config/passport.config.js')
 app.use(session({
   store: MongoStore.create({
     mongoUrl: 'mongodb+srv://melolmos27:Bocajuniors12!@ecommerce.ss8x3tx.mongodb.net/',
-    mongoOptions:{
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    },
     ttl: 3000000
   }),
   secret: '123',
