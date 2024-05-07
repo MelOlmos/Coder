@@ -83,6 +83,11 @@ class UserController {
           res.status(500).json({ error: 'Error al cambiar el rol del usuario' });
         }
       }
+
+    uploadFiles = async (req, res) => {
+        res.send('File uploaded successfully') 
+
+    }
 }
 
 module.exports = UserController

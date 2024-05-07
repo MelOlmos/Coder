@@ -17,7 +17,7 @@ const usersSchema = new mongoose.Schema ({
     },
     password: {
         type: String,
-        required: true
+        required: true  
     },
     role: {
         type: String,
@@ -28,6 +28,11 @@ const usersSchema = new mongoose.Schema ({
         type: mongoose.Schema.ObjectId,
         ref: 'carts'
     },
+    documents: [{
+        name: String,
+        reference: String
+    }],
+    last_connection: Date,
     isActive: {
         type: Boolean,
         default: true

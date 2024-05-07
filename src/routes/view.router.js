@@ -158,4 +158,10 @@ router.get('/api/users/premium/:uid', (req,res) => {
     res.render('changeRole', { uid });
 })
 
+//Vista para subir archivos
+router.get('/api/users/:uid/documents', (req,res) => {
+    const {uid} = req.params;
+    res.render('uploadFiles', {uid})
+})
+
 module.exports = router;

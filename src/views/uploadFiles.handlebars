@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Complete your profile here:)</h1>   
+    <form action="/api/users/:uid/documents" method="POST" enctype="multipart/form-data">
+
+        <label for="profileImage">Choose a profile image</label>
+        <input type="file" name="profileFile" accept=".png, .webp, .jpg, .jpeg"><br><br>
+
+        <label for="productImage">Choose an image for your product</label>
+        <input type="file" name="productFile" accept=".png, .webp, .jpg, .jpeg"><br><br>
+
+        <label for="userDocument">Upload a document</label>
+        <input type="file" name="documentFile" accept=".pdf, .txt, .webp"><br><br>
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
