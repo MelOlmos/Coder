@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "node src/app.js --mode production",
-    "d": "node src/app.js --mode development",
+    "dev": "node src/app.js --mode development",
     "test": "mocha src/test/test.test.js"
   }
 }

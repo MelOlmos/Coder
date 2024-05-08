@@ -22,6 +22,11 @@ usersRouter
     .delete('/:uid', deleteUser)
     .post('/premium/:uid', changeUserRole)
     .put('/:uid', updateUser)
-    .post('/:uid/documents', upload.any(), uploadFiles)
+    .post('/:uid/documents', upload.fields([
+        { name: 'profileFile', maxCount: 1 },
+        { name: 'productFile', maxCount: 1 },
+        { name: 'identificationFile', maxCount: 1 },
+        { name: 'proofOfAddressFile', maxCount: 1 },
+        { name: 'accountStatementFile', maxCount: 1 }]), uploadFiles)
 
 module.exports = usersRouter

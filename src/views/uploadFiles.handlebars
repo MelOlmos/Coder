@@ -7,16 +7,23 @@
 </head>
 <body>
     <h1>Complete your profile here:)</h1>   
-    <form action="/api/users/:uid/documents" method="POST" enctype="multipart/form-data">
+    <form action="/api/users/{{uid}}/documents" method="POST" enctype="multipart/form-data">
 
-        <label for="profileImage">Choose a profile image</label>
+        <label for="profileImage">Upload a PROFILE IMAGE</label>
         <input type="file" name="profileFile" accept=".png, .webp, .jpg, .jpeg"><br><br>
 
-        <label for="productImage">Choose an image for your product</label>
-        <input type="file" name="productFile" accept=".png, .webp, .jpg, .jpeg"><br><br>
+        <label for="productImage">Upload an image for your PRODUCT</label>
+        <input type="file" name="productFile" accept=".png, .webp, .jpg, .jpeg" multiple><br><br>
 
-        <label for="userDocument">Upload a document</label>
-        <input type="file" name="documentFile" accept=".pdf, .txt, .webp"><br><br>
+        <label for="identificationFile">Upload a document as IDENTIFICATION</label>
+        <input type="file" name="identificationFile" accept=".pdf, .txt, .webp"><br><br>
+
+        <label for="proofOfAddressFile">Upload a document as PROOF OF ADDRESS</label>
+        <input type="file" name="proofOfAddressFile" accept=".pdf, .txt, .webp"><br><br>
+
+        <label for="accountStatementFile">Upload a document as ACCOUNT STATEMENT</label>
+        <input type="file" name="accountStatementFile" accept=".pdf, .txt, .webp"><br><br>
+
         <button type="submit">Send</button>
     </form>
 </body>

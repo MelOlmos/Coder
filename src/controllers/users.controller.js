@@ -1,4 +1,6 @@
+const { read } = require('fs')
 const { userService } = require('../repositories/index')
+const path  = require('path')
 
 class UserController {
     constructor(){
@@ -85,8 +87,47 @@ class UserController {
       }
 
     uploadFiles = async (req, res) => {
-        res.send('File uploaded successfully') 
+        const { uid } = req.params
 
+        const { profileFile, productFile, identificationFile, 
+                proofOfAddressFile, accountStatementFile } 
+                = req.files
+        console.log(req.files)
+
+        try {
+            // Verifica si el usuario existe
+            const user = await userService.getUser({_id: uid})
+            if (!user) {
+            return res.status(404).json({ error: 'Usuario no encontrado' })
+            }
+
+            if (profileFile) {
+                let documentReference = path.join(__dirname,`/uploads/profiles/${profileFile[0].filename}`)
+                user.documents.push({ name: profileFile[0].originalname, reference: documentReference })
+            }
+            if (productFile) {
+                let documentReference = `/uploads/products/${productFile[0].filename}`
+                user.documents.push({ name: productFile[0].originalname, reference: documentReference })
+            }
+            if (identificationFile) {
+                let documentReference = `/uploads/documents/${identificationFile[0].filename}`
+                user.documents.push({ name: identificationFile[0].originalname, reference: documentReference })
+            }
+            if (proofOfAddressFile) {
+                let documentReference = `/uploads/documents/${proofOfAddressFile[0].filename}`
+                user.documents.push({ name: proofOfAddressFile[0].originalname, reference: documentReference })
+            }
+            if (accountStatementFile) {
+                let documentReference = `/uploads/documents/${accountStatementFile[0].filename}`
+                user.documents.push({ name: accountStatementFile[0].originalname, reference: documentReference })
+            }
+
+            await user.save();
+            res.send('File uploaded successfully')
+
+        } catch (error) {
+            res.send('Error'+error)   
+        }
     }
 }
 

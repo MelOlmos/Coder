@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
             destinationFolder = path.join(destinationFolder, 'profile');
         } else if (file.fieldname === 'productFile') {
             destinationFolder = path.join(destinationFolder, 'products');
-        } else if (file.fieldname === 'documentFile') {
+        } else {
             destinationFolder = path.join(destinationFolder, 'documents');
         }
         cb(null, destinationFolder);
