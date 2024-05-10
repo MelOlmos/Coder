@@ -1,6 +1,9 @@
 const { read } = require('fs')
 const { userService } = require('../repositories/index')
 const path  = require('path')
+const multer = require('multer');
+
+
 
 class UserController {
     constructor(){
@@ -73,8 +76,21 @@ class UserController {
           // Verifica si el usuario existe
           const user = await userService.getUser({_id: uid});
           if (!user) {
-            return res.status(404).json({ error: 'Usuario no encontrado' });
+            return res.status(404).json({ error: 'User not found' });
           }
+
+          // array de documentos requeridos
+          const requiredDocuments = ['identificationFile', 'proofOfAddressFile', 'accountStatementFile'];
+          //comprueba los tipos de doc subidos mediante fieldname
+          const uploadedDocuments= requiredDocuments.every(doc => user.documents.some(uploadDoc => uploadDoc.documentType === doc));
+
+          if (!uploadedDocuments && user.role == 'user') {
+            return res.status(400).send(`Falta algún documento para ser premium user: <br><br> 
+                'identificationFile'<br>
+                'proofOfAddressFile'<br> 
+                'accountStatementFile'</br><br>
+                <a href="http://localhost:5000/api/users/${uid}/documents">Cargar documentos</a>`) 
+        }
     
           // Actualiza el rol del usuario
           user.role = role;
@@ -88,11 +104,10 @@ class UserController {
 
     uploadFiles = async (req, res) => {
         const { uid } = req.params
-
         const { profileFile, productFile, identificationFile, 
-                proofOfAddressFile, accountStatementFile } 
-                = req.files
-        console.log(req.files)
+            proofOfAddressFile, accountStatementFile } 
+            = req.files
+    console.log(req.files)
 
         try {
             // Verifica si el usuario existe
@@ -103,23 +118,23 @@ class UserController {
 
             if (profileFile) {
                 let documentReference = path.join(__dirname,`/uploads/profiles/${profileFile[0].filename}`)
-                user.documents.push({ name: profileFile[0].originalname, reference: documentReference })
+                user.documents.push({ name: profileFile[0].originalname, reference: documentReference, documentType: 'profileFile'})
             }
             if (productFile) {
                 let documentReference = `/uploads/products/${productFile[0].filename}`
-                user.documents.push({ name: productFile[0].originalname, reference: documentReference })
+                user.documents.push({ name: productFile[0].originalname, reference: documentReference, documentType: 'productFile' })
             }
             if (identificationFile) {
                 let documentReference = `/uploads/documents/${identificationFile[0].filename}`
-                user.documents.push({ name: identificationFile[0].originalname, reference: documentReference })
+                user.documents.push({ name: identificationFile[0].originalname, reference: documentReference, documentType: 'identificationFile'})
             }
             if (proofOfAddressFile) {
                 let documentReference = `/uploads/documents/${proofOfAddressFile[0].filename}`
-                user.documents.push({ name: proofOfAddressFile[0].originalname, reference: documentReference })
+                user.documents.push({ name: proofOfAddressFile[0].originalname, reference: documentReference, documentType: 'proofOfAddressFile' })
             }
             if (accountStatementFile) {
                 let documentReference = `/uploads/documents/${accountStatementFile[0].filename}`
-                user.documents.push({ name: accountStatementFile[0].originalname, reference: documentReference })
+                user.documents.push({ name: accountStatementFile[0].originalname, reference: documentReference, documentType: 'accountStatementFile' })
             }
 
             await user.save();

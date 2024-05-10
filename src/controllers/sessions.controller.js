@@ -89,7 +89,7 @@ login = async (req, res) => {
     const userFoundDB = await this.userService.getBy({email})
     
     if (!userFoundDB) {
-        return res.send('login failed <a href="/register">REGISTER</a>');
+        return res.send('Login failed <a href="/register">REGISTER</a>');
     }
     //esto valida la password
     if (!isValidPassword(password, userFoundDB.password)) 
@@ -103,11 +103,13 @@ login = async (req, res) => {
         httpOnly:true
     }); 
     req.session.user = {
+        _id: userFoundDB._id,
         first_name: userFoundDB.first_name,
         last_name: userFoundDB.last_name,
         email: userFoundDB.email,
         role: userFoundDB.role,
-        cartID: userFoundDB.cartID
+        cartID: userFoundDB.cartID,
+        lastConnection: new Date()
     };
     
     return res.redirect('/products');
@@ -128,6 +130,15 @@ faillogin = async (req,res) => {
 
 logout = async (req, res) => {
     try {
+        const userId = req.session.user._id;
+        const user = await this.userService.getBy({ _id: userId });
+        
+        //actualizo la hora de lastConnection al salir
+        const lastConnection = new Date();
+        user.last_connection = lastConnection;
+
+        await user.save();
+        //destruye sesión
         req.session.destroy( error => {
             if (error) return res.send('Logout error')
             res.redirect('/login')

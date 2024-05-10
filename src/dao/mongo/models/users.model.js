@@ -30,7 +30,8 @@ const usersSchema = new mongoose.Schema ({
     },
     documents: [{
         name: String,
-        reference: String
+        reference: String,
+        documentType: String
     }],
     last_connection: Date,
     isActive: {

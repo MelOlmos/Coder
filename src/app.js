@@ -43,7 +43,7 @@ const {initializePassport} = require('./config/passport.config.js')
 //Configura session con mongo
 app.use(session({
   store: MongoStore.create({
-    mongoUrl: 'mongodb+srv://melolmos27:Bocajuniors12!@ecommerce.ss8x3tx.mongodb.net/',
+    mongoUrl: process.env.MONGO_URL,
     ttl: 3000000
   }),
   secret: '123',
