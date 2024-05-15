@@ -15,7 +15,7 @@ const {
 
 
   /* Agregar producto al carrito por ID */ 
-router.post('/:cartId/products', authorization(['user', 'admin']), addProductToCart);
+router.post('/:cartId/products', addProductToCart);
 
 /* Eliminar un producto de carrito por ID*/ 
 router.delete('/:cartId/product/:pid', deleteProductFromCart)

@@ -32,11 +32,10 @@
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ productId, quantity }),
+            body: JSON.stringify({ products: [{ productId: productId, quantity}] }),
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             alert('Producto agregado al carrito correctamente.');
         })
         .catch(error => console.error('Error al agregar al carrito:', error));

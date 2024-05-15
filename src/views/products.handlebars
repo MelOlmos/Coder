@@ -30,20 +30,26 @@
         window.location.href = `/products/${productId}`;
     }
 
+
   // Esto hace la acción onclick addToCart
+  const quantities = {};
+  
   function addToCart(productId) {
   const cartId = '{{cartId}}'; 
+  const quantity = quantities[productId] || 0;
   
   fetch(`/api/carts/${cartId}/products`, {  
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ productId: productId, quantity: 1 }),
+    body: JSON.stringify({ products: [{ productId: productId, quantity: quantity + 1}] }),
   })
     .then(response => response.json())
     .then(data => {
-      document.getElementById(productId).innerHTML = "Producto agregado correctamente ✔";
+      alert('Producto agregado al carrito correctamente.');
+
+    quantities[productId] = (quantities[productId] || 0) + 1;
       
     })
     .catch(error => console.error('Error al agregar al carrito:', error));
