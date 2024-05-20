@@ -14,7 +14,7 @@ const {
 const userService    = new UserRepository(new UserDao())
 const productService = new ProductRepository(new ProductDao())
 const cartService    = new CartRepository(new CartDao())
-const ticketService = new TicketRepository(new TicketDao())
+const ticketService  = new TicketRepository(new TicketDao())
 
 module.exports = {
     userService,

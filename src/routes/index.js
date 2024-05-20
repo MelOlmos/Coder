@@ -20,6 +20,7 @@ router.use('/api/users', usersRouter)
 router.use('/api/test', testRoutes)
 
 
+
 /*RUTAS CON MONGODB*/
 // Rutas para productos
 router.use('/api/products-db', passport.authenticate('jwt', { session: false }),

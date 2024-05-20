@@ -1,18 +1,6 @@
 const { productService } = require("../repositories");
 
-/* const authorization = (roleArray) => {
-    return async (req, res, next) => {
-        console.log(roleArray)
-        if (roleArray.includes(req.session.user.role)) {
-            return next();
-        } else if (!req.session.user) {
-            return res.redirect('/login'); 
-        } else {
-            return res.status(403).json({ status: 'error', error: 'No tiene el rol necesario' });
-        }
-    };
-}; */
-const authorization = (roleArray) => {
+authorization = (roleArray) => {
     return async (req, res, next) => {
         console.log(roleArray)
         if (!req.session.user) {

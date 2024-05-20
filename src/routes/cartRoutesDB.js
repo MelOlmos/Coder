@@ -2,7 +2,6 @@
 const express = require('express');
 const router = express.Router();
 const CartController = require('../controllers/carts.controller.js')
-const { authorization } = require('../middleware/authentication.js');
 const {
   addProductToCart,
   getAllCarts,

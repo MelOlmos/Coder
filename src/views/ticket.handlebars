@@ -7,22 +7,23 @@
 </head>
 <body>
     <h1>Ticket de compra</h1>
-    <p><strong>Código:</strong> {{code}}</p>
-    <p><strong>Fecha de Compra:</strong> {{purchase_datetime}}</p>
-    <p><strong>Comprador:</strong> {{purchaser}}</p>
-    <p><strong>Total:</strong> {{amount}}</p>
+    <p><strong>Código:</strong> {{createdTicket._doc.code}}</p>
+    <p><strong>Fecha de Compra:</strong> {{createdTicket._doc.purchase_datetime}}</p>
+    <p><strong>Comprador:</strong> {{createdTicket._doc.purchaser}}</p>
+    <p><strong>Total:</strong> {{createdTicket._doc.amount}}</p>
 
     <h2>Productos comprados</h2>
     <ul>
         {{#each products}}
-            <li>{{this.product.name}} | Cantidad: {{this.quantity}}</li>
+            <li>{{this._doc.product._doc.title}} | Cantidad: {{this._doc.quantity}}</li>
         {{/each}}
     </ul>
+    
 
     {{#if productsNotPurchased.length}}
-    <h2>Productos no comprados</h2>
+    <h2>Productos sin stock</h2>
     <ul>
-        {{#each productsNotPurchased}}
+        {{#each productsNotPurchasedTitle}}
             <li>Nombre: {{this}}</li>
         {{/each}}
     </ul>

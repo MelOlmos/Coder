@@ -1,32 +1,32 @@
 const express = require('express');
-const { cartService } = require('../repositories/index.js');
-const { productService } = require('../repositories/index.js')
-const { ticketService } = require('../repositories/index.js')
 const { logger } = require('../utils/logger.js');
+const { cartService, ticketService, productService } = require('../repositories/index.js');
+const { cartsModel } = require('../dao/mongo/models/carts.model.js');
+const CartManagerDB = require('../dao/mongo/cartDaoDB.js');
 
 
 class CartController {
-    constructor(){
+    constructor() {
         this.cartManager = cartService
     }
 
 
     addProductToCart = async (req, res) => {
-        try {    
+        try {
             const cartId = req.params.cartId;
             const { products } = req.body;
-    
+
             if (products && Array.isArray(products) && products.length > 0) {
                 for (const product of products) {
                     const { productId, quantity } = product;
-    
-                // Llama al service para agregar cada producto al carrito
-                await cartService.addProductToCart(cartId, { productId, quantity });
-            }
 
-            // Obtener el carrito actualizado después de agregar todos los productos
-            const updatedCart = await cartService.getCart(cartId);
-            res.json(updatedCart);
+                    // Llama al service para agregar cada producto al carrito
+                    await cartService.addProductToCart(cartId, { productId, quantity });
+                }
+
+                // Obtener el carrito actualizado después de agregar todos los productos
+                const updatedCart = await cartService.getCart(cartId);
+                res.json(updatedCart);
             } else {
                 res.status(400).json({ error: 'Incorrect request format' });
             }
@@ -35,7 +35,7 @@ class CartController {
             res.status(500).json({ error: error.message });
         }
     }
-     
+
 
     getAllCarts = async (req, res) => {
         try {
@@ -64,26 +64,26 @@ class CartController {
         try {
             // Verifica si el usuario está autenticado y la sesión 
             if (!req.session || !req.session.user || !req.session.user._id) {
-              return res.status(401).json({ error: 'Usuario no autenticado' });
+                return res.status(401).json({ error: 'Usuario no autenticado' });
             }
-        
+
             // Obtiene el ID del usuario de la sesión
             const userId = req.session.user._id;
-        
+
             // Crea el objeto de nuevo carrito
             const newCart = { user: userId, ...req.body };
             const createdCart = await cartService.addCart(newCart);
-        
-            res.status(201).json(createdCart);
-          } catch (error) {
-            res.status(500).json({ error: error.message });
-          }
-        };
 
-    updateCart = async (req, res) =>  {
+            res.status(201).json(createdCart);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    };
+
+    updateCart = async (req, res) => {
         try {
             const cartId = req.params.cartId;
-            const updatedCartData = req.body; 
+            const updatedCartData = req.body;
             const updatedCart = await cartService.updateCart(cartId, updatedCartData);
             res.json(updatedCart);
         } catch (error) {
@@ -91,12 +91,12 @@ class CartController {
         }
     }
 
-    updateAllProducts = async (req, res) =>  {
+    updateAllProducts = async (req, res) => {
         try {
             const cartId = req.params.cartId;
             const productsNotPurchased = req.body;
             const updatedCart = await cartService.updateAllProducts(cartId, productsNotPurchased);
-            
+
             res.json(updatedCart);
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -120,8 +120,8 @@ class CartController {
             res.json(updatedCart);
         } catch (error) {
             res.status(500).json({ error: error.message });
-        }    
-    }  
+        }
+    }
 
     updateProductQuantity = async (req, res) => {
         try {
@@ -132,126 +132,45 @@ class CartController {
             res.json(updatedCart);
         } catch (error) {
             res.status(500).json({ error: error.message });
-        }    
-    }    
+        }
+    }
 
 
-    /*Para el ticket de compra*/
-    purchaseCart = async (req, res) =>  {
+    /*Para finalizar compra*/
+    purchaseCart = async (req, res) => {
         try {
             const cartId = req.params.cartId;
             const cart = await cartService.getCart(cartId); //busco por id de carrito
-
             if (!cart) {
                 return res.status(404).json({ error: 'Carrito no encontrado :C' });
-            }    
-                
-            const products = cart.products.filter(product => product.product && product.product.stock > 0);            
-            const productsNotPurchased = cart.products.filter(product => product.product && product.product.stock === 0).map(product => product.product._id.toString());
-            const productQuantities = {};
-            // registro las cantidades de cada producto
-            for (const product of products) {
-
-                const id = product.product._id;
-                const quantity = product.quantity
-    
-                if (productQuantities[id]) {
-                    productQuantities[id] += quantity;
-                } else {
-                    productQuantities[id] = quantity;
-                }
-
             }
-            // resto esas cantidades al stock de cada producto
-            const productsToUpdate = [];
-            for (const product of products) {
-                
-                const productDetails = product.product;
-                
-                const productId = product.product._id;
 
-                const newStock = productDetails.stock - productQuantities[productId];
-                productsToUpdate.push({ productId, newStock });
+            const userEmail = req.session.user.email;
+            const purchase = await cartService.purchaseCart(cartId, userEmail)
 
-            }
-            //amount del carrito
-            const totalAmount = await cartService.calculateCartAmount(cartId);
-            // ticket
-            const ticketData = {
-                code: ticketCode(),
-                purchase_datetime: new Date(),
-                amount: totalAmount,
-                purchaser: req.session.user.email,
-                products: products
-            };
-    
             const createdTicket = await ticketService.createTicket(ticketData);
 
-            // Antes de la llamada a updateCart
+            res.json({ products, productsNotPurchased, createdTicket });
 
-            if (productsNotPurchased.length === 0) {
-                await cartService.deleteAllProductsFromCart(cartId);
-            } else {
-                await cartService.updateAllProducts(cartId, { products: productsNotPurchased });
-            }
-    
-            await Promise.all(productsToUpdate.map(({ productId, newStock }) =>
-                productService.updateProduct(productId, { stock: newStock })
-            ));
-
-            res.json({
-                purchase: {
-                    comprados: products,
-                    ticket: createdTicket,
-                    'no-comprados': productsNotPurchased
-                }
-            });
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
     }
 
+
     /*Para borrar un solo item del cart*/
-    deleteProductFromCart  = async (req, res) => {
+    deleteProductFromCart = async (req, res) => {
         try {
             const { cartId, pid } = req.params
             const resp = await cartService.deleteProductFromCart(cartId, pid)
             res.status(200).json({
                 status: 'success',
                 message: 'Product deleted from cart'
-            })        
+            })
         } catch (error) {
             logger.debug(error)
         }
     }
-
-
-    /* Para calcular monto total del carrito*/
-    async calculateCartAmount(req, res) {
-        try {
-            const cartId = req.params.cartId;
-            const totalAmount = await this.cartService.calculateCartAmount(cartId);
-            res.json({ totalAmount });
-        } catch (error) {
-            res.status(500).json({ error: error.message });
-        }
-    }
-    }
-
-
-function ticketCode() {
-    // Genero un código aleatorio con números y letras
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    const codeLength = 6;
-    let code = '';
-
-    for (let i = 0; i < codeLength; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        //obtiene el caracter en la posición randomIndex y lo suma al final
-        code += characters.charAt(randomIndex);
-    }
-
-    return code;
 }
 
 

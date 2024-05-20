@@ -14,12 +14,13 @@ class CartRepository {
         const updatedCart = await this.dao.addProductToCart(cartId, productId, quantity);
         return updatedCart
     }
-    deleteProductFromCart = async (cartId, pid)=> await this.dao.deleteItem(cartId, pid)
+    deleteProductFromCart = async (cartId, pid)=> await this.dao.deleteItem(cartId, pid);
     calculateCartAmount = async (cartId) => await this.dao.calculateCartAmount(cartId);
     deleteAllProductsFromCart = async (cartId) => {
         const updatedCart = await this.dao.deleteAllProductsFromCart(cartId);
-        return updatedCart;
+        return updatedCart;        
     }
+    purchaseCart = async (cartId, userEmail) => await this.dao.purchaseCart(cartId, userEmail);
 
 }
 

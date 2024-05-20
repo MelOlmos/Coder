@@ -13,12 +13,12 @@ const productManager = new ProductManager('productos_test.json');
 const { messagesModel } = require('../dao/mongo/models/messages.model.js');
 const { productsModel } = require('../dao/mongo/models/products.model.js');
 const CartManagerDB = require('../dao/mongo/cartDaoDB.js');
-const { productService } = require('../repositories/index.js');
 const ProductManagerDB = require('../dao/mongo/productDaoDB.js');
+const TicketManagerDB = require('../dao/mongo/ticketDaoDB.js');
 const cartManagerDB = new CartManagerDB();
 const productManagerDB = new ProductManagerDB();
+const ticketManagerDB = new TicketManagerDB();
 
-// const {first_name, role} = require('../config/passport.config.js')
 
 
 router.get('/',(req,res)=>{
@@ -136,6 +136,26 @@ router.get('/products/:productId', async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 });
+
+//Vista del ticket - finalizar compra
+router.get('/:cartId/purchase', async (req, res) => {
+    try {
+        const cartId = req.params.cartId
+        const userEmail = req.session.user.email;
+        const { products, productsNotPurchased, ticketData, productsNotPurchasedTitles } = await cartManagerDB.purchaseCart(cartId, userEmail)
+        const createdTicket = await ticketManagerDB.create(ticketData)
+
+        res.render('ticket', {
+            products: products,
+            productsNotPurchased: productsNotPurchased,
+            createdTicket: createdTicket,
+            productsNotPurchasedTitle: productsNotPurchasedTitles
+        });
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });    
+    }
+})
 
 //Vista de form olvidé mi contraseña
 router.get('/forgot-password', (req, res) => {
