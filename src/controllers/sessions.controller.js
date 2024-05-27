@@ -139,11 +139,10 @@ logout = async (req, res) => {
 
         await user.save();
         //destruye sesión
-        req.session.destroy( error => {
-            if (error) return res.send('Logout error')
+        req.session.destroy()
             res.redirect('/login')
         
-    })
+    
  } catch (error) {
         res.send({status: 'error', error})
     }
@@ -187,6 +186,7 @@ newPasswordForm = (req, res) => {
 
 postForgotPassword = async (req, res) => {
     const { email } = req.body;
+    const PORT = process.env.PORT
 
     try {
         // Busca el usuario por su correo electrónico
@@ -200,7 +200,7 @@ postForgotPassword = async (req, res) => {
         const token = generateResetToken(user._id);
 
         // Crea el link de restablecimiento
-        const resetLink = `http://localhost:5000/new-password?token=${token}`;
+        const resetLink = `http://localhost:${PORT}/new-password?token=${token}`;
 
         // Envia el correo de restablecimiento
         await sendEmail({
