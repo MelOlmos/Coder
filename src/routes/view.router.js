@@ -33,10 +33,34 @@ router.get('/home', (req, res) => {
 });
 
 //Vista de real time products
-router.get('/realtimeproducts', (req, res) => {
-    const products = productManager.getProducts();
-    res.render('realTimeProducts', { products });
-}); 
+router.get('/realtimeproducts', async (req, res) => {
+    try {
+        const productsData = await productManagerDB.get();
+        
+        if (!productsData) {
+            return res.status(404).json({ error: 'No se encontraron productos' });
+        }
+        
+        //convierte las propiedades en string accesibles para handlebars
+        const products = productsData.map(product => {
+            return {
+                ...product,
+                _id: product._id.toString(),
+                title: product.title.toString(),
+                description: product.description.toString(),
+                price: product.price.toString(),
+                thumbnail: product.thumbnail.toString(),
+                code: product.code.toString(),
+                stock: product.stock.toString(),
+                category: product.category.toString(),
+                isActive: product.isActive.toString()
+            };
+        });
+        res.render('realtimeproducts', { products });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+});
 
 //Vista del chat
 router.get('/chat', passport.authenticate('jwt', { session: false }), authorization(['user']), 
@@ -119,7 +143,6 @@ router.get('/products/:productId', async (req, res) => {
     try {
         const productId = req.params.productId;
         const product = await productManagerDB.getBy({_id: productId});
-        
 
         if (!product) {
             return res.status(404).json({ error: 'Producto no encontrado' });

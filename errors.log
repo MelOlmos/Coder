@@ -107,3 +107,985 @@ info: Escuchando puerto: 8080
 info: GET en /chat | 14:38:47
 info: GET en /login | 14:38:48
 info: GET en /favicon.ico | 14:38:49
+info: Database previously connected :) | 12:34:44
+info: Escuchando puerto: 8080
+info: GET en /chat | 12:41:40
+info: GET en /favicon.ico | 12:41:40
+info: GET en /login | 12:41:46
+info: POST en /api/session/login | 12:41:48
+info: POST en /api/session/login | 12:41:49
+info: GET en /products | 12:41:49
+info: GET en /products | 12:41:49
+info: POST en /api/carts/65fb7a37134080efbeee5b76/products | 12:41:54
+info: GET en /65fb7a37134080efbeee5b76/purchase | 12:41:57
+info: GET en /65fb7a37134080efbeee5b76/purchase | 12:42:07
+info: GET en /products | 12:42:10
+info: GET en /realtimeproducts | 12:42:28
+info: Database previously connected :) | 12:52:24
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 12:52:29
+info: GET en /realtimeproducts | 12:52:32
+info: POST en /api/session/login | 12:52:36
+info: GET en /products | 12:52:37
+info: GET en /realtimeproducts | 12:52:42
+info: Database previously connected :) | 13:17:31
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 13:17:34
+info: Nuevo cliente conectado | 13:17:34
+info: GET en /js/index.js | 13:17:34
+info: Database previously connected :) | 13:20:45
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 13:20:46
+info: Nuevo cliente conectado | 13:20:47
+info: GET en /js/index.js | 13:20:47
+info: Database previously connected :) | 13:24:49
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 13:24:52
+info: GET en /realtimeproducts | 13:24:53
+info: Nuevo cliente conectado | 13:24:53
+info: GET en /js/index.js | 13:24:54
+info: Database previously connected :) | 13:28:19
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 13:28:24
+info: GET en /realtimeproducts | 13:28:35
+info: Database previously connected :) | 13:31:38
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 13:31:44
+info: Nuevo cliente conectado | 13:31:44
+info: GET en /js/index.js | 13:31:45
+info: Database previously connected :) | 13:33:22
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 13:33:25
+info: Nuevo cliente conectado | 13:33:25
+info: Nuevo cliente conectado | 13:33:25
+info: GET en /js/index.js | 13:33:25
+info: Database previously connected :) | 13:35:10
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 13:35:10
+info: GET en /realtimeproducts | 13:35:22
+info: GET en /js/index.js | 13:35:23
+info: Nuevo cliente conectado | 13:35:23
+info: GET en /realtimeproducts | 13:35:39
+info: Nuevo cliente conectado | 13:37:24
+info: GET en /realtimeproducts | 13:37:24
+info: Nuevo cliente conectado | 13:38:54
+info: Nuevo cliente conectado | 13:38:54
+info: GET en /js/index.js | 13:38:55
+info: GET en /realtimeproducts | 13:39:55
+info: Nuevo cliente conectado | 13:39:56
+info: GET en /js/index.js | 13:39:56
+info: GET en /realtimeproducts | 13:39:58
+info: Nuevo cliente conectado | 13:39:59
+info: GET en /js/index.js | 13:39:59
+info: Database previously connected :) | 13:40:15
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 13:40:16
+info: GET en /realtimeproducts | 13:40:19
+info: Nuevo cliente conectado | 13:40:20
+info: GET en /js/index.js | 13:40:20
+info: GET en /realtimeproducts | 13:40:23
+info: Nuevo cliente conectado | 13:40:23
+info: GET en /js/index.js | 13:40:23
+info: Database previously connected :) | 13:40:44
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 13:40:46
+info: GET en /realtimeproducts | 13:40:46
+info: Nuevo cliente conectado | 13:40:46
+info: GET en /js/index.js | 13:40:46
+info: GET en /realtimeproducts | 13:40:49
+info: Nuevo cliente conectado | 13:40:49
+info: GET en /js/index.js | 13:40:49
+info: Database previously connected :) | 13:43:11
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 13:43:13
+info: Nuevo cliente conectado | 13:43:14
+info: GET en /js/index.js | 13:43:14
+info: Database previously connected :) | 13:47:44
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 13:47:45
+info: GET en /js/index.js | 13:47:46
+info: Nuevo cliente conectado | 13:47:46
+info: Database previously connected :) | 13:49:28
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 13:49:32
+info: Nuevo cliente conectado | 13:49:32
+info: Nuevo cliente conectado | 13:49:32
+info: GET en /js/index.js | 13:49:32
+info: Database previously connected :) | 13:50:47
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 13:50:48
+info: GET en /js/index.js | 13:50:48
+info: Nuevo cliente conectado | 13:50:49
+info: GET en /realtimeproducts | 13:50:51
+info: Nuevo cliente conectado | 13:50:51
+info: GET en /js/index.js | 13:50:51
+info: Database previously connected :) | 13:53:06
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 13:53:08
+info: Nuevo cliente conectado | 13:53:08
+info: GET en /js/index.js | 13:53:08
+info: Database previously connected :) | 13:53:52
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 13:53:55
+info: GET en /realtimeproducts | 13:53:58
+info: Nuevo cliente conectado | 13:53:58
+info: GET en /js/index.js | 13:53:59
+info: GET en /realtimeproducts | 13:54:01
+info: GET en /js/index.js | 13:54:02
+info: Nuevo cliente conectado | 13:54:02
+info: Database previously connected :) | 13:54:50
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 13:54:51
+info: GET en /js/index.js | 13:54:52
+info: Nuevo cliente conectado | 13:54:52
+info: Database previously connected :) | 13:55:24
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 13:55:25
+info: GET en /js/index.js | 13:55:26
+info: Nuevo cliente conectado | 13:55:26
+info: Database previously connected :) | 13:56:00
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 13:56:02
+info: GET en /realtimeproducts | 13:56:14
+info: Nuevo cliente conectado | 13:56:14
+info: GET en /js/index.js | 13:56:14
+info: Database previously connected :) | 13:56:32
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 13:56:34
+info: Database previously connected :) | 13:57:06
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 13:57:07
+info: Nuevo cliente conectado | 13:57:08
+info: GET en /js/index.js | 13:57:08
+info: Database previously connected :) | 13:57:53
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 13:57:55
+info: Nuevo cliente conectado | 13:57:56
+info: GET en /js/index.js | 13:57:56
+info: Database previously connected :) | 13:59:10
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 13:59:12
+info: GET en /realtimeproducts | 13:59:13
+info: Nuevo cliente conectado | 13:59:13
+info: GET en /js/index.js | 13:59:14
+info: GET en /realtimeproducts | 14:00:16
+info: Nuevo cliente conectado | 14:00:16
+info: GET en /js/index.js | 14:00:16
+info: Database previously connected :) | 14:00:36
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 14:00:37
+info: GET en /realtimeproducts | 14:00:48
+info: Nuevo cliente conectado | 14:00:48
+info: GET en /js/index.js | 14:00:48
+info: GET en /realtimeproducts | 14:00:50
+info: Nuevo cliente conectado | 14:00:50
+info: GET en /js/index.js | 14:00:50
+info: Database previously connected :) | 14:02:02
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 14:02:05
+info: GET en /realtimeproducts | 14:02:17
+info: Nuevo cliente conectado | 14:02:17
+info: GET en /js/index.js | 14:02:17
+info: Database previously connected :) | 14:02:35
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 14:02:38
+info: GET en /realtimeproducts | 14:02:40
+info: Database previously connected :) | 14:03:41
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 14:03:43
+info: Nuevo cliente conectado | 14:03:43
+info: GET en /js/index.js | 14:03:44
+info: GET en /realtimeproducts | 14:04:01
+info: Nuevo cliente conectado | 14:05:08
+info: GET en /js/index.js | 14:05:08
+info: Nuevo cliente conectado | 14:05:08
+info: Database previously connected :) | 14:05:28
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 14:05:30
+info: Nuevo cliente conectado | 14:05:30
+info: GET en /js/index.js | 14:05:31
+info: GET en /realtimeproducts | 14:05:32
+info: Nuevo cliente conectado | 14:05:33
+info: GET en /js/index.js | 14:05:33
+info: GET en /realtimeproducts | 14:05:53
+info: Nuevo cliente conectado | 14:05:53
+info: GET en /js/index.js | 14:05:53
+info: GET en /realtimeproducts | 14:47:39
+info: GET en /js/index.js | 14:47:40
+info: Nuevo cliente conectado | 14:47:40
+info: GET en /realtimeproducts | 14:51:22
+info: Nuevo cliente conectado | 14:51:23
+info: GET en /js/index.js | 14:51:23
+info: GET en /realtimeproducts | 14:52:11
+info: Nuevo cliente conectado | 14:52:11
+info: GET en /js/index.js | 14:52:11
+info: GET en /realtimeproducts | 15:01:53
+info: Nuevo cliente conectado | 15:01:53
+info: GET en /js/index.js | 15:01:53
+info: Database previously connected :) | 15:03:42
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 15:03:45
+info: Nuevo cliente conectado | 15:03:45
+info: GET en /js/index.js | 15:03:45
+info: GET en /realtimeproducts | 15:03:47
+info: Nuevo cliente conectado | 15:03:47
+info: GET en /js/index.js | 15:03:47
+info: GET en /realtimeproducts | 15:04:33
+info: Nuevo cliente conectado | 15:04:33
+info: GET en /js/index.js | 15:04:33
+info: Database previously connected :) | 15:05:10
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 15:05:11
+info: GET en /realtimeproducts | 15:05:13
+info: Nuevo cliente conectado | 15:05:13
+info: GET en /js/index.js | 15:05:13
+info: GET en /realtimeproducts | 15:05:16
+info: GET en /js/index.js | 15:05:17
+info: Nuevo cliente conectado | 15:05:17
+info: GET en /realtimeproducts | 15:05:40
+info: Nuevo cliente conectado | 15:05:40
+info: GET en /js/index.js | 15:05:40
+info: GET en /realtimeproducts | 15:05:42
+info: Nuevo cliente conectado | 15:05:42
+info: GET en /js/index.js | 15:05:42
+info: GET en /realtimeproducts | 15:05:48
+info: Nuevo cliente conectado | 15:05:48
+info: GET en /js/index.js | 15:05:48
+info: Database previously connected :) | 15:06:07
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 15:06:09
+info: GET en /realtimeproducts | 15:06:14
+info: Nuevo cliente conectado | 15:06:14
+info: GET en /js/index.js | 15:06:14
+info: GET en /realtimeproducts | 15:06:16
+info: Nuevo cliente conectado | 15:06:16
+info: GET en /js/index.js | 15:06:16
+info: Database previously connected :) | 15:07:05
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 15:07:06
+info: GET en /realtimeproducts | 15:07:10
+info: Nuevo cliente conectado | 15:07:10
+info: GET en /js/index.js | 15:07:10
+info: GET en /realtimeproducts | 15:07:14
+info: Nuevo cliente conectado | 15:07:14
+info: GET en /js/index.js | 15:07:14
+info: GET en /realtimeproducts | 15:07:16
+info: Nuevo cliente conectado | 15:07:16
+info: GET en /js/index.js | 15:07:16
+info: GET en /realtimeproducts | 15:10:51
+info: Nuevo cliente conectado | 15:10:51
+info: GET en /js/index.js | 15:10:51
+info: Database previously connected :) | 15:11:34
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 15:11:35
+info: GET en /realtimeproducts | 15:11:38
+info: Nuevo cliente conectado | 15:16:25
+info: GET en /js/index.js | 15:16:25
+info: GET en /realtimeproducts | 15:16:29
+info: Nuevo cliente conectado | 15:16:29
+info: GET en /js/index.js | 15:16:29
+info: GET en /realtimeproducts | 15:16:34
+info: Nuevo cliente conectado | 15:16:34
+info: GET en /js/index.js | 15:16:34
+info: Database previously connected :) | 15:17:31
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 15:17:33
+info: GET en /realtimeproducts | 15:17:34
+info: Nuevo cliente conectado | 15:17:34
+info: GET en /js/index.js | 15:17:35
+info: Database previously connected :) | 15:18:16
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 15:18:31
+info: GET en /realtimeproducts | 15:19:00
+info: GET en /realtimeproducts | 15:19:11
+info: GET en /js/index.js | 15:19:16
+info: Nuevo cliente conectado | 15:19:16
+info: GET en /realtimeproducts | 15:19:27
+info: Nuevo cliente conectado | 15:20:07
+info: GET en /js/index.js | 15:20:07
+info: Nuevo cliente conectado | 15:20:07
+info: GET en /realtimeproducts | 15:20:15
+info: Nuevo cliente conectado | 15:20:15
+info: GET en /js/index.js | 15:20:15
+info: GET en /realtimeproducts | 15:20:22
+info: Nuevo cliente conectado | 15:20:22
+info: GET en /js/index.js | 15:20:22
+info: Database previously connected :) | 16:16:08
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 16:16:28
+info: GET en /js/index.js | 16:18:16
+info: Nuevo cliente conectado | 16:18:17
+info: Database previously connected :) | 16:19:04
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 16:21:12
+info: Nuevo cliente conectado | 16:21:19
+info: GET en /js/index.js | 16:21:19
+info: GET en /realtimeproducts | 16:21:22
+info: Nuevo cliente conectado | 16:21:22
+info: GET en /js/index.js | 16:21:22
+info: GET en /realtimeproducts | 16:21:23
+info: Nuevo cliente conectado | 16:21:24
+info: GET en /js/index.js | 16:21:24
+info: Database previously connected :) | 16:26:52
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 16:26:57
+info: GET en /realtimeproducts | 16:27:01
+info: Nuevo cliente conectado | 16:27:02
+info: GET en /js/index.js | 16:27:02
+info: GET en /realtimeproducts | 16:27:07
+info: GET en /js/index.js | 16:27:07
+info: Nuevo cliente conectado | 16:27:07
+info: GET en /realtimeproducts | 16:27:35
+info: Nuevo cliente conectado | 16:27:35
+info: GET en /js/index.js | 16:27:35
+info: Database previously connected :) | 16:28:05
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 16:28:06
+info: GET en /realtimeproducts | 16:28:11
+info: GET en /js/index.js | 16:28:11
+info: Nuevo cliente conectado | 16:28:11
+info: Database previously connected :) | 16:29:06
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 16:29:14
+info: Nuevo cliente conectado | 16:29:15
+info: GET en /js/index.js | 16:29:15
+info: Database previously connected :) | 16:31:46
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 16:31:51
+info: GET en /realtimeproducts | 16:32:40
+info: Nuevo cliente conectado | 16:32:40
+info: GET en /js/index.js | 16:32:41
+info: Database previously connected :) | 16:33:32
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 16:33:35
+info: Nuevo cliente conectado | 16:33:35
+info: GET en /js/index.js | 16:33:36
+info: GET en /realtimeproducts | 16:35:52
+info: Nuevo cliente conectado | 16:35:52
+info: GET en /js/index.js | 16:35:52
+info: GET en /realtimeproducts | 16:36:31
+info: Nuevo cliente conectado | 16:36:31
+info: GET en /js/index.js | 16:36:31
+info: Database previously connected :) | 16:37:06
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 16:37:09
+info: GET en /realtimeproducts | 16:37:15
+info: Nuevo cliente conectado | 16:37:16
+info: GET en /js/index.js | 16:37:16
+info: GET en /realtimeproducts | 16:37:26
+info: GET en /js/index.js | 16:37:26
+info: Nuevo cliente conectado | 16:37:26
+info: GET en /realtimeproducts | 16:39:35
+info: GET en /js/index.js | 16:39:35
+info: Nuevo cliente conectado | 16:39:35
+info: GET en /realtimeproducts | 16:40:16
+info: GET en /js/index.js | 16:40:17
+info: Nuevo cliente conectado | 16:40:17
+info: GET en /realtimeproducts | 16:40:34
+info: Nuevo cliente conectado | 16:40:34
+info: GET en /js/index.js | 16:40:34
+info: Database previously connected :) | 16:42:24
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 16:42:27
+info: GET en /realtimeproducts | 16:42:27
+info: Database previously connected :) | 16:45:18
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 16:45:20
+info: Nuevo cliente conectado | 16:45:21
+info: GET en /js/index.js | 16:45:21
+info: Database previously connected :) | 16:46:21
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 16:46:23
+info: Nuevo cliente conectado | 16:46:24
+info: GET en /js/index.js | 16:46:24
+info: Database previously connected :) | 16:47:34
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 16:47:35
+info: Database previously connected :) | 16:49:42
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 16:49:45
+info: Nuevo cliente conectado | 16:49:45
+info: GET en /js/index.js | 16:49:46
+info: Database previously connected :) | 16:51:25
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 16:51:29
+info: GET en /realtimeproducts | 16:51:30
+info: Database previously connected :) | 16:52:29
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 16:52:30
+info: Nuevo cliente conectado | 16:52:31
+info: GET en /js/index.js | 16:52:31
+info: Database previously connected :) | 16:53:08
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 16:53:09
+info: GET en /realtimeproducts | 16:53:10
+info: GET en /realtimeproducts | 16:53:29
+info: Database previously connected :) | 16:53:50
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 16:53:51
+info: Nuevo cliente conectado | 16:53:52
+info: GET en /js/index.js | 16:53:52
+info: Database previously connected :) | 16:54:31
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 16:54:32
+info: GET en /realtimeproducts | 16:54:33
+info: Nuevo cliente conectado | 16:54:34
+info: GET en /js/index.js | 16:54:34
+info: Database previously connected :) | 16:59:03
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 16:59:06
+info: GET en /realtimeproducts | 16:59:06
+info: Nuevo cliente conectado | 16:59:07
+info: GET en /js/index.js | 16:59:07
+info: Database previously connected :) | 17:03:00
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 17:03:04
+info: GET en /realtimeproducts | 17:03:18
+info: GET en /realtimeproducts | 18:01:05
+info: Nuevo cliente conectado | 18:01:31
+info: GET en /realtimeproducts | 18:01:45
+info: Nuevo cliente conectado | 18:03:18
+info: GET en /realtimeproducts | 18:03:18
+info: Nuevo cliente conectado | 18:03:19
+info: GET en /js/index.js | 18:03:19
+info: GET en /realtimeproducts | 18:03:37
+info: Nuevo cliente conectado | 18:10:55
+info: GET en /realtimeproducts | 18:10:59
+info: GET en /js/index.js | 18:11:09
+info: Nuevo cliente conectado | 18:11:09
+info: GET en /realtimeproducts | 18:11:13
+info: Nuevo cliente conectado | 18:11:13
+info: GET en /js/index.js | 18:11:13
+info: Database previously connected :) | 18:11:35
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 18:11:38
+info: GET en /realtimeproducts | 18:11:53
+info: Nuevo cliente conectado | 18:11:54
+info: GET en /js/index.js | 18:11:54
+info: Database previously connected :) | 18:16:37
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 18:16:42
+info: GET en /realtimeproducts | 18:16:56
+info: Nuevo cliente conectado | 18:16:57
+info: GET en /js/index.js | 18:16:57
+info: Database previously connected :) | 18:18:51
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 18:18:55
+info: GET en /realtimeproducts | 18:21:32
+info: Nuevo cliente conectado | 18:21:32
+info: GET en /js/index.js | 18:21:32
+info: GET en /realtimeproducts | 18:39:35
+info: GET en /js/index.js | 18:39:35
+info: Nuevo cliente conectado | 18:39:36
+info: GET en /realtimeproducts | 18:47:22
+info: Nuevo cliente conectado | 18:47:23
+info: GET en /js/index.js | 18:47:23
+info: GET en /realtimeproducts | 18:47:48
+info: Nuevo cliente conectado | 18:50:45
+info: Nuevo cliente conectado | 18:50:46
+info: GET en /js/index.js | 18:50:46
+info: GET en /realtimeproducts | 18:50:51
+info: GET en /js/index.js | 18:50:52
+info: Nuevo cliente conectado | 18:50:52
+info: Database previously connected :) | 18:51:12
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 18:51:14
+info: Nuevo cliente conectado | 18:51:15
+info: GET en /js/index.js | 18:51:15
+info: GET en /realtimeproducts | 18:52:05
+info: Nuevo cliente conectado | 18:52:05
+info: GET en /js/index.js | 18:52:05
+info: GET en /realtimeproducts | 18:54:29
+info: Nuevo cliente conectado | 18:54:29
+info: GET en /js/index.js | 18:54:29
+info: GET en /realtimeproducts | 18:55:10
+info: GET en /js/index.js | 18:55:10
+info: Nuevo cliente conectado | 18:55:10
+info: GET en /realtimeproducts | 18:55:13
+info: Nuevo cliente conectado | 18:55:13
+info: GET en /js/index.js | 18:55:13
+info: Database previously connected :) | 19:12:27
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 19:12:37
+info: Nuevo cliente conectado | 19:12:37
+info: GET en /js/index.js | 19:12:37
+info: GET en /realtimeproducts | 19:12:58
+info: GET en /js/index.js | 19:12:58
+info: Nuevo cliente conectado | 19:12:58
+info: GET en /realtimeproducts | 19:13:03
+info: Nuevo cliente conectado | 19:13:04
+info: GET en /js/index.js | 19:13:04
+info: Database previously connected :) | 19:15:27
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 19:15:29
+info: GET en /realtimeproducts | 19:15:31
+info: GET en /js/index.js | 19:15:32
+info: Nuevo cliente conectado | 19:15:32
+info: GET en /realtimeproducts | 19:15:35
+info: Nuevo cliente conectado | 19:15:35
+info: GET en /js/index.js | 19:15:35
+info: GET en /realtimeproducts | 19:16:06
+info: Nuevo cliente conectado | 19:16:06
+info: GET en /js/index.js | 19:16:06
+info: GET en /realtimeproducts | 19:16:16
+info: Nuevo cliente conectado | 19:16:16
+info: GET en /js/index.js | 19:16:16
+info: GET en /realtimeproducts | 19:16:17
+info: Nuevo cliente conectado | 19:16:17
+info: GET en /js/index.js | 19:16:17
+info: Database previously connected :) | 19:18:47
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 19:18:48
+info: GET en /realtimeproducts | 19:26:14
+info: Nuevo cliente conectado | 19:26:15
+info: GET en /js/index.js | 19:26:15
+info: GET en /realtimeproducts | 19:26:17
+info: Nuevo cliente conectado | 19:26:17
+info: GET en /js/index.js | 19:26:17
+info: GET en /realtimeproducts | 19:26:17
+info: Nuevo cliente conectado | 19:26:17
+info: GET en /js/index.js | 19:26:17
+info: GET en /realtimeproducts | 19:26:35
+info: GET en /js/index.js | 19:26:35
+info: Nuevo cliente conectado | 19:26:35
+info: GET en /realtimeproducts | 19:26:36
+info: Nuevo cliente conectado | 19:26:36
+info: GET en /js/index.js | 19:26:36
+info: GET en /realtimeproducts | 19:26:37
+info: Nuevo cliente conectado | 19:26:37
+info: GET en /js/index.js | 19:26:37
+info: Database previously connected :) | 19:29:23
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 19:29:39
+info: GET en /js/index.js | 19:29:40
+info: Nuevo cliente conectado | 19:29:40
+info: GET en /realtimeproducts | 19:29:51
+info: Nuevo cliente conectado | 19:29:51
+info: GET en /js/index.js | 19:29:51
+info: Database previously connected :) | 19:54:40
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 19:54:42
+info: Database previously connected :) | 19:55:28
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 19:55:31
+info: GET en /realtimeproducts | 19:55:33
+info: Nuevo cliente conectado | 19:55:33
+info: GET en /js/index.js | 19:55:34
+info: Database previously connected :) | 19:56:52
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 19:57:11
+info: GET en /js/index.js | 19:57:11
+info: Nuevo cliente conectado | 19:57:12
+info: Database previously connected :) | 20:03:28
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 20:03:33
+info: Nuevo cliente conectado | 20:03:34
+info: GET en /js/index.js | 20:03:34
+info: Database previously connected :) | 20:08:42
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 20:08:46
+info: GET en /realtimeproducts | 20:08:46
+info: GET en /js/index.js | 20:08:47
+info: Nuevo cliente conectado | 20:08:47
+info: Database previously connected :) | 20:26:08
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 20:26:10
+info: GET en /js/index.js | 20:26:11
+info: Nuevo cliente conectado | 20:26:11
+info: GET en /realtimeproducts | 20:26:15
+info: Nuevo cliente conectado | 20:26:15
+info: GET en /js/index.js | 20:26:15
+error: Error al actualizar el producto: productId is not defined {"stack":"ReferenceError: productId is not defined\n    at Socket.<anonymous> (/home/mel/Coder/src/app.js:140:37)\n    at Socket.emit (node:events:517:28)\n    at Socket.emitUntyped (/home/mel/Coder/node_modules/socket.io/dist/typed-events.js:69:22)\n    at /home/mel/Coder/node_modules/socket.io/dist/socket.js:704:39\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)"}
+error: Error al eliminar el producto: Cast to ObjectId failed for value "{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.delete (/home/mel/Coder/src/dao/mongo/productDaoDB.js:12:27)","stringValue":"\"{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }\"","value":{"_id":{"_id":"66230a1a2d03d12d4be1bf6b"}},"valueType":"Object"}
+info: GET en /realtimeproducts | 20:26:35
+info: Nuevo cliente conectado | 20:26:35
+info: GET en /js/index.js | 20:26:35
+error: Error al eliminar el producto: Cast to ObjectId failed for value "{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.delete (/home/mel/Coder/src/dao/mongo/productDaoDB.js:12:27)","stringValue":"\"{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }\"","value":{"_id":{"_id":"66230a1a2d03d12d4be1bf6b"}},"valueType":"Object"}
+info: Database previously connected :) | 21:03:09
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 21:03:15
+info: Database previously connected :) | 21:04:53
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 21:04:55
+info: GET en /realtimeproducts | 21:05:16
+info: Nuevo cliente conectado | 21:05:17
+info: GET en /js/index.js | 21:05:17
+error: Error al eliminar el producto: Cast to ObjectId failed for value "{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.delete (/home/mel/Coder/src/dao/mongo/productDaoDB.js:12:27)","stringValue":"\"{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }\"","value":{"_id":{"_id":"66230a1a2d03d12d4be1bf6b"}},"valueType":"Object"}
+info: Database previously connected :) | 23:37:21
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 23:37:26
+info: GET en /js/index.js | 23:37:27
+info: Nuevo cliente conectado | 23:37:27
+info: GET en /realtimeproducts | 23:37:58
+info: GET en /js/index.js | 23:37:58
+info: Nuevo cliente conectado | 23:37:59
+error: Error al eliminar el producto: Cast to ObjectId failed for value "{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.delete (/home/mel/Coder/src/dao/mongo/productDaoDB.js:12:27)","stringValue":"\"{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }\"","value":{"_id":{"_id":"66230a1a2d03d12d4be1bf6b"}},"valueType":"Object"}
+error: Error al eliminar el producto: Cast to ObjectId failed for value "{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.delete (/home/mel/Coder/src/dao/mongo/productDaoDB.js:12:27)","stringValue":"\"{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }\"","value":{"_id":{"_id":"66230a1a2d03d12d4be1bf6b"}},"valueType":"Object"}
+error: Error al eliminar el producto: Cast to ObjectId failed for value "{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.delete (/home/mel/Coder/src/dao/mongo/productDaoDB.js:12:27)","stringValue":"\"{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }\"","value":{"_id":{"_id":"66230a1a2d03d12d4be1bf6b"}},"valueType":"Object"}
+error: Error al eliminar el producto: Cast to ObjectId failed for value "{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.delete (/home/mel/Coder/src/dao/mongo/productDaoDB.js:12:27)","stringValue":"\"{ _id: { _id: '66230a1a2d03d12d4be1bf6b' } }\"","value":{"_id":{"_id":"66230a1a2d03d12d4be1bf6b"}},"valueType":"Object"}
+info: GET en /realtimeproducts | 23:42:18
+info: GET en /js/index.js | 23:42:19
+info: Nuevo cliente conectado | 23:42:19
+info: Database previously connected :) | 23:49:01
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 23:49:02
+info: GET en /realtimeproducts | 23:49:06
+info: GET en /js/index.js | 23:49:07
+info: Nuevo cliente conectado | 23:49:07
+info: GET en /realtimeproducts | 23:49:16
+info: Nuevo cliente conectado | 23:49:16
+info: GET en /js/index.js | 23:49:17
+info: GET en /realtimeproducts | 23:49:24
+info: GET en /js/index.js | 23:49:25
+info: Nuevo cliente conectado | 23:49:25
+info: GET en /realtimeproducts | 23:49:36
+info: GET en /js/index.js | 23:49:37
+info: Nuevo cliente conectado | 23:49:37
+info: GET en /realtimeproducts | 00:41:13
+info: GET en /js/index.js | 00:41:14
+info: Nuevo cliente conectado | 00:41:14
+error: Error al actualizar el producto: productId is not defined {"stack":"ReferenceError: productId is not defined\n    at Socket.<anonymous> (/home/mel/Coder/src/app.js:140:37)\n    at Socket.emit (node:events:517:28)\n    at Socket.emitUntyped (/home/mel/Coder/node_modules/socket.io/dist/typed-events.js:69:22)\n    at /home/mel/Coder/node_modules/socket.io/dist/socket.js:704:39\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)"}
+info: GET en /realtimeproducts | 00:41:42
+info: GET en /js/index.js | 00:41:43
+info: Nuevo cliente conectado | 00:41:43
+info: Database previously connected :) | 01:06:18
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 01:06:22
+info: GET en /realtimeproducts | 01:08:31
+info: GET en /js/index.js | 01:08:32
+info: Nuevo cliente conectado | 01:08:32
+info: Database previously connected :) | 01:14:17
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 01:14:56
+info: GET en /js/index.js | 01:14:56
+info: Nuevo cliente conectado | 01:14:56
+info: Database previously connected :) | 01:19:59
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 01:20:03
+info: Database previously connected :) | 01:20:55
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 01:20:58
+info: Nuevo cliente conectado | 01:20:58
+info: GET en /js/index.js | 01:20:59
+info: Database previously connected :) | 01:32:29
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 01:32:32
+info: GET en /js/index.js | 01:32:33
+info: Nuevo cliente conectado | 01:32:33
+info: Database previously connected :) | 01:36:11
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 01:36:14
+info: GET en /js/index.js | 01:36:15
+info: Nuevo cliente conectado | 01:36:15
+info: GET en /realtimeproducts | 01:36:15
+info: GET en /js/index.js | 01:36:16
+info: Nuevo cliente conectado | 01:36:16
+info: GET en /realtimeproducts | 01:42:48
+info: GET en /js/index.js | 01:42:48
+info: Nuevo cliente conectado | 01:42:49
+info: Database previously connected :) | 01:43:53
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 01:43:56
+info: GET en /realtimeproducts | 01:43:57
+info: GET en /js/index.js | 01:43:57
+info: Nuevo cliente conectado | 01:43:58
+info: Database previously connected :) | 11:14:19
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 11:14:20
+info: GET en /js/index.js | 11:14:21
+info: Nuevo cliente conectado | 11:14:21
+info: GET en /favicon.ico | 11:14:21
+info: GET en /realtimeproducts | 11:14:49
+info: GET en /js/index.js | 11:14:49
+info: Nuevo cliente conectado | 11:14:49
+info: GET en /realtimeproducts | 11:15:28
+info: GET en /js/index.js | 11:15:28
+info: Nuevo cliente conectado | 11:15:28
+info: GET en /realtimeproducts | 11:16:46
+info: GET en /js/index.js | 11:16:46
+info: Nuevo cliente conectado | 11:16:46
+info: Database previously connected :) | 11:20:39
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 11:20:45
+info: GET en /realtimeproducts | 11:21:33
+info: GET en /js/index.js | 11:21:33
+info: Nuevo cliente conectado | 11:21:33
+info: GET en /realtimeproducts | 11:22:34
+info: GET en /js/index.js | 11:22:34
+info: Nuevo cliente conectado | 11:22:34
+info: GET en /realtimeproducts | 11:28:09
+info: GET en /js/index.js | 11:28:09
+info: Nuevo cliente conectado | 11:28:10
+info: GET en /realtimeproducts | 11:41:56
+info: GET en /js/index.js | 11:41:56
+info: Nuevo cliente conectado | 11:41:57
+info: GET en /realtimeproducts | 11:45:25
+info: Nuevo cliente conectado | 11:45:25
+info: GET en /js/index.js | 11:45:25
+info: Nuevo cliente conectado | 11:45:25
+info: GET en /realtimeproducts | 11:45:33
+info: GET en /js/index.js | 11:45:33
+info: Nuevo cliente conectado | 11:45:33
+info: GET en /realtimeproducts | 11:48:15
+info: GET en /js/index.js | 11:48:15
+info: Nuevo cliente conectado | 11:48:15
+info: Database previously connected :) | 11:51:56
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 11:52:00
+info: GET en /realtimeproducts | 11:52:04
+info: GET en /js/index.js | 11:52:04
+info: Nuevo cliente conectado | 11:52:04
+error: Error al actualizar el producto: productId is not defined {"stack":"ReferenceError: productId is not defined\n    at Socket.<anonymous> (/home/mel/Coder/src/app.js:142:61)\n    at Socket.emit (node:events:517:28)\n    at Socket.emitUntyped (/home/mel/Coder/node_modules/socket.io/dist/typed-events.js:69:22)\n    at /home/mel/Coder/node_modules/socket.io/dist/socket.js:704:39\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)"}
+error: Error al actualizar el producto: productId is not defined {"stack":"ReferenceError: productId is not defined\n    at Socket.<anonymous> (/home/mel/Coder/src/app.js:142:61)\n    at Socket.emit (node:events:517:28)\n    at Socket.emitUntyped (/home/mel/Coder/node_modules/socket.io/dist/typed-events.js:69:22)\n    at /home/mel/Coder/node_modules/socket.io/dist/socket.js:704:39\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)"}
+info: GET en /realtimeproducts | 11:53:13
+info: GET en /js/index.js | 11:53:13
+info: Nuevo cliente conectado | 11:53:13
+error: Error al actualizar el producto: productId is not defined {"stack":"ReferenceError: productId is not defined\n    at Socket.<anonymous> (/home/mel/Coder/src/app.js:142:61)\n    at Socket.emit (node:events:517:28)\n    at Socket.emitUntyped (/home/mel/Coder/node_modules/socket.io/dist/typed-events.js:69:22)\n    at /home/mel/Coder/node_modules/socket.io/dist/socket.js:704:39\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)"}
+error: Error al actualizar el producto: productId is not defined {"stack":"ReferenceError: productId is not defined\n    at Socket.<anonymous> (/home/mel/Coder/src/app.js:142:61)\n    at Socket.emit (node:events:517:28)\n    at Socket.emitUntyped (/home/mel/Coder/node_modules/socket.io/dist/typed-events.js:69:22)\n    at /home/mel/Coder/node_modules/socket.io/dist/socket.js:704:39\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)"}
+info: GET en /realtimeproducts | 11:53:45
+info: GET en /js/index.js | 11:53:45
+info: Nuevo cliente conectado | 11:53:45
+info: GET en /realtimeproducts | 11:54:57
+info: GET en /js/index.js | 11:54:57
+info: Nuevo cliente conectado | 11:54:57
+info: GET en /realtimeproducts | 11:54:59
+info: GET en /js/index.js | 11:54:59
+info: Nuevo cliente conectado | 11:54:59
+info: GET en /realtimeproducts | 11:57:48
+info: GET en /js/index.js | 11:57:48
+info: Nuevo cliente conectado | 11:57:48
+info: GET en /realtimeproducts | 11:58:02
+info: GET en /js/index.js | 11:58:02
+info: Nuevo cliente conectado | 11:58:03
+info: GET en /realtimeproducts | 11:59:03
+info: GET en /js/index.js | 11:59:03
+info: Nuevo cliente conectado | 11:59:03
+error: Error al actualizar el producto: productId is not defined {"stack":"ReferenceError: productId is not defined\n    at Socket.<anonymous> (/home/mel/Coder/src/app.js:142:61)\n    at Socket.emit (node:events:517:28)\n    at Socket.emitUntyped (/home/mel/Coder/node_modules/socket.io/dist/typed-events.js:69:22)\n    at /home/mel/Coder/node_modules/socket.io/dist/socket.js:704:39\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)"}
+info: GET en /realtimeproducts | 11:59:11
+info: GET en /js/index.js | 11:59:12
+info: Nuevo cliente conectado | 11:59:12
+info: GET en /realtimeproducts | 11:59:13
+info: GET en /js/index.js | 11:59:14
+info: Nuevo cliente conectado | 11:59:14
+info: Database previously connected :) | 12:04:40
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 12:04:45
+info: GET en /realtimeproducts | 12:04:46
+info: GET en /js/index.js | 12:04:47
+info: Nuevo cliente conectado | 12:04:47
+error: Error al actualizar el producto: Cast to ObjectId failed for value "{
+  _id: {
+    productId: '66549e1d21a8d18a91760bf1',
+    productData: {
+      title: 'Testsssss',
+      description: 'test',
+      price: '4500',
+      thumbnail: 'test',
+      code: '0154',
+      stock: '100',
+      category: 'test'
+    }
+  }
+}" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{\n  _id: {\n    productId: '66549e1d21a8d18a91760bf1',\n    productData: {\n      title: 'Testsssss',\n      description: 'test',\n      price: '4500',\n      thumbnail: 'test',\n      code: '0154',\n      stock: '100',\n      category: 'test'\n    }\n  }\n}\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.update (/home/mel/Coder/src/dao/mongo/productDaoDB.js:11:44)","stringValue":"\"{\n  _id: {\n    productId: '66549e1d21a8d18a91760bf1',\n    productData: {\n      title: 'Testsssss',\n      description: 'test',\n      price: '4500',\n      thumbnail: 'test',\n      code: '0154',\n      stock: '100',\n      category: 'test'\n    }\n  }\n}\"","value":{"_id":{"productData":{"category":"test","code":"0154","description":"test","price":"4500","stock":"100","thumbnail":"test","title":"Testsssss"},"productId":"66549e1d21a8d18a91760bf1"}},"valueType":"Object"}
+info: GET en /realtimeproducts | 12:04:56
+info: GET en /js/index.js | 12:04:56
+info: Nuevo cliente conectado | 12:04:56
+info: GET en /realtimeproducts | 12:04:58
+info: GET en /js/index.js | 12:04:58
+info: Nuevo cliente conectado | 12:04:58
+info: GET en /realtimeproducts | 12:04:58
+info: GET en /js/index.js | 12:04:58
+info: Nuevo cliente conectado | 12:04:59
+info: GET en /realtimeproducts | 12:10:07
+info: GET en /js/index.js | 12:10:07
+info: Nuevo cliente conectado | 12:10:07
+info: GET en /realtimeproducts | 12:10:09
+info: GET en /js/index.js | 12:10:09
+info: Nuevo cliente conectado | 12:10:09
+error: Error al actualizar el producto: Cast to ObjectId failed for value "{
+  _id: {
+    productId: '66549e1d21a8d18a91760bf1',
+    productData: {
+      title: 'Testaaa',
+      description: 'test',
+      price: '4500',
+      thumbnail: 'test',
+      code: '0154',
+      stock: '100',
+      category: 'test'
+    }
+  }
+}" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{\n  _id: {\n    productId: '66549e1d21a8d18a91760bf1',\n    productData: {\n      title: 'Testaaa',\n      description: 'test',\n      price: '4500',\n      thumbnail: 'test',\n      code: '0154',\n      stock: '100',\n      category: 'test'\n    }\n  }\n}\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.update (/home/mel/Coder/src/dao/mongo/productDaoDB.js:11:44)","stringValue":"\"{\n  _id: {\n    productId: '66549e1d21a8d18a91760bf1',\n    productData: {\n      title: 'Testaaa',\n      description: 'test',\n      price: '4500',\n      thumbnail: 'test',\n      code: '0154',\n      stock: '100',\n      category: 'test'\n    }\n  }\n}\"","value":{"_id":{"productData":{"category":"test","code":"0154","description":"test","price":"4500","stock":"100","thumbnail":"test","title":"Testaaa"},"productId":"66549e1d21a8d18a91760bf1"}},"valueType":"Object"}
+info: GET en /realtimeproducts | 12:10:16
+info: GET en /js/index.js | 12:10:16
+info: Nuevo cliente conectado | 12:10:16
+info: Database previously connected :) | 12:10:36
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 12:10:40
+error: Error al actualizar el producto: Cast to ObjectId failed for value "{ _id: undefined }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: undefined }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.update (/home/mel/Coder/src/dao/mongo/productDaoDB.js:11:44)","stringValue":"\"{ _id: undefined }\"","value":{},"valueType":"Object"}
+info: GET en /realtimeproducts | 12:10:56
+info: GET en /js/index.js | 12:10:56
+info: Nuevo cliente conectado | 12:10:56
+info: Database previously connected :) | 12:25:06
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 12:25:06
+info: Database previously connected :) | 12:25:57
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 12:26:00
+info: GET en /js/index.js | 12:26:00
+info: Nuevo cliente conectado | 12:26:00
+info: GET en /realtimeproducts | 12:26:02
+info: GET en /js/index.js | 12:26:02
+info: Nuevo cliente conectado | 12:26:02
+info: GET en /realtimeproducts | 12:26:15
+info: GET en /js/index.js | 12:26:15
+info: Nuevo cliente conectado | 12:26:15
+error: Error al actualizar el producto: Cast to ObjectId failed for value "{ _id: undefined }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: undefined }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.update (/home/mel/Coder/src/dao/mongo/productDaoDB.js:11:44)","stringValue":"\"{ _id: undefined }\"","value":{},"valueType":"Object"}
+info: GET en /realtimeproducts | 12:26:28
+info: GET en /js/index.js | 12:26:28
+info: Nuevo cliente conectado | 12:26:28
+error: Error al actualizar el producto: Cast to ObjectId failed for value "{ _id: undefined }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: undefined }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.update (/home/mel/Coder/src/dao/mongo/productDaoDB.js:11:44)","stringValue":"\"{ _id: undefined }\"","value":{},"valueType":"Object"}
+info: Database previously connected :) | 12:27:24
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 12:27:25
+info: Nuevo cliente conectado | 12:28:46
+info: GET en /realtimeproducts | 12:28:46
+error: Error al actualizar el producto: Cast to ObjectId failed for value "{ _id: undefined }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: undefined }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.update (/home/mel/Coder/src/dao/mongo/productDaoDB.js:11:44)","stringValue":"\"{ _id: undefined }\"","value":{},"valueType":"Object"}
+info: Nuevo cliente conectado | 12:31:46
+info: GET en /js/index.js | 12:31:46
+info: Nuevo cliente conectado | 12:31:46
+info: GET en /realtimeproducts | 12:31:52
+info: GET en /js/index.js | 12:31:52
+info: Nuevo cliente conectado | 12:31:52
+info: GET en /realtimeproducts | 12:31:55
+info: GET en /js/index.js | 12:31:55
+info: Nuevo cliente conectado | 12:31:55
+info: GET en /realtimeproducts | 12:32:27
+info: GET en /js/index.js | 12:32:27
+info: Nuevo cliente conectado | 12:32:27
+info: Database previously connected :) | 12:50:44
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 12:50:46
+info: Database previously connected :) | 12:59:52
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 12:59:55
+info: GET en /realtimeproducts | 13:00:52
+info: GET en /js/index.js | 13:00:53
+info: Nuevo cliente conectado | 13:00:53
+info: GET en /realtimeproducts | 13:01:25
+info: GET en /js/index.js | 13:01:31
+info: Nuevo cliente conectado | 13:01:31
+error: Error al eliminar el producto: Cast to ObjectId failed for value "{ _id: 'undefined' }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: 'undefined' }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.delete (/home/mel/Coder/src/dao/mongo/productDaoDB.js:12:27)","stringValue":"\"{ _id: 'undefined' }\"","value":{"_id":"undefined"},"valueType":"Object"}
+error: Error al eliminar el producto: Cast to ObjectId failed for value "{ _id: 'undefined' }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: 'undefined' }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.delete (/home/mel/Coder/src/dao/mongo/productDaoDB.js:12:27)","stringValue":"\"{ _id: 'undefined' }\"","value":{"_id":"undefined"},"valueType":"Object"}
+error: Error al eliminar el producto: Cast to ObjectId failed for value "{ _id: 'undefined' }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: 'undefined' }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.delete (/home/mel/Coder/src/dao/mongo/productDaoDB.js:12:27)","stringValue":"\"{ _id: 'undefined' }\"","value":{"_id":"undefined"},"valueType":"Object"}
+info: GET en /realtimeproducts | 13:10:28
+info: GET en /js/index.js | 13:10:29
+info: Nuevo cliente conectado | 13:10:29
+info: GET en /realtimeproducts | 13:10:44
+info: GET en /js/index.js | 13:10:45
+info: Nuevo cliente conectado | 13:10:45
+info: GET en /realtimeproducts | 13:10:57
+info: GET en /js/index.js | 13:10:58
+info: Nuevo cliente conectado | 13:10:58
+info: GET en /realtimeproducts | 13:14:40
+info: GET en /js/index.js | 13:14:40
+info: Nuevo cliente conectado | 13:14:40
+info: Database previously connected :) | 13:16:13
+info: Escuchando puerto: 8080
+info: Nuevo cliente conectado | 13:16:16
+info: GET en /realtimeproducts | 13:16:17
+info: GET en /js/index.js | 13:16:17
+info: Nuevo cliente conectado | 13:16:17
+info: GET en /realtimeproducts | 13:16:18
+info: GET en /js/index.js | 13:16:19
+info: Nuevo cliente conectado | 13:16:19
+error: Error al eliminar el producto: Cast to ObjectId failed for value "{ _id: 'undefined' }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: 'undefined' }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.delete (/home/mel/Coder/src/dao/mongo/productDaoDB.js:12:27)","stringValue":"\"{ _id: 'undefined' }\"","value":{"_id":"undefined"},"valueType":"Object"}
+info: GET en /realtimeproducts | 13:40:58
+info: GET en /js/index.js | 13:40:58
+info: Nuevo cliente conectado | 13:40:58
+info: GET en /realtimeproducts | 13:41:36
+info: GET en /js/index.js | 13:41:36
+info: Nuevo cliente conectado | 13:41:36
+info: GET en /realtimeproducts | 13:41:45
+info: GET en /js/index.js | 13:41:45
+info: Nuevo cliente conectado | 13:41:45
+info: Nuevo cliente conectado | 13:43:18
+info: GET en /realtimeproducts | 13:43:20
+info: GET en /js/index.js | 13:43:20
+info: Nuevo cliente conectado | 13:43:20
+error: Error al eliminar el producto: Cast to ObjectId failed for value "{ _id: 'undefined' }" (type Object) at path "_id" for model "products" {"kind":"ObjectId","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{ _id: 'undefined' }\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (/home/mel/Coder/node_modules/mongoose/lib/schema/objectId.js:250:11)\n    at SchemaType.applySetters (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1221:12)\n    at SchemaType.castForQuery (/home/mel/Coder/node_modules/mongoose/lib/schemaType.js:1636:17)\n    at cast (/home/mel/Coder/node_modules/mongoose/lib/cast.js:304:34)\n    at Query.cast (/home/mel/Coder/node_modules/mongoose/lib/query.js:4746:12)\n    at Query._castConditions (/home/mel/Coder/node_modules/mongoose/lib/query.js:2200:10)\n    at model.Query._findOneAndUpdate (/home/mel/Coder/node_modules/mongoose/lib/query.js:3242:8)\n    at model.Query.exec (/home/mel/Coder/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductManagerDB.delete (/home/mel/Coder/src/dao/mongo/productDaoDB.js:12:27)","stringValue":"\"{ _id: 'undefined' }\"","value":{"_id":"undefined"},"valueType":"Object"}
+info: GET en /realtimeproducts | 13:43:48
+info: GET en /js/index.js | 13:43:48
+info: Nuevo cliente conectado | 13:43:48
+info: GET en /realtimeproducts | 14:51:29
+info: GET en /js/index.js | 14:51:29
+info: Nuevo cliente conectado | 14:51:29
+info: GET en /realtimeproducts | 14:53:07
+info: GET en /js/index.js | 14:53:07
+info: Nuevo cliente conectado | 14:53:07
+info: GET en /realtimeproducts | 14:53:31
+info: GET en /js/index.js | 14:53:31
+info: Nuevo cliente conectado | 14:53:31
+info: GET en /realtimeproducts | 14:54:03
+info: GET en /js/index.js | 14:54:03
+info: Nuevo cliente conectado | 14:54:03
+info: GET en /realtimeproducts | 15:03:46
+info: GET en /js/index.js | 15:03:46
+info: Nuevo cliente conectado | 15:03:46
+info: GET en /realtimeproducts | 15:05:03
+info: GET en /js/index.js | 15:05:03
+info: Nuevo cliente conectado | 15:05:03
+info: Database previously connected :) | 15:06:03
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 15:06:06
+info: GET en /js/index.js | 15:06:06
+info: Nuevo cliente conectado | 15:06:07
+info: GET en /realtimeproducts | 15:06:23
+info: GET en /js/index.js | 15:06:24
+info: Nuevo cliente conectado | 15:06:24
+info: GET en /realtimeproducts | 15:06:27
+info: GET en /js/index.js | 15:06:27
+info: Nuevo cliente conectado | 15:06:28
+info: GET en /realtimeproducts | 15:07:11
+info: GET en /js/index.js | 15:07:11
+info: Nuevo cliente conectado | 15:07:11
+info: GET en /realtimeproducts | 15:09:23
+info: GET en /js/index.js | 15:09:23
+info: Nuevo cliente conectado | 15:09:24
+info: Database previously connected :) | 15:39:46
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 15:39:46
+info: GET en /js/index.js | 15:39:47
+info: Nuevo cliente conectado | 15:39:47
+info: GET en /realtimeproducts | 15:39:57
+info: GET en /js/index.js | 15:39:57
+info: Nuevo cliente conectado | 15:39:57
+info: GET en /realtimeproducts | 15:40:04
+info: GET en /js/index.js | 15:40:04
+info: Nuevo cliente conectado | 15:40:04
+info: GET en /realtimeproducts | 15:51:53
+info: GET en /js/index.js | 15:51:54
+info: Nuevo cliente conectado | 15:51:54
+info: GET en /realtimeproducts | 15:52:46
+info: GET en /js/index.js | 15:52:47
+info: Nuevo cliente conectado | 15:52:47
+info: GET en /realtimeproducts | 15:53:41
+info: GET en /js/index.js | 15:53:41
+info: Nuevo cliente conectado | 15:53:41
+info: GET en /apidocs | 15:54:03
+info: GET en /apidocs/ | 15:54:03
+info: GET en /apidocs/swagger-ui.css | 15:54:03
+info: GET en /apidocs/swagger-ui-bundle.js | 15:54:03
+info: GET en /apidocs/swagger-ui-standalone-preset.js | 15:54:03
+info: GET en /apidocs/swagger-ui-init.js | 15:54:03
+info: GET en /apidocs/favicon-32x32.png | 15:54:03
+info: GET en /api/products-db/ | 15:54:22
+info: GET en /login | 15:54:38
+info: POST en /api/session/login | 15:54:42
+info: GET en /products | 15:54:42
+info: POST en /api/carts/65fb7a37134080efbeee5b76/products | 15:54:46
+info: GET en /65fb7a37134080efbeee5b76/purchase | 15:54:50
+info: POST en /api/session/logout | 15:55:03
+info: GET en /login | 15:55:03
+info: GET en /forgot-password | 15:55:06
+info: POST en /api/session/forgot-password | 15:55:11

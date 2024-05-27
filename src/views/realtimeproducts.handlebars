@@ -1,142 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real Time</title>
-    <script src="/socket.io/socket.io.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Time</title>
+  <script src="/socket.io/socket.io.js"></script>
 </head>
+
 <body>
-    <h1>Real Time Products</h1>
 
-    <ul id="productList">
-  {{#each products}}
-    <li>{{this.title}} | ID {{this.id}}</li>
-  {{/each}}
-</ul>
+  <h1>Real Time Products</h1>
 
-{{!-- Formulario para agregar producto desde el front --}}
+  <ul id="productList">
+    {{#each products}}
+    <li>
+      <strong>Title:</strong> {{this.title}} | <strong>ID</strong> {{this._id}} | <strong>Stock</strong> {{this.stock}}
+      <button
+        onclick="editProduct('{{this._id}}', '{{this.title}}', '{{this.description}}', '{{this.price}}', '{{this.thumbnail}}', '{{this.code}}', '{{this.stock}}', '{{this.category}}')">Editar</button>
+      <button onclick="deleteProduct('{{this._id}}')">Eliminar</button>
+    </li>
+    {{/each}}
+  </ul>
 
-<form id="productForm">
+  <h2>Agregar/Actualizar Producto</h2>
+  <form id="productForm">
+    <input type="hidden" id="productId" name="id">
     <label for="title">Título del Producto:</label>
     <input type="text" id="productTitle" name="title" required>
-
     <label for="description">Descripción:</label>
     <input type="text" id="productDescription" name="description" required>
-
     <label for="price">Precio:</label>
     <input type="number" id="productPrice" name="price" required>
-
     <label for="thumbnail">Thumbnail:</label>
     <input type="text" id="productThumbnail" name="thumbnail" required>
-
     <label for="code">Código:</label>
     <input type="text" id="productCode" name="code" required>
-
     <label for="stock">Stock:</label>
     <input type="number" id="productStock" name="stock" required>
-
     <label for="category">Categoría:</label>
     <input type="text" id="productCategory" name="category" required>
+    <button type="button" onclick="submitProduct()">Guardar producto</button>
+  </form>
 
-    <button type="button" onclick="addProduct()">Agregar producto</button>
-</form>
+  <script>
+    const socket = io();
+
+    function submitProduct() {
+      const productIdInput = document.getElementById('productId');
+      const titleInput = document.getElementById('productTitle');
+      const descriptionInput = document.getElementById('productDescription');
+      const priceInput = document.getElementById('productPrice');
+      const thumbnailInput = document.getElementById('productThumbnail');
+      const codeInput = document.getElementById('productCode');
+      const stockInput = document.getElementById('productStock');
+      const categoryInput = document.getElementById('productCategory');
+
+      const product = {
+        title: titleInput.value.trim(),
+        description: descriptionInput.value.trim(),
+        price: priceInput.value.trim(),
+        thumbnail: thumbnailInput.value.trim(),
+        code: codeInput.value.trim(),
+        stock: stockInput.value.trim(),
+        category: categoryInput.value.trim()
+      };
+
+      if (productIdInput && productIdInput.value.trim()) {
+        // Actualizar producto existente
+        const productId = productIdInput.value.trim();
+        // Emitiendo updateProduct
+        socket.emit('updateProduct', { productId, productData: product });
+      } else {
+        // Emmtiendo newProduct
+        socket.emit('newProduct', product);
+      }
+
+      productId.value = '';
+      titleInput.value = '';
+      descriptionInput.value = '';
+      priceInput.value = '';
+      thumbnailInput.value = '';
+      codeInput.value = '';
+      stockInput.value = '';
+      categoryInput.value = '';
+    }
 
 
-{{!-- Lo que hace el evento addProduct--}}
+    function editProduct(id, title, description, price, thumbnail, code, stock, category) {
+      const productIdInput = document.getElementById('productId');
+      productIdInput.value = id;
+      document.getElementById('productTitle').value = title;
+      document.getElementById('productDescription').value = description;
+      document.getElementById('productPrice').value = price;
+      document.getElementById('productThumbnail').value = thumbnail;
+      document.getElementById('productCode').value = code;
+      document.getElementById('productStock').value = stock;
+      document.getElementById('productCategory').value = category;
+    }
 
-<script> 
-const socket = io();
-function addProduct() {
-            let titleInput = document.getElementById('productTitle');
-            let descriptionInput = document.getElementById('productDescription');
-            let priceInput = document.getElementById('productPrice');
-            let thumbnailInput= document.getElementById('productThumbnail');
-            let codeInput= document.getElementById('productCode');
-            let stockInput= document.getElementById('productStock');
-            let categoryInput= document.getElementById('productCategory');
+    function deleteProduct(id) {
+      console.log(id)
+      // Emitiendo deleteProduct
+      socket.emit('deleteProduct', id)
+      const productItem = document.querySelector(`[data-product-id="${id}"]`);
+      if (productItem) {
+        productItem.remove()
+      }
+    }
 
-            const newProductTitle = titleInput.value.trim();
-            const newProductDescription = descriptionInput.value.trim();
-            const newProductPrice = priceInput.value.trim();
-            const newProductThumbnail= thumbnailInput.value.trim();
-            const newProductCode = codeInput.value.trim();
-            const newProductStock = stockInput.value.trim();
-            const newProductCategory = categoryInput.value.trim();
-
-            if (newProductTitle!== '' && newProductDescription !== '' && newProductPrice !== ''
-            && newProductThumbnail !== '' && newProductCode !== ''
-            && newProductStock !== '' && newProductCategory !== '') {
-                
-            //Emitiendo newProduct
-            socket.emit('newProduct', {
-              id: undefined,
-              title: newProductTitle,
-              description: newProductDescription,
-              price: newProductPrice,
-              thumbnail: newProductThumbnail,
-              code: newProductCode,
-              stock: newProductStock,
-              category: newProductCategory});
-
-              titleInput.value = ''; descriptionInput.value = ''; priceInput.value = '';
-              thumbnailInput.value = ''; codeInput.value = ''; stockInput.value = '';
-              categoryInput.value = '';
-            }
-  };
-
-
-//Escuchando updateList
-let productList = JSON.parse(localStorage.getItem('productList')) || [];
-
-socket.on('updateList', (newProductList) => {
-  productList = newProductList;
-  updateBrowserList(productList);
-  localStorage.setItem('productList', JSON.stringify(productList));
-});
-
-function updateBrowserList(products) {
-  const productListElement = document.getElementById('productList');
-  productListElement.innerHTML = '';
-    products.forEach(product => {
-        const productItem = document.createElement('li');
-        productItem.textContent = `${product.title} | ID ${product.id}`;
-        productListElement.appendChild(productItem);
+    // Escuchando updateList
+    socket.on('updateList', (products) => {
+      updateBrowserList(products);
     });
-}
-</script>
 
+    // Manejo el producto actualizado 
+    function updateBrowserList(updatedProduct) {
+      const productListElement = document.getElementById('productList');
+      const existingProductItem = document.querySelector(`[data-product-id="${updatedProduct._id}"]`);
 
+      if (existingProductItem) {
+        // Si el producto ya existe en la lista, actualiza 
+        existingProductItem.querySelector('.product-title').textContent = updatedProduct.title;
+        existingProductItem.querySelector('.product-description').textContent = updatedProduct.description;
+        existingProductItem.querySelector('.product-price').textContent = updatedProduct.price;
+        existingProductItem.querySelector('.product-thumbnail').textContent = updatedProduct.thumbnail;
+        existingProductItem.querySelector('.product-code').textContent = updatedProduct.code;
+        existingProductItem.querySelector('.product-stock').textContent = updatedProduct.stock;
+        existingProductItem.querySelector('.product-category').textContent = updatedProduct.category;
+      } else {
+        // Si el producto no existe en la lista, crea un item
+        const productItem = document.createElement('li');
+        // Agrega un atributo data-product-id con el ID del producto
+        productItem.dataset.productId = updatedProduct._id; 
+        productItem.innerHTML = `
+      <strong>Title:</strong> <span class="product-title">${updatedProduct.title}</span> |
+      <strong>ID</strong> ${updatedProduct._id} |
+      <strong>Stock</strong> <span class="product-stock">${updatedProduct.stock}</span>
+      <button onclick="editProduct('${updatedProduct._id}', '${updatedProduct.title}', '${updatedProduct.description}', '${updatedProduct.price}', '${updatedProduct.thumbnail}', '${updatedProduct.code}', '${updatedProduct.stock}', '${updatedProduct.category}')">Editar</button>
+      <button onclick="deleteProduct('${updatedProduct._id}')">Eliminar</button>`;
+        productListElement.appendChild(productItem);
+      }
+    }
 
-{{!-- Formulario para eliminar producto desde el front --}}
-
-<form id="deleteForm">
-        <label for="title">Id del Producto:</label>
-        <input type="text" id="productId" name="title" required>
-        <button type="button" onclick="deleteProduct()">Eliminar producto</button>
-    </form>
-
-
-{{!-- Lo que hace el evento deleteProduct --}}
-
-<script>
-function deleteProduct() {
-            const idInput = document.getElementById('productId');
-            const productId = idInput.value.trim();
-
-            if (productId!== '') {
-                //Emitiendo deleteProduct
-                socket.emit('deleteProduct', { id: productId });
-
-                idInput.value = '';
-            }
-  }; 
-
- 
-</script>
-
-
-<script src="/js/index.js"></script>
+  </script>
+  <script src="/js/index.js"></script>
 </body>
-</html>
 
+</html>
