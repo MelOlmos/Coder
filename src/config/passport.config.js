@@ -8,6 +8,7 @@ const { Strategy, ExtractJwt } = require('passport-jwt');
 const { PRIVATE_KEY } = require('../utils/jsonwebtoken.js');
 const JWTStrategy = Strategy;
 const ExtractJWT = ExtractJwt;
+const PORT = process.env.PORT
 
 
 const initializePassport = () => {
@@ -72,7 +73,7 @@ passport.deserializeUser(async (id,done) => {
 passport.use('github', new GitHubStrategy({
     clientID:'Iv1.1c8a7a5641a94405',
     clientSecret:'5428d8aab70d7f30d95d1a60f5d4bac628c110d1',
-    callbackURL:'http://localhost:8080/api/session/githubcallback'
+    callbackURL:`http://localhost:${PORT}/api/session/githubcallback`
 }, async (accessToken, refreshToken, profile, done) =>{
     try {
         console.log(profile);
