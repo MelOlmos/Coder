@@ -6,7 +6,6 @@ const CartManagerDB = require('../dao/mongo/cartDaoDB.js');
 const cartManager = new CartManagerDB();
 const { generateResetToken, verifyResetToken } = require('../utils/tokenUtils.js');
 const { sendEmail } = require('../utils/sendMail.js')
-const DOMAIN = process.env.RAILWAY_STATIC_URL || `http://localhost:${PORT}`;
 
 
 class SessionController {
@@ -187,7 +186,8 @@ class SessionController {
 
     postForgotPassword = async (req, res) => {
         const { email } = req.body;
-        const PORT = process.env.PORT || 8080
+        const PORT = process.env.PORT;
+        const DOMAIN = process.env.RAILWAY_STATIC_URL || `http://localhost:${PORT}`;
 
         try {
             // Busca el usuario por su correo electrónico
@@ -201,7 +201,7 @@ class SessionController {
             const token = generateResetToken(user._id);
 
             // Crea el link de restablecimiento
-            const resetLink = `http://localhost:${PORT}/new-password?token=${token}`;
+            const resetLink = `${DOMAIN}/new-password?token=${token}`;
 
             // Envia el correo de restablecimiento
             await sendEmail({
