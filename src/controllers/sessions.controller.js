@@ -137,8 +137,7 @@ class SessionController {
             // Verifica si req.session.user está y el id
             if (req.session.user && req.session.user._id) {
                 // Actualiza la última conexión en la base de datos
-                await this.userService.update(req.session.user._id, 
-                    { last_connection: (new Date()) });
+                await this.userService.update(req.session.user._id, { last_connection: (new Date()) });
             }
 
             req.session.destroy()
@@ -188,7 +187,7 @@ class SessionController {
 
     postForgotPassword = async (req, res) => {
         const { email } = req.body;
-        const PORT = process.env.PORT
+        const PORT = process.env.PORT || 8025
 
         try {
             // Busca el usuario por su correo electrónico
