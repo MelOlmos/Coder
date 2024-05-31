@@ -71,6 +71,7 @@ class UserController {
     changeUserRole = async (req, res) => {
         const { uid } = req.params;
         const { role } = req.body;
+        const PORT = process.env.PORT
     
         try {
           // Verifica si el usuario existe
@@ -89,7 +90,7 @@ class UserController {
                 'identificationFile'<br>
                 'proofOfAddressFile'<br> 
                 'accountStatementFile'</br><br>
-                <a href="http://localhost:5000/api/users/${uid}/documents">Cargar documentos</a>`) 
+                <a href="http://localhost:${PORT}/api/users/${uid}/documents">Cargar documentos</a>`) 
         }
     
           // Actualiza el rol del usuario

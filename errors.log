@@ -1203,3 +1203,261 @@ info: GET en /realtimeproducts | 14:38:21
 info: Nuevo cliente conectado | 14:38:21
 info: GET en /js/index.js | 14:38:21
 info: GET en /login | 14:39:10
+info: Database previously connected :) | 16:50:50
+info: Escuchando puerto: 8080
+info: GET en /login | 16:50:59
+info: POST en /api/session/login | 16:51:03
+info: GET en /products | 16:51:03
+info: POST en /api/carts/6658b846cbfb69b17144f75c/products | 16:51:07
+info: GET en /products/65f61ba864b452e91a97e460 | 16:51:10
+info: POST en /api/carts/6658b846cbfb69b17144f75c/products | 16:51:15
+info: GET en /6658b846cbfb69b17144f75c/purchase | 16:51:16
+info: GET en /apidocs/ | 16:51:34
+info: GET en /apidocs/swagger-ui.css | 16:51:34
+info: GET en /apidocs/swagger-ui-bundle.js | 16:51:34
+info: GET en /apidocs/swagger-ui-standalone-preset.js | 16:51:34
+info: GET en /apidocs/swagger-ui-init.js | 16:51:34
+info: GET en /api/products-db/ | 16:51:42
+info: GET en /api/carts/ | 16:52:05
+info: POST en /api/carts/ | 16:52:29
+info: GET en /api/carts/6658b846cbfb69b17144f75c | 16:53:03
+info: PUT en /api/carts/6658b846cbfb69b17144f75c | 16:54:00
+info: POST en /api/carts/6658b846cbfb69b17144f75c/products/ | 16:54:26
+info: DELETE en /api/carts/6658b846cbfb69b17144f75c/product/65f61b5a64b452e91a97e45a | 16:55:08
+info: GET en /apidocs/ | 16:55:24
+info: GET en /apidocs/swagger-ui.css | 16:55:24
+info: GET en /apidocs/swagger-ui-bundle.js | 16:55:24
+info: GET en /apidocs/swagger-ui-standalone-preset.js | 16:55:24
+info: GET en /apidocs/swagger-ui-init.js | 16:55:24
+info: GET en /apidocs/favicon-32x32.png | 16:55:25
+info: GET en /api/carts/6658b846cbfb69b17144f75c | 16:55:35
+info: Database previously connected :) | 17:25:49
+info: Escuchando puerto: 8080
+info: Database previously connected :) | 17:47:46
+info: Escuchando puerto: 8080
+info: GET en /register | 17:48:01
+info: POST en /api/session/register | 17:48:11
+info: GET en /products | 17:48:12
+info: POST en /api/session/logout | 17:48:14
+info: POST en /api/session/logout | 17:49:54
+info: POST en /api/session/logout | 17:49:58
+info: POST en /api/session/logout | 17:50:01
+info: Database previously connected :) | 17:50:25
+info: Escuchando puerto: 8080
+info: POST en /api/session/logout | 17:50:28
+info: POST en /api/session/logout | 17:51:42
+info: Database previously connected :) | 17:52:10
+info: Escuchando puerto: 8080
+info: GET en /register | 17:52:11
+info: POST en /api/session/register | 17:52:20
+info: Database previously connected :) | 17:53:22
+info: Escuchando puerto: 8080
+info: GET en /login | 17:53:23
+info: POST en /api/session/login | 17:53:36
+info: GET en /products | 17:53:36
+info: POST en /api/session/logout | 17:53:38
+info: GET en /login | 17:54:22
+info: GET en /register | 17:54:32
+info: POST en /api/session/register | 17:54:38
+info: GET en /products | 17:54:39
+info: POST en /api/session/logout | 17:54:40
+info: POST en /api/session/logout | 17:55:10
+info: Database previously connected :) | 17:57:45
+info: Escuchando puerto: 8080
+info: GET en /register | 17:57:52
+info: POST en /api/session/register | 17:57:59
+info: Database previously connected :) | 18:01:54
+info: Escuchando puerto: 8080
+info: GET en /register | 18:01:55
+info: POST en /api/session/register | 18:02:02
+info: GET en /products | 18:02:02
+info: POST en /api/session/logout | 18:02:04
+info: Database previously connected :) | 18:04:09
+info: Escuchando puerto: 8080
+info: GET en /realtimeproducts | 18:04:42
+info: Nuevo cliente conectado | 18:04:42
+info: GET en /js/index.js | 18:04:43
+info: GET en /register | 18:04:49
+info: POST en /api/session/register | 18:04:57
+info: GET en /products | 18:04:57
+info: POST en /api/session/logout | 18:04:59
+info: POST en /api/session/logout | 18:05:23
+info: Database previously connected :) | 18:07:45
+info: Escuchando puerto: 8080
+info: GET en /register | 18:07:47
+info: POST en /api/session/register | 18:07:56
+info: GET en /products | 18:07:57
+info: POST en /api/session/logout | 18:07:58
+info: Database previously connected :) | 18:09:28
+info: Escuchando puerto: 8080
+info: GET en /register | 18:09:32
+info: POST en /api/session/register | 18:10:10
+info: Database previously connected :) | 18:11:14
+info: Escuchando puerto: 8080
+info: POST en /api/session/register | 18:11:29
+info: GET en /register | 18:14:35
+info: Database previously connected :) | 18:23:16
+info: Escuchando puerto: 8080
+info: GET en /register | 18:23:22
+info: POST en /api/session/register | 18:23:36
+info: GET en /products | 18:23:37
+info: POST en /api/session/logout | 18:23:39
+info: POST en /api/session/logout | 18:25:49
+info: Database previously connected :) | 18:27:28
+info: Escuchando puerto: 8080
+info: POST en /api/session/logout | 18:28:04
+info: GET en /login | 18:28:09
+info: GET en /register | 18:28:13
+info: POST en /api/session/register | 18:28:21
+info: GET en /products | 18:28:22
+info: POST en /api/session/logout | 18:28:24
+info: GET en /register | 18:28:47
+info: POST en /api/session/register | 18:28:53
+info: GET en /products | 18:36:39
+info: Database previously connected :) | 18:36:59
+info: Escuchando puerto: 8080
+info: Database previously connected :) | 18:37:59
+info: Escuchando puerto: 8080
+info: GET en /register | 18:43:34
+info: POST en /api/session/register | 18:43:40
+info: Database previously connected :) | 18:44:36
+info: Escuchando puerto: 8080
+info: POST en /api/session/register | 18:44:38
+info: GET en /products | 18:44:39
+info: POST en /api/session/logout | 18:44:41
+info: GET en /login | 18:45:29
+info: POST en /api/session/login | 18:45:33
+info: GET en /register | 18:45:37
+info: GET en /login | 18:45:43
+info: POST en /api/session/login | 18:45:49
+info: GET en /products | 18:45:49
+info: POST en /api/session/logout | 18:45:51
+info: POST en /api/session/logout | 18:47:28
+info: GET en /api/session/login | 18:50:55
+info: GET en /login | 19:13:03
+info: POST en /api/session/login | 19:13:05
+info: GET en /products | 19:13:06
+info: GET en /products?page=2 | 19:13:10
+info: GET en /products?page=3 | 19:13:15
+info: GET en /products?page=4 | 19:13:20
+info: GET en /products?page=5 | 19:13:24
+info: GET en /products?page=4 | 19:13:28
+info: GET en /products?page=3 | 19:13:30
+info: GET en /products?page=2 | 19:13:36
+info: POST en /api/carts/65fb7a37134080efbeee5b76/products | 19:13:39
+info: GET en /65fb7a37134080efbeee5b76/purchase | 19:13:43
+info: GET en /products?page=2 | 19:13:48
+info: POST en /api/session/logout | 19:13:49
+info: Database previously connected :) | 19:29:32
+info: Escuchando puerto: 8080
+info: Database previously connected :) | 19:30:03
+info: Escuchando puerto: 8080
+info: POST en /api/session/logout | 19:30:09
+info: GET en /products?page=2 | 19:30:13
+info: POST en /api/session/logout | 19:30:17
+info: GET en /login | 19:30:23
+info: POST en /api/session/login | 19:30:26
+info: GET en /products | 19:30:26
+info: POST en /api/session/logout | 19:30:27
+info: POST en /api/session/logout | 19:30:46
+info: Database previously connected :) | 19:31:46
+info: Escuchando puerto: 8080
+info: Database previously connected :) | 19:34:24
+info: Escuchando puerto: 8080
+info: POST en /api/session/login | 19:36:44
+info: GET en /products | 19:36:45
+info: POST en /api/session/logout | 19:36:46
+info: GET en /login | 19:37:30
+info: POST en /api/session/logout | 19:37:30
+info: POST en /api/session/logout | 19:37:52
+info: POST en /api/session/logout | 19:38:31
+info: Database previously connected :) | 19:40:46
+info: Escuchando puerto: 8080
+info: GET en /login | 19:40:51
+info: POST en /api/session/login | 19:40:54
+info: GET en /products | 19:40:54
+info: POST en /api/session/logout | 19:40:56
+info: GET en /login | 19:41:08
+info: POST en /api/session/login | 19:41:16
+info: GET en /products | 19:41:16
+info: POST en /api/session/logout | 19:41:17
+info: GET en /login | 19:41:23
+info: POST en /api/session/login | 19:41:27
+info: GET en /products | 19:41:27
+info: POST en /api/session/logout | 19:41:28
+info: GET en /login | 19:41:28
+info: GET en /register | 19:41:36
+info: POST en /api/session/register | 19:41:58
+info: GET en /products | 19:41:58
+info: GET en /products?page=2 | 19:42:03
+info: GET en /products/65f6247864b452e91a97e46c | 19:42:10
+info: POST en /api/carts/665900b6209705b2105416cb/products | 19:42:13
+info: GET en /665900b6209705b2105416cb/purchase | 19:42:15
+info: POST en /api/session/logout | 19:42:21
+info: GET en /login | 19:42:22
+info: POST en /api/session/login | 19:43:20
+info: POST en /api/session/login | 19:43:26
+info: GET en /products | 19:43:26
+info: POST en /api/session/logout | 19:43:27
+info: GET en /login | 19:43:27
+info: POST en /api/session/login | 19:45:26
+info: GET en /products | 19:45:26
+info: GET en /api/users/premium/65fb7a37134080efbeee5b79 | 19:46:26
+info: POST en /api/users/premium/65fb7a37134080efbeee5b79 | 19:46:28
+info: GET en /api/users/premium/65fb7a37134080efbeee5b79 | 19:46:33
+info: POST en /api/users/premium/65fb7a37134080efbeee5b79 | 19:46:37
+info: GET en /api/users/premium/65fb7a37134080efbeee5b79 | 19:46:54
+info: POST en /api/users/premium/65fb7a37134080efbeee5b79 | 19:46:55
+info: GET en /api/users/premium/65fb7a37134080efbeee5b79 | 19:47:03
+info: POST en /api/users/premium/65fb7a37134080efbeee5b79 | 19:47:06
+info: GET en /api/users/65fb7a37134080efbeee5b79/documents | 19:47:45
+info: GET en /api/users/premium/6620137fd6aaba2faa5a9c98 | 19:48:16
+info: POST en /api/users/premium/6620137fd6aaba2faa5a9c98 | 19:48:19
+info: Database previously connected :) | 19:51:33
+info: Escuchando puerto: 8080
+info: Database previously connected :) | 19:52:57
+info: Escuchando puerto: 8080
+info: POST en /api/users/premium/6620137fd6aaba2faa5a9c98 | 19:53:00
+info: POST en /api/users/premium/6620137fd6aaba2faa5a9c98 | 19:53:04
+info: GET en /api/users/6620137fd6aaba2faa5a9c98/documents | 19:53:05
+info: POST en /api/users/6620137fd6aaba2faa5a9c98/documents | 19:54:13
+info: GET en /api/users/premium/6620137fd6aaba2faa5a9c98 | 19:54:50
+info: POST en /api/users/premium/6620137fd6aaba2faa5a9c98 | 19:54:52
+info: GET en /api/users/premium/6620137fd6aaba2faa5a9c98 | 19:54:54
+info: POST en /api/users/premium/6620137fd6aaba2faa5a9c98 | 19:54:57
+info: GET en /api/users/premium/6620137fd6aaba2faa5a9c98 | 19:54:59
+info: POST en /api/users/premium/6620137fd6aaba2faa5a9c98 | 19:55:03
+info: Database previously connected :) | 20:05:12
+info: Escuchando puerto: 8080
+info: GET en /login | 20:05:23
+info: POST en /api/session/login | 20:05:27
+info: GET en /products | 20:05:27
+info: POST en /api/session/logout | 20:05:28
+info: Database previously connected :) | 20:07:19
+info: Escuchando puerto: 8080
+info: GET en /login | 20:07:28
+info: POST en /api/session/login | 20:07:30
+info: GET en /products | 20:07:31
+info: POST en /api/session/logout | 20:07:33
+info: GET en /login | 20:08:28
+info: GET en /login | 20:08:42
+info: POST en /api/session/login | 20:08:44
+info: GET en /products | 20:08:44
+info: POST en /api/session/logout | 20:08:46
+info: GET en /login | 20:08:46
+info: POST en /api/session/login | 20:08:55
+info: GET en /products | 20:08:55
+info: POST en /api/session/login | 20:08:55
+info: GET en /products | 20:08:55
+info: POST en /api/session/logout | 20:08:56
+info: GET en /login | 20:08:56
+info: GET en /register | 20:09:13
+info: POST en /api/session/register | 20:09:20
+info: GET en /products | 20:09:20
+info: POST en /api/session/logout | 20:09:21
+info: GET en /login | 20:09:21
+info: GET en /login | 00:15:27
+info: POST en /api/session/login | 00:15:30
+info: GET en /products | 00:15:30
+info: POST en /api/session/logout | 00:15:32
+info: GET en /login | 00:15:32

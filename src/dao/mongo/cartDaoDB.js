@@ -1,9 +1,7 @@
 const path = require('path')
 const { cartsModel } = require('./models/carts.model.js');
 const { productsModel } = require('./models/products.model.js');
-const ticketService = require('../../repositories/index.js');
-const productService = require('../../repositories/index.js');
-const cartService = require('../../repositories/index.js');
+
 
 class CartManagerDB {
 

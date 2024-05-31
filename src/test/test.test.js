@@ -3,8 +3,9 @@ const UserManagerDB = require('../dao/mongo/userDaoDB')
 const ProductManagerDB = require('../dao/mongo/productDaoDB')
 const { connectDB } = require('../config/connectDB'); 
 const mongoUrl = process.env.MONGO_URL
+const PORT = process.env.PORT
 const supertest = require('supertest')
-const requester = supertest.agent('http://localhost:5000')
+const requester = supertest.agent(`http://localhost:${PORT}`)
 const { generateResetToken } = require('../utils/tokenUtils');
 
 

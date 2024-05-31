@@ -1,5 +1,6 @@
 const configObject  = require('../config/connectDB');
 const {connectDB}  = require('../config/connectDB');
+const CartManagerDB = require('./mongo/cartDaoDB');
 
 let UserDao
 let ProductDao
@@ -26,8 +27,8 @@ switch (configObject.persistence) {
         const ProductDaoMongo = require('./mongo/productDaoDB')
         ProductDao = ProductDaoMongo
 
-        const CartDaoMongo = require('./mongo/cartDaoDB')
-        CartDao = CartDaoMongo
+        const CartManagerDB = require('./mongo/cartDaoDB')
+        CartDao = CartManagerDB
 
         const TicketDaoMongo = require('./mongo/ticketDaoDB')
         TicketDao = TicketDaoMongo
